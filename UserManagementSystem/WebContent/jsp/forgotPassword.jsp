@@ -23,7 +23,7 @@
         </div>
         <div>
             <span>Know your password?</span>
-            <span><a href="../pages/login.html">Login</a></span>
+            <span><a href="/UserManagementSystem/jsp/login.jsp">Login</a></span>
         </div>
 </div>
 </body>

@@ -14,7 +14,7 @@
                 <p class="login-text">Login to your account</p>
             </div>
             <div>
-                <form method="post" action="login">
+                <form method="post" action="login-process">
                     <input type="text" name="username" placeholder="Username"/><br/><br/>
                     <input type="password" name="password" placeholder="Password"/><br/><br/>
                     <div class="remember-div">
@@ -30,7 +30,7 @@
             </div>
             <div>
                 <i class="fa fa-lock"></i> &nbsp;
-                <a href="../pages/forgot-password.html">Forgot password?</a>
+                <a href="/UserManagementSystem/jsp/forgotPassword.jsp">Forgot password?</a>
             </div>
      </div>
      <div class="app-name">
