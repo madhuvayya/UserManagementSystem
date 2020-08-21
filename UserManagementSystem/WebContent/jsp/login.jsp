@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +12,7 @@
 <div class="container">
      <div class="login-form">
             <div>
-                <img class="mi-logo" src="../resources/images/mi-logo.jpg" alt="mi_logo" />
+                <div class="bl-logo"><img src="../resources/images/bz.svg" alt="mi_logo" /></div>
                 <p class="login-text">Login to your account</p>
             </div>
             <div>

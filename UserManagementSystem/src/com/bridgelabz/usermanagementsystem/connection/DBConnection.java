@@ -7,32 +7,27 @@ import java.sql.Connection;
 import java.util.Properties;
 
 public class DBConnection {
-    public static Connection getConnection() throws IOException {
-    	 System.out.println("Db connection class");
-        Connection connection = null;
+	
+    public static Connection getConnection() throws IOException, ClassNotFoundException {
+    	System.out.println("Db connection class");
         
-        FileReader reader=new FileReader("/UserManagementSystem/WebContent/resources/db.properties");
+        FileReader reader=new FileReader("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\db.properties");
 
-        Properties p=new Properties();
-        p.load(reader);
+        Properties properties=new Properties();
+        properties.load(reader);
 
-        String driver = p.getProperty("db.driver");
-        String url = p.getProperty("db.url");
-        String username = p.getProperty("db.username");
-        String password = p.getProperty("db.password");
+        String driver = properties.getProperty("db.driver");
+        String url = properties.getProperty("db.url");
+        String username = properties.getProperty("db.username");
+        String password = properties.getProperty("db.password");
 
+        Connection connection = null;
         try {
-            try {
-                Class.forName(driver);
-            }
-            catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            Class.forName(driver);
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Printing connection object "+ connection);
         }
-        catch (Exception e) {
-            e.printStackTrace();
+        catch (Exception exception) {
+        	exception.printStackTrace();
         }
         return connection;
     }

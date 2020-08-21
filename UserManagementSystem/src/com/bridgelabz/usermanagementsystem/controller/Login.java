@@ -12,10 +12,11 @@ import java.sql.Connection;
 import javax.servlet.http.HttpSession;
 import java.sql.PreparedStatement;
 
-/**
+/*
  * Servlet implementation class Login
  */
-//@WebServlet(value="/Login")
+
+@WebServlet(value="/jsp/login-process")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,17 +36,16 @@ public class Login extends HttpServlet {
 	            PreparedStatement ps = connection.prepareStatement
 	                    ("select * from user_info where user_name ='" + userName + "' and password='"+password+"'");
 
-	            ResultSet rs = ps.executeQuery();
+	            ResultSet resultSet = ps.executeQuery();
 
-	            if (!rs.next()) {
-	                destinationPath = "login.html";
-//	                response.sendRedirect("index.jsp");
+	            if (!resultSet.next()) {
+	                destinationPath = "login.jsp";
 	            } else{
 	                destinationPath = "dashBoard.jsp";
 
-	                HttpSession session=request.getSession();
-	                session.setAttribute("userName",userName);
-	                session.setAttribute("password",password);
+	                HttpSession httpSession=request.getSession();
+	                httpSession.setAttribute("userName",userName);
+	                httpSession.setAttribute("password",password);
 	            }
 
 	            out.println("You successfully logged in...");
