@@ -63,11 +63,16 @@ a {
 
 .app-name {
     width: 58%;
-    background-color: #6CA0BB;
-    background-image: url("../resources/login-bg.jpg");
-    display: flex;
-    align-items: center;
+    background-image: url("../resources/images/login-bg.jpg");
     color: #FFFFFF;
+}
+
+.bg-color {
+	background-color: #6CA0BB;
+	opacity:.8;
+	display: flex;
+    align-items: center;
+    height:100%;
 }
 
 .app-text {
@@ -101,20 +106,20 @@ a {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .1s;
+    transition: .1s;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 20px;
-    width: 20px;
-    left: 4px;
-    bottom: 4px;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
+    -webkit-transition: .1s;
+    transition: .1s;
 }
 
 input:checked + .slider {
@@ -126,14 +131,14 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(18px);
+    -ms-transform: translateX(18px);
+    transform: translateX(18px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 34px;
+    border-radius: 30px;
 }
 
 .slider.round:before {
