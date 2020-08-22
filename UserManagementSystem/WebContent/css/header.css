@@ -1,0 +1,41 @@
+@charset "ISO-8859-1";
+
+
+body{
+	margin:0px;
+}
+
+.header{
+	display:flex;
+	flex-direction:coloumn;
+	justify-content:space-between;
+	background-color: #1991D7;
+	color: #fff;
+	padding-right: 15px;
+    padding-left: 15px;
+}
+
+.app-name {
+	display:flex;
+	flex-direction:coloumn;
+	margin: 0px 10px 0px 10px;
+}
+
+button {
+	margin-left: 5px;
+	font-size: 18px;
+    padding: 0 20px;
+    line-height: 1;
+    vertical-align: middle;
+    border: none;
+    background: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logged-info {
+	display:flex;
+	flex-direction:coloumn;
+	margin: 0px 5px 0px 5px;	
+}

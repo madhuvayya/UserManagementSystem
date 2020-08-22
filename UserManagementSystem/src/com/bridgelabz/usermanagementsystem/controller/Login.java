@@ -47,10 +47,8 @@ public class Login extends HttpServlet {
 	                httpSession.setAttribute("userName",userName);
 	                httpSession.setAttribute("password",password);
 	            }
-
-	            out.println("You successfully logged in...");
+	            
 	            connection.close();
-
 	            response.sendRedirect(destinationPath);
 	        }
 	        catch(Exception exception) {

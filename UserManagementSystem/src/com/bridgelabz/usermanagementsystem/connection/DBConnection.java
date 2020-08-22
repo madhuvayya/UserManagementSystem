@@ -9,12 +9,10 @@ import java.util.Properties;
 public class DBConnection {
 	
     public static Connection getConnection() throws IOException, ClassNotFoundException {
-    	System.out.println("Db connection class");
-        
-        FileReader reader=new FileReader("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\db.properties");
+        FileReader fileReader=new FileReader("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\db.properties");
 
         Properties properties=new Properties();
-        properties.load(reader);
+        properties.load(fileReader);
 
         String driver = properties.getProperty("db.driver");
         String url = properties.getProperty("db.url");
