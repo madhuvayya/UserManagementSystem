@@ -6,16 +6,41 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 </head>
 <body>
 	<nav class="header">
 		<div class="app-name">
 			<p>User Management</p>
-			<button><i class='ti ti-arrow-circle-right'></i></button>
+			<button class="arrow-circle"><i class='ti ti-arrow-circle-right'></i></button>
 		</div>
-		<div class="logged-info">
+		<div class="logged-info" onclick="myFunction()">
+			<div class="dropdown">
 			<img src="" alt="image" />
-			<button>${userName}</button>
+			<button  class="dropbtn">${username}</button>
+			  <div id="myDropdown" class="dropdown-content">
+    				<span class="profile"><a href=""><i class='ti-user'></i>&nbsp Profile</a></span>
+    				<span class="logout"><a href=""><i class='ti-power-off'></i>&nbsp Logout</a></span>
+  					</div>
+			</div>
 		</div>
 	</nav>
 </body>

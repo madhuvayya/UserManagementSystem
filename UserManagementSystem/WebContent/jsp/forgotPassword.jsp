@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel = "icon" type = "image/png" href = "${pageContext.request.contextPath}/resources/images/mi-logo.jpg"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/forgot-password.css">
 <title>User Management</title>
 <script>
