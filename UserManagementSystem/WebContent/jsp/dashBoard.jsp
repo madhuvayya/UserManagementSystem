@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "icon" type = "image/png" href = "${pageContext.request.contextPath}/resources/images/mi-logo.jpg"> 
-<title>User Management</title>
+<title>Insert title here</title>
 </head>
-<body> 
+<body>
 	<%@include file="header.jsp"%>
 	<%@include file="sideNavbar.jsp"%>
 </body>

@@ -1,4 +1,4 @@
-package com.bridgelabz.usermanagementsystem.connection;
+package com.bridgelabz.usermanagementsystem.config;
 
 import java.io.FileReader;
 import java.io.IOException;
