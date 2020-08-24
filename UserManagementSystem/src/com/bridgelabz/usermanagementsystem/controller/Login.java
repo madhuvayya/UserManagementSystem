@@ -1,22 +1,23 @@
 package com.bridgelabz.usermanagementsystem.controller;
 
-import com.bridgelabz.usermanagementsystem.connection.*;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import javax.servlet.http.HttpSession;
+
+import com.bridgelabz.usermanagementsystem.config.*;
+
 import java.sql.PreparedStatement;
 
 /*
  * Servlet implementation class Login
  */
 
-@WebServlet(value="/jsp/login-process")
+@WebServlet(value="/login-process")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,10 +39,10 @@ public class Login extends HttpServlet {
 	            if (!resultSet.next()) {
 	                destinationPath = "login.jsp";
 	            } else{
-	                destinationPath = "dashBoard.jsp";
+	                destinationPath = "dashboard.jsp"; 
 
 	                HttpSession httpSession=request.getSession();
-	                httpSession.setAttribute("userName",userName);
+	                httpSession.setAttribute("username",userName);
 	                httpSession.setAttribute("password",password);
 	            }
 	            

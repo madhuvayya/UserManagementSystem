@@ -1,8 +1,9 @@
 /**
  * 
  */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+function myFunction(inputclass) {
+//  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById(inputclass).classList.toggle("show");
 }
 
 // Close the dropdown if the user clicks outside of it

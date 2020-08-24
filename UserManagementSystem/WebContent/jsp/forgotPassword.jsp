@@ -46,7 +46,7 @@
         <br/>
         <div>
             <span>Know your password?</span>
-            <span><a href="${pageContext.request.contextPath}/jsp/login.jsp">Login</a></span>
+            <span><a href="login.jsp">Login</a></span>
         </div>
 </div>
 </body>
