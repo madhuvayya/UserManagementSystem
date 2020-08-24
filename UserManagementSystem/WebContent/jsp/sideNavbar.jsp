@@ -45,8 +45,5 @@
         <div><button type="button" class="toggle"><i class="ti-arrows-horizontal"></i></button></div>
         
 </div>
-	<script>
-		<%@include file ="../js/hideShow.js" %>
-	</script>
 </body>
 </html>
