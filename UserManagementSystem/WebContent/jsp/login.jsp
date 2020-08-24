@@ -38,7 +38,7 @@ function validateForm() {
      <div class="login-form">
      		${message}
             <div>
-                <div class="mi-logo"><img src="${pageContext.request.contextPath}/resources/images/mi-logo.jpg" alt="mi_logo" /></div>
+                <div><img class="mi-logo" src="${pageContext.request.contextPath}/resources/images/mi-logo.jpg" alt="mi_logo" /></div>
                 <p class="login-text">Login to your account</p>
             </div>
             <div>
@@ -52,8 +52,7 @@ function validateForm() {
                         <label class="switch">
                             <input type="checkbox" checked>
                             <span class="slider round"></span>
-                        </label></span>
-                        <span>Remember Me</span>
+                        </label>Remember Me</span>
                     </div>
                     <input class="submit-button" type="submit" value="Login" onClick="return validateForm()"/>
                 </form>
@@ -61,7 +60,7 @@ function validateForm() {
             <br/>
             <div>
                 <i class="fa fa-lock"></i> &nbsp;
-                <a href="${pageContext.request.contextPath}/jsp/forgotPassword.jsp">Forgot password?</a>
+                <a href="forgotPassword.jsp">Forgot password?</a>
             </div>
      </div>
      <div class="app-name">

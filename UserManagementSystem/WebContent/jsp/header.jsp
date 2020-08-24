@@ -13,7 +13,7 @@
 			<p>User Management</p>
 			<button class="arrow-circle"><i class='ti ti-arrow-circle-right'></i></button>
 		</div>
-		<div class="logged-info" onclick="myFunction()">
+		<div class="logged-info" onclick="myFunction('myDropdown')">
 			<div class="dropdown">
 			<button  class="dropbtn"> <img src="" alt="image" /> ${username}</button>
 			  <div id="myDropdown" class="dropdown-content">
