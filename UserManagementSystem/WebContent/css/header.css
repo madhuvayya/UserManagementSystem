@@ -1,8 +1,5 @@
 @charset "ISO-8859-1";
 
-@charset "ISO-8859-1";
-
-
 body{
 	margin:0px;
 }
@@ -37,6 +34,8 @@ button {
 
 .arrow-circle {
 	margin-left: 5px;
+	border: none;
+	outline: none;
 }
 
 .logged-info {
@@ -51,6 +50,7 @@ button {
   padding: 16px;
   font-size: 16px;
   border: none;
+  outline: none;
   cursor: pointer;
 }
 

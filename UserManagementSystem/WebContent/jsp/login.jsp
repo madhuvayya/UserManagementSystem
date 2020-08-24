@@ -36,6 +36,7 @@ function validateForm() {
 <body onload='document.form.username.focus()'>
 <div class="container">
      <div class="login-form">
+     		${message}
             <div>
                 <div class="mi-logo"><img src="${pageContext.request.contextPath}/resources/images/mi-logo.jpg" alt="mi_logo" /></div>
                 <p class="login-text">Login to your account</p>

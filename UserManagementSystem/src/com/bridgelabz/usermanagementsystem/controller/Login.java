@@ -22,9 +22,6 @@ public class Login extends HttpServlet {
 
 	    @Override
 	    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-	        PrintWriter out = response.getWriter();
-	        
-	        System.out.println("Login servlet");
 
 	        String userName = request.getParameter("username");
 	        String password = request.getParameter("password");

@@ -6,25 +6,6 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
-<script>
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 </head>
 <body>
 	<nav class="header">
@@ -34,14 +15,16 @@ window.onclick = function(event) {
 		</div>
 		<div class="logged-info" onclick="myFunction()">
 			<div class="dropdown">
-			<img src="" alt="image" />
-			<button  class="dropbtn">${username}</button>
+			<button  class="dropbtn"> <img src="" alt="image" /> ${username}</button>
 			  <div id="myDropdown" class="dropdown-content">
     				<span class="profile"><a href=""><i class='ti-user'></i>&nbsp Profile</a></span>
     				<span class="logout"><a href=""><i class='ti-power-off'></i>&nbsp Logout</a></span>
-  					</div>
+  			</div>
 			</div>
 		</div>
 	</nav>
+	<script>
+		<%@include file ="../js/dropdown.js" %>
+	</script>
 </body>
 </html>

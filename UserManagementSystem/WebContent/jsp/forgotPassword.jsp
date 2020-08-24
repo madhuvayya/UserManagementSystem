@@ -26,6 +26,7 @@
 </head>
 <body onload='document.form.email.focus()'>
 <div class="container">
+		${message}
         <div>
             <img class="mi-logo" src="${pageContext.request.contextPath}/resources/images/mi-logo.jpg" alt="mi_logo" />
             <h3><span class="app-name">User Management</span></h3>
@@ -36,7 +37,7 @@
         </div>
         <br/><br/>
         <div class="recover-form">
-            <form method="post" name="form" >
+            <form method="post" name="form" action="RecoverPassword">
                 <input type="text" name="email" placeholder="Email"/><br/>
                 <span id="error-info"></span><br/><br/>
                 <input class="submit-button" type="submit" value="RECOVER PASSWORD" onclick="return validateEmail()"/>
