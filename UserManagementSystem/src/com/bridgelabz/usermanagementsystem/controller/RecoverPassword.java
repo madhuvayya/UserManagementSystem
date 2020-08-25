@@ -39,7 +39,7 @@ public class RecoverPassword extends HttpServlet {
                         "\nPassword: " + resultSet.getString("password") +
                         "\n\nThanks and Regards, ";
             	
-        	    Email.sendEmail(email,"Passord Recovery", emailBody);
+        	    Email.sendEmail(email,"Password Recovery", emailBody);
         	    message = "Password sent your email.";
             	destinationPath = "login.jsp";
             }

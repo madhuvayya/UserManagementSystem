@@ -33,9 +33,11 @@ button {
 }
 
 .arrow-circle {
-	margin-left: 5px;
+	margin-left: 18px;
 	border: none;
 	outline: none;
+	height: 25px;
+	width: 40px;
 }
 
 .logged-info {
