@@ -2,6 +2,7 @@
 
 body {
 	margin-top: 0px;
+	font-size: 14px;
 }
 
 a {
@@ -9,33 +10,23 @@ a {
 	color: #d6e1f1;
 }
 
-.checkbox {
-	position: relative; 
-	left: 180px;
-	top: -38px;
-	display: none;
-}
-
 .sidebar {
 	color: #d6e1f1;
     background-color: #2B333E;
-    height: 150vh;
-    width: 230px;
-    padding: 10px;
-	top: -10px;
+    height: 100%;
+    width: 240px;
+    padding: 5px;
 }
 
 .sidebar div {
 	display: block;
 	margin: 20px;
 	cursor: pointer;
-	font-size: 16px;
 	color: #d6e1f1;
 }
 
 .sidebar i {
 	margin-right: 8px;
-	font-size: 15px;
 }
 
 .ti-angle-left {
@@ -43,13 +34,17 @@ a {
 } 
 
 .label {
-	font-size: 10px;
+	font-size:8px;
 	float: right;
-	padding: 5px 7px;
+	padding: 5px 5px;
 	border-radius: .25em;
 	color: #ffffff;
 }
 
 .label-success {
 	background-color: #41B314;
+}
+
+.toggle {
+	align-self: center;
 }

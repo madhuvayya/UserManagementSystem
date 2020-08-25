@@ -17,24 +17,27 @@ import com.bridgelabz.usermanagementsystem.util.Email;
 @WebServlet(value="/RecoverPassword")
 public class RecoverPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String message;
         String destinationPath;
-
+        
         Connection connection = null;
         try {
             connection = DBConnection.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("select * from user_info where email='"+ email + "'");            
             ResultSet resultSet = preparedStatement.executeQuery();
-
+            
             if (!resultSet.next()) {
             	message = "Enter registered email.";
             	destinationPath = "forgotPassword.jsp";
             } else{
-            	String emailBody = "Dear " + resultSet.getString("first_name")  +" "+ resultSet.getString("last_name") + "," +
+            	
+            	String emailBody = 
+            			"Dear " + resultSet.getString("first_name")  +" "+ resultSet.getString("last_name") + "," +
                         "\n\nYou can log-in with following credentials: \n" +
                         "\nPassword: " + resultSet.getString("password") +
                         "\n\nThanks and Regards, ";
@@ -53,5 +56,4 @@ public class RecoverPassword extends HttpServlet {
             exception.printStackTrace();
         }
 	}
-
 }

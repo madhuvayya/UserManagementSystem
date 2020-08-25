@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: center;
     align-content: space-between;
-    margin: 30px 100px;
+	margin: 20px 100px;
 }
 
 .login-form {

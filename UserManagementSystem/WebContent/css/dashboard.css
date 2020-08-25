@@ -1,0 +1,44 @@
+@charset "ISO-8859-1";
+
+body {
+	font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #5e6773;
+}
+
+a {
+	text-decoration: none;
+}
+
+.container {
+	display: flex;
+	flex-direction: coloumn;
+}
+
+.main-content {
+	width: 100%;
+}
+
+.content-heading {
+    border-bottom: 1px solid #e3e3e3;
+    background-color: #ffffff;
+    width: 100%;
+    display: flex;
+	flex-direction: coloumn;    
+	justify-content: space-between;
+	align-items: center;
+}
+
+.page-title {
+	padding-left: 30px;
+	font-size: 18px;
+}
+
+.home-link {
+	padding-right: 30px;
+	color: #000000;
+}
+
+.home-link a {
+	color: #4FC7FF;
+}

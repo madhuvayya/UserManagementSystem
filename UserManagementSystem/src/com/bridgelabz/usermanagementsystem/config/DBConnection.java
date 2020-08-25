@@ -7,12 +7,9 @@ import java.sql.Connection;
 import java.util.Properties;
 
 public class DBConnection {
-	
-    public static Connection getConnection() throws IOException, ClassNotFoundException {
-		
+	public static Connection getConnection() throws IOException, ClassNotFoundException {
 		FileReader fileReader=new FileReader("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\db.properties");
 		        
-        
         Properties properties=new Properties();
         properties.load(fileReader);
 

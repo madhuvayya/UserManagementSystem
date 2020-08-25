@@ -11,7 +11,7 @@
 	<nav class="header">
 		<div class="app-name">
 			<p>User Management</p>
-			<button class="arrow-circle" onclick="toggleSideNavBar()"><i class='ti ti-arrow-circle-right'></i></button>
+			<button class="arrow-circle" onclick="toggleSideNavBar()"><i id="toggling-icon" class='ti ti-arrow-circle-left'></i></button>
 		</div>
 		<div class="logged-info" onclick="myFunction('myDropdown')">
 			<div class="dropdown">

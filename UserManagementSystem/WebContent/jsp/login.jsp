@@ -44,9 +44,9 @@ function validateForm() {
             <div>
                 <form method="post" action="login-process" name="form">
                     <input type="text" id="username" class="username" name="username" placeholder="Username" /><br/>
-                    <span id='username-empty'></span><br/><br/>
+                    <span id='username-empty'></span><br/>
                     <input type="password" id="password" class="password" name="password" placeholder="Password"/><br/>
-                    <span id='password-empty'></span><br/><br/>
+                    <span id='password-empty'></span><br/>
                     <div class="remember-div">
                     	<span>
                         <label class="switch">
