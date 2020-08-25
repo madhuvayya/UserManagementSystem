@@ -1,6 +1,3 @@
-/**
- * 
- */
 function toggleSideNavBar(){	
 		 
 	var div = document.getElementById("sidebar");

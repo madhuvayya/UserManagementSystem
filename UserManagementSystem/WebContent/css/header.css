@@ -36,8 +36,7 @@ button {
 	margin-left: 18px;
 	border: none;
 	outline: none;
-	height: 25px;
-	width: 40px;
+	float: right;
 }
 
 .logged-info {

@@ -11,7 +11,7 @@
 	<nav class="header">
 		<div class="app-name">
 			<p>User Management</p>
-			<button class="arrow-circle"><i class='ti ti-arrow-circle-right'></i></button>
+			<button class="arrow-circle" onclick="toggleSideNavBar()"><i class='ti ti-arrow-circle-right'></i></button>
 		</div>
 		<div class="logged-info" onclick="myFunction('myDropdown')">
 			<div class="dropdown">
@@ -25,6 +25,7 @@
 	</nav>
 	<script>
 		<%@include file ="../js/dropdown.js" %>
+		<%@include file ="../js/toggleSideNavBar.js" %>
 	</script>
 </body>
 </html>

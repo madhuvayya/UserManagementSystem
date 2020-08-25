@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sideNavbar.css">
 </head>
 <body>
-<input type="checkbox" class="checkbox" onclick="toggleSideNavBar()"> 
 <div id="sidebar" class="sidebar">
                 
         <div><a href="#" id="dashboard">
