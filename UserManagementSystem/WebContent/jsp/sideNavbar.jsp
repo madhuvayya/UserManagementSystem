@@ -62,7 +62,7 @@
         </div>
 
         <div>
-        	<a href="/logout.jsp">
+        	<a href="logout">
         		<i class="ti-power-off"></i>
         		<span>Logout</span>
         	</a>

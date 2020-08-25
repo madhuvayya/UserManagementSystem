@@ -31,10 +31,10 @@ public class Login extends HttpServlet {
 	        Connection connection = null;
 	        try {
 	            connection = DBConnection.getConnection();
-	            PreparedStatement ps = connection.prepareStatement
+	            PreparedStatement preparedStatement = connection.prepareStatement
 	                    ("select * from user_info where user_name ='" + userName + "' and password='"+password+"'");
 
-	            ResultSet resultSet = ps.executeQuery();
+	            ResultSet resultSet = preparedStatement.executeQuery();
 
 	            if (!resultSet.next()) {
 	                destinationPath = "login.jsp";

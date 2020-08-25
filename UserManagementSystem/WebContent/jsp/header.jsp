@@ -18,7 +18,7 @@
 			<button  class="dropbtn"> <img src="" alt="image" /> ${username}</button>
 			  <div id="myDropdown" class="dropdown-content">
     				<span class="profile"><a href=""><i class='ti-user'></i>&nbsp Profile</a></span>
-    				<span class="logout"><a href=""><i class='ti-power-off'></i>&nbsp Logout</a></span>
+    				<span class="logout"><a href="logout"><i class='ti-power-off'></i>&nbsp Logout</a></span>
   			</div>
 			</div>
 		</div>
