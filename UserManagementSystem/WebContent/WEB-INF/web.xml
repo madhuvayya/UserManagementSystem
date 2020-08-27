@@ -6,7 +6,7 @@
     <welcome-file>/jsp/login.jsp</welcome-file>
   </welcome-file-list>
   
-      <servlet>
+   <servlet>
         <servlet-name>login</servlet-name>
         <jsp-file>/jsp/login.jsp</jsp-file>
     </servlet>

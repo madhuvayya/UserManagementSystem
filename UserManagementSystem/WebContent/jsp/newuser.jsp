@@ -17,7 +17,7 @@
 	<%@include file="header.jsp"%>
 	<div class="container">
 		<%@include file="sideNavbar.jsp"%>
-		<form action="register"> 
+		<form action="register" method="post"> 
 		<div class="main-content">		
 			<div class="content-heading">
 				<div class="page-title">
@@ -108,7 +108,7 @@
                                         	<label class="control-label">Phone + Ext</label>
                                         </div>
                                         <div>
-                                        	<input name="alternate_number" type="text" class="form-control"><br/>
+                                        	<input name="phone_ext" type="text" class="form-control"><br/>
                                         	<span class="help-block">(999) 999-9999 99</span>
                                     	</div>
                                 	</div>
@@ -267,10 +267,9 @@
 		</div>
 		</form>
 	</div>
-</div>	
+</div>
 <script type="text/javascript">
 	<%@include file ="../js/UserRolePermissions.js" %>
-	
 </script>	
 </body>
 </html>

@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/UserRolePermissions.js"></script>
 </head>
 <body>
 <div id="sidebar" class="sidebar">                
@@ -35,7 +37,8 @@
        	</div>	
         <div id="userOptins" style="display:none;">
                     <p> &nbsp;&nbsp;&nbsp;<a href="newuser" class="anchor">  New User </a></p>
-                    <p> &nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Users List </a><span class="label label-success">UPDATED</span></p>
+                    <p> &nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Users List </a></p>
+                    <span class="label label-success">UPDATED</span>
         </div>
 
        	<div onclick="showOptions('settings')">

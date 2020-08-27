@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<script>
+	<%@include file="../js/dropdown.js" %>
+	<%@include file="../js/toggleSideNavBar.js" %>
+</script>
 </head>
 <body>
 	<nav class="header">
@@ -21,9 +25,5 @@
 			</div>
 		</div>
 	</nav>
-	<script>
-		<%@include file ="../js/dropdown.js" %>
-		<%@include file ="../js/toggleSideNavBar.js" %>
-	</script>
 </body>
 </html>
