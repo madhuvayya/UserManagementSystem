@@ -140,7 +140,7 @@
                                 	<div>
                                     	<div class="form-group">
                                         <label class="control-label">User Role</label><br/>
-                                        <select name="role" class="form-control" onchange="changeUserRole(this);">
+                                        <select name="role" class="form-control" onchange="userRolePermissions(this);">
 											<option value="">--- Select ---</option>
 											<option value="Admin">Admin</option>
 											<option value="User">User</option>
@@ -180,18 +180,18 @@
 									<tr class="table_head">
       									<td>Web Page</td>
       									<td>
-      										<input name="add" id="add" type="checkbox" class="form-control" onclick="onCheck('add')">Add
+      										<input name="add" id="add" type="checkbox" class="form-control" onchange="onCheck('add')">Add
       									</td>
       									<td>
-      										<input name="delete" id="delete" type="checkbox" class="form-control" onclick="onCheck('delete')" >
+      										<input name="delete" id="delete" type="checkbox" class="form-control" onchange="onCheck('delete')" >
       										Delete
       									</td>
       									<td>
-      										<input name="modify" id="modify" type="checkbox" class="form-control" onclick="onCheck('modify')">
+      										<input name="modify" id="modify" type="checkbox" class="form-control" onchange="onCheck('modify')">
       										Modify
       									</td>
       									<td>
-      										<input name="read" id="read" type="checkbox" class="form-control" onclick="onCheck('read')">
+      										<input name="read" id="read" type="checkbox" class="form-control" onchange="onCheck('read')">
       										Read
       									</td>
     								</tr>
@@ -246,7 +246,7 @@
 </div>	
 </form>
 <script type="text/javascript">
-	<%@include file ="../js/onCheck.js" %>
+	<%@include file ="../js/UserRolePermissions.js" %>
 </script>	
 </body>
 </html>
