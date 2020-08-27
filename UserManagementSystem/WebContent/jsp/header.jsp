@@ -4,8 +4,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
 </head>
 <body>
 	<nav class="header">

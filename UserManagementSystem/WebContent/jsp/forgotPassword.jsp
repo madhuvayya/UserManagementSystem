@@ -46,7 +46,7 @@
         <br/>
         <div>
             <span>Know your password?</span>
-            <span><a href="login.jsp">Login</a></span>
+            <span><a href="login">Login</a></span>
         </div>
 </div>
 </body>

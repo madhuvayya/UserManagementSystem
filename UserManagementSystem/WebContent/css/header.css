@@ -1,15 +1,11 @@
 @charset "ISO-8859-1";
 
-body{
-	margin:0px;
-}
-
 .header{
 	display:flex;
 	flex-direction:coloumn;
 	justify-content:space-between;
 	background-color: #1991D7;
-	color: #fff;
+	color: #ffffff;
 	padding-right: 15px;
     padding-left: 15px;
 }

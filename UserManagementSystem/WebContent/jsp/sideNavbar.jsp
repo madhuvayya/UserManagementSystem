@@ -5,14 +5,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sideNavbar.css">
 </head>
 <body>
 <div id="sidebar" class="sidebar">
                 
         <div><a href="#" id="dashboard">
             <i class="ti-dashboard"></i>
-            <span class="title">Dashboard</span>
+            <span class="title"> <a href="dashboard"> Dashboard </a> </span>
             <span class="label label-success">UPDATED</span></a>
         </div>
         
@@ -37,7 +36,7 @@
        		</a>
        	</div>	
         <div id="userOptins" style="display:none;">
-                    <p> &nbsp;&nbsp;&nbsp;<a href="#" class="anchor">  New User </a></p>
+                    <p> &nbsp;&nbsp;&nbsp;<a href="newuser" class="anchor">  New User </a></p>
                     <p> &nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Users List </a></p>
         </div>
 

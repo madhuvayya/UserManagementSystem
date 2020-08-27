@@ -60,7 +60,7 @@ function validateForm() {
             <br/>
             <div>
                 <i class="fa fa-lock"></i> &nbsp;
-                <a href="forgotPassword.jsp">Forgot password?</a>
+                <a href="forgotPassword">Forgot password?</a>
             </div>
      </div>
      <div class="app-name">

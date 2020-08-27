@@ -1,6 +1,8 @@
 package com.bridgelabz.usermanagementsystem.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,17 +32,19 @@ public class Login extends HttpServlet {
 	        ResultSet resultSet = preparedStatement.executeQuery();
 
 	        if (!resultSet.next()) {
-	        	destinationPath = "login.jsp";
+	        	request.setAttribute("message", "Enter registred user name and password.");
+	        	destinationPath = "login";
 	        } else{
-	        	destinationPath = "dashboard.jsp"; 
+	        	destinationPath = "dashboard"; 
 
 	            HttpSession httpSession=request.getSession();
 	            httpSession.setAttribute("username",userName);
 	            httpSession.setAttribute("password",password);
 	        }
-	            
+	        
+	        RequestDispatcher requestDispatcher = request.getRequestDispatcher(destinationPath);
 	        connection.close();	
-	        response.sendRedirect(destinationPath);
+	        requestDispatcher.forward(request, response);
 	    }
 	    catch(Exception exception) {
 	            exception.printStackTrace();
