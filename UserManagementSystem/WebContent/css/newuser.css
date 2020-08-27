@@ -3,11 +3,12 @@
 body {
 	font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: #5e6773;   
+    color: #5e6773;
+    margin: 0px;   
 }
 
 .main-container {
-
+	overflow: unset;
 }
 
 a {
@@ -21,17 +22,22 @@ a {
 }
 
 .main-content {
-	overflow: unset;
+	overflow: hidden;
 	overflow-y: sroll; 
 }
 
-input, select  {
-	height: 25px;
+input, select {
+	width: 100%;
+	height: 20px;
 	background-color: #fcfcfc;
 	padding: 5px 6px;
 	border-radius: 5px;
 	border: 1px solid #e1e3ea;	
 }
+
+select {
+	height: 30px;
+} 
 
 .content-heading {
     border-bottom: 1px solid #e3e3e3;
@@ -41,6 +47,7 @@ input, select  {
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 10px;
+	width: auto;
 }
 
 .page-title {
@@ -59,7 +66,7 @@ input, select  {
 }
 
 .form-container {
-	padding: 15px;
+	padding: 10px;
 	color: #717d84;   
 }
 
@@ -67,14 +74,11 @@ input, select  {
 	 display: flex;
 } 
 
-.form-container div {
-	margin: 2px;
-}
-
 .panel {
     border-radius: 5px;
     border: 1px solid #d1d6e6;
    	background-color: #ffffff;
+   	margin: 5px;	
 }
 
 .panel-title {
@@ -83,19 +87,28 @@ input, select  {
 }
 
 .panel-body {
+	padding: 5px;
 	display: flex;
 	flex-direction: column;
 }
 
+.general div {
+	padding: 5px;
+}
+
+.photo {
+	height: fit-content;
+}
+
 .row {
-	display: flex;
-	flex-direction: row;
+	display: inline-grid;
+  	grid-template-columns: auto auto auto;
 }
 
 .control-label {
     color: #a0aeba;
     font-weight: normal;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .form-contrl {
@@ -110,7 +123,7 @@ input, select  {
 }
 
 .permissions .panel-body {
-	padding: 10px;
+	padding: 5px;
 }
 
 tr { 
@@ -123,4 +136,10 @@ td {
   padding: 8px;
   color: #717D84;
   font-size: 14px;
-}     
+}   
+
+.table_head td div {
+	font-size: 16px;
+	display: flex;
+	flex-direction: row;
+}  

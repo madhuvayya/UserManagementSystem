@@ -8,6 +8,7 @@
 	color: #ffffff;
 	padding-right: 15px;
     padding-left: 15px;
+    overflow: unset;
 }
 
 .app-name {
