@@ -1,14 +1,12 @@
-@charset "ISO-8859-1";
-
 .header{
 	display:flex;
 	flex-direction:coloumn;
 	justify-content:space-between;
 	background-color: #1991D7;
 	color: #ffffff;
-	padding-right: 15px;
-    padding-left: 15px;
-    overflow: unset;
+	height: 50px;
+	width:100%;
+	overflow: hidden;
 }
 
 .app-name {
@@ -71,7 +69,6 @@ button {
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
 }
 
 .dropdown a:hover {

@@ -1,145 +1,180 @@
 @charset "ISO-8859-1";
 
 body {
-	font-family: "Roboto", sans-serif;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    background: #F5F6F9;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
+    font-family: "Roboto", sans-serif;
     color: #5e6773;
-    margin: 0px;   
+    overflow: hidden;	    
 }
 
 .main-container {
-	overflow: hidden;
-}
-
-a {
-	text-decoration: none;
+	height: 100%;
+	width: 100%
 }
 
 .container {
-	display: flex;
-	flex-direction: coloumn;
-	background-color: #F5F6F9;
+    width: 100%;
+    height: 100%;
+    display: flex; 
 }
 
 .main-content {
-	overflow: hidden;
-	overflow-y: sroll; 
+    width: 100%;
+    height: 510px;
+    background: #F5F6F9;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
-
-input, select {
-	width: 100%;
-	height: 20px;
-	background-color: #fcfcfc;
-	padding: 5px 6px;
-	border-radius: 5px;
-	border: 1px solid #e1e3ea;	
-}
-
-select {
-	height: 30px;
-} 
 
 .content-heading {
+    padding: 15px 20px;
     border-bottom: 1px solid #e3e3e3;
-    background-color: #ffffff;
-    display: flex;
-	flex-direction: coloumn;    
-	justify-content: space-between;
-	align-items: center;
-	margin-bottom: 10px;
-	width: auto;
+    background-color: #fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;	
 }
 
 .page-title {
-	padding-left: 30px;
-	font-size: 18px;
-	color: #5e6773;
-}
-
-.home-link {
-	padding-right: 30px;
-	color: #000000;
+	font-size: 18px;	
 }
 
 .home-link a {
-	color: #4FC7FF;
+	font-size: 14px;
+    color: #4FD1FF;
+	text-decoration: none;
+}
+
+.home-link a i {
+    font-size: 15px;
+    margin-right: 3px;
+    color: #a0aeba;
+}
+
+.form {
+    margin: 20px 10px;
 }
 
 .form-container {
-	padding: 10px;
-	color: #717d84;   
+    display: flex;
+    flex-direction: column;
 }
 
 .form-sub-container {
-	 display: flex;
-} 
+	margin-bottom: 10px;
+	display: flex;	
+}
 
-.panel {
-    border-radius: 5px;
+.panel {   
+	display: flex;
+    flex-direction: column;
+    background-color:white;
+    border-radius:3px;
+    text-align:left;
     border: 1px solid #d1d6e6;
-   	background-color: #ffffff;
-   	margin: 5px;	
+    margin: 10px;
+    padding: 10px;
 }
 
 .panel-title {
-	padding: 12px 20px;	
-	font-size: 16px;
+    font-size: 18px;
+    color: #717d84;
+    padding: 10px;	
 }
 
 .panel-body {
-	padding: 5px;
-	display: flex;
-	flex-direction: column;
+	margin-top: 15px;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.general div {
-	padding: 5px;
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+    text-align:left;
+    color: #a1a7af;	
+}
+
+.form-control {
+    margin-top:5px;
+    padding: 5px;
+    border-radius: 2px;
+    width: 160px;
+    border:1px solid #e1e3ea;
+    background-color: #fcfcfc;
+    color: #5e6773;
+    outline:none;
+    height:25px;
+}
+
+.select {
+    width: 170px;	
+	height: 30px;
+}
+
+.address {
+    height: 100px;
+}
+
+hr {
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
 }
 
 .photo {
-	height: fit-content;
+    background-color:white;
+    border-radius:3px;
+    height: fit-content;
+    border: 1px solid #d1d6e6;
+    text-align: left;
+    padding: 15px;
 }
 
-.row {
-	display: inline-grid;
-  	grid-template-columns: auto auto auto;
-}
-
-.control-label {
+.photo .panel-body{  
     color: #a0aeba;
     font-weight: normal;
-    margin-bottom: 10px;
+    width:100%;  
 }
 
-.form-contrl {
-    border-radius: 3px;
-    border-color: #e1e3ea;
-    background-color: #fcfcfc;
-    color: #5e6773;
-}
-
-#dob {
-	margin-left: 0px;
+.photo .panel-body label {
+	padding-bottom: 10px;
 }
 
 .permissions .panel-body {
-	padding: 5px;
-}
-
-tr { 
-  border-bottom: 1px solid black;
+	height:100%;
+	padding: 10px;
+	font-size: 15px;   
 }
 
 td {
-  border: none;
-  text-align: left;
-  padding: 8px;
-  color: #717D84;
-  font-size: 14px;
-}   
+	width: 250px;
+}
 
-.table_head td div {
-	font-size: 16px;
-	display: flex;
-	flex-direction: row;
-}  
+.permission-table-head {
+	margin-bottom: 15px;
+} 
+
+.permission-table-head, .permission-table-head  span{
+	font-size: 18px;
+}
+
+table tr {
+	height: 30px;
+	border-bottom: 1px solid black;
+}
+
+ 

@@ -1,13 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<script type="text/javascript" src="../js/UserRolePermissions.js"></script>
-</head>
-<body>
 <div id="sidebar" class="sidebar">                
         <div><a href="#" id="dashboard">
             <i class="ti-dashboard"></i>
@@ -36,8 +26,8 @@
        		</a>
        	</div>	
         <div id="userOptins" style="display:none;">
-                    <p> &nbsp;&nbsp;&nbsp;<a href="newuser" class="anchor">  New User </a></p>
-                    <p> &nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Users List </a></p>
+                    <p> &nbsp;&nbsp;&nbsp;<a href="newuser">  New User </a></p>
+                    <p> &nbsp;&nbsp;&nbsp; <a href="#"> Users List </a></p>
                     <span class="label label-success">UPDATED</span>
         </div>
 
@@ -68,14 +58,8 @@
         	</a>
         </div>
         <div>
-        	<button type="button" class="toggle">
+        	<button type="button">
         		<i class="ti-arrows-horizontal"></i>
         	</button>
-       </div>
-        
-</div>
-	<script>
-		<%@include file ="../js/showOptions.js" %>
-	</script>
-</body>
-</html>
+       </div>        
+</div>	
