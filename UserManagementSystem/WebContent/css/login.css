@@ -139,7 +139,7 @@ a {
     cursor: pointer;
     top: 0;
     left: 0;
-    right: 0;
+    right: -3px;
     bottom: 0;
     background-color: #ccc;
     -webkit-transition: .1s;
@@ -151,8 +151,8 @@ a {
     content: "";
     height: 18px;
     width: 18px;
-    left: 0px;
-    bottom: 3px;
+    left: 0;
+    bottom: 2px;
     background-color: white;
     -webkit-transition: .1s;
     transition: .1s;

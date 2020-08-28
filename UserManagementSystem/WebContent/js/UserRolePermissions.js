@@ -10,7 +10,7 @@ var additionalPermissions = ['add','delete','modify','read'];
 var adminPermissions = addingCheckBoxes.concat(additionalPermissions,deleteCheckBoxes,modifyCheckBoxes,readCheckBoxes);
 var userPermissions = userAddingCheckBoxes.concat(userModifyCheckBoxes,userReadCheckBoxes);
 
-function userRolePermissions(event) {
+function UserRolePermissions(event) {
 	var role = event.value;
 	
 	switch(role) {

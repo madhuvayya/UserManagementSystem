@@ -28,5 +28,12 @@
 			<div class="content"> content </div>
 		</div>
 	</div>
+<script>
+	<%@include file="../js/dropdown.js" %>
+	<%@include file="../js/showOptions.js" %>
+	<%@include file="../js/toggleSideNavBar.js" %>
+	<%@include file="../js/UserRolePermissions.js" %>
+</script>	
+	
 </body>
 </html>

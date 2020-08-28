@@ -1,23 +1,18 @@
-@charset "ISO-8859-1";
-
-a {
-	text-decoration: none;
-	color: #d6e1f1;
-}
-
 .sidebar {
 	color: #d6e1f1;
     background-color: #2B333E;
     height: 100vh;
-    width: 20%;
-    padding: 5px;
-   	overflow: unset;
+    width: 20%;    
 }
 
 .sidebar div {
-	display: block;
 	margin: 20px;
 	cursor: pointer;
+	color: #d6e1f1;
+}
+
+.sidebar a {
+	text-decoration: none;
 	color: #d6e1f1;
 }
 
