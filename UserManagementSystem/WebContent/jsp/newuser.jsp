@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/sideNavbar.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newuser.css?version=51">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newuser.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/jQuery-Dropify/dist/css/dropify.min.css">	
 <title>User Management</title>
@@ -28,6 +28,7 @@
 			</div>
 			<form action="register" method="post" class="form">
 			<div class="form-container"> 
+					${errorMessage}
 					<div class="form-sub-container">
 						<div class="general panel">
 							<div class="panel-title">General</div>
@@ -37,7 +38,7 @@
                                     	    <label class="control-label">First Name</label>
                                     	</div>
                                     	<div>      
-                                        	<input name="first_name" type="text" class="form-control">
+                                        	<input name="first_name" type="text" class="form-control" required>
 										</div>
                                 	</div>
                                 	<div class="form-group">
@@ -45,7 +46,7 @@
                                        		<label class="control-label">Middle Name</label>
                                         </div>
                                         <div>
-                                        	<input name="middle_name" type="text" class="form-control">
+                                        	<input name="middle_name" type="text"class="form-control" >
                                     	</div>
                                 	</div>
                                 	<div class="form-group">
@@ -53,7 +54,7 @@
                                         	<label class="control-label">Last Name</label>
                                         </div>
                                         <div>
-                                        	<input name="last_name" type="text" class="form-control">
+                                        	<input name="last_name" type="text" class="form-control" required>
                                     	</div>
                                 	</div>
                                 	<div class="form-group">
@@ -61,7 +62,7 @@
                                     		<label class="control-label">Date of Birth</label>
                                     	</div>           
                                         <div>
-                                           	 <input id="dob" name="dob" type="date" placeholder="dd-mm-yyyy" max="currentDate()" class="form-control" >
+                                           	 <input id="dob" name="dob" type="date" id="dob" placeholder="dd-mm-yyyy" max="2020-07-29" onclick="currentDate();" class="form-control">
                                        	</div>
                                    	</div>
                                 	<div class="form-group">
@@ -69,7 +70,7 @@
                                         	<label class="control-label">Gender</label>
                                         </div>
                                         <div>	
-                                        	<select name="gender" class="form-control select">
+                                        	<select name="gender" class="form-control select" required>
 												<option value="">-- Select --</option>
 												<option value="Male">Male</option>
 												<option value="Female">Female</option>
@@ -81,7 +82,7 @@
                                         	<label class="control-label">Country</label>
                                         </div>
                                         <div>	
-                                        	<select name="country" class="form-control select">
+                                        	<select name="country" class="form-control select" required>
 											<option value="">-- Select --</option>
 											<option value="">Afghanistan</option>
 											<option value="">Albania</option>
@@ -94,8 +95,7 @@
                                         	<label class="control-label">Phone</label>
                                         </div>
                                         <div>	
-                                        	<input name="phone_number" type="text" class="form-control"><br/>
-                                        	<span class="help-block">(999) 999-9999</span>
+                                        	<input name="phone_number" type="text" pattern="" class="form-control" required><br/>
                                     	</div>
                                 	</div>
                                		<div class="form-group">
@@ -103,8 +103,7 @@
                                         	<label class="control-label">Phone + Ext</label>
                                         </div>
                                         <div>
-                                        	<input name="phone_ext" type="text" class="form-control"><br/>
-                                        	<span class="help-block">(999) 999-9999 99</span>
+                                        	<input name="phone_ext" type="text" pattern="" class="form-control" required><br/>
                                     	</div>
                                 	</div>
                                 	<div class="form-group">
@@ -112,7 +111,7 @@
                                         	<label class="control-label">Email</label>
                                         </div>
                                         <div>
-                                        	<input name="email" type="text" class="form-control">
+                                        	<input name="email" type="text" pattern="" class="form-control" required>
                                     	</div>
                                 	</div>
                                 	<div class="form-group">
@@ -120,7 +119,7 @@
                                         	<label class="control-label">Address</label><br/>
                                         </div>
                                         <div>	
-                                        	<textarea name="address" rows="5" cols="20" class="form-control address"></textarea>
+                                        	<textarea name="address" rows="5" cols="20" class="form-control address" required></textarea>
                                     	</div>
                                    </div> 	
                             	<hr>
@@ -129,7 +128,7 @@
                                         	<label class="control-label">Username</label>
                                         </div>
                                         <div>	
-                                        	<input name="user_name" type="text" class="form-control">
+                                        	<input name="user_name" type="text" class="form-control" required>
                                    		</div>
                                 	</div>
                                 	<div class="form-group">
@@ -137,7 +136,7 @@
                                         	<label class="control-label">Password</label>
                                         </div>
                                         <div>
-                                        	<input name="password" type="password" class="form-control">
+                                        	<input name="password" type="password" class="form-control" required>
                                     	</div>
                                 	</div>
                                 	<div class="form-group">
@@ -145,7 +144,7 @@
                                         	<label class="control-label">Confirm Password</label>
                                         </div>
                                         <div>
-                                        	<input name="confirm_password" type="password" class="form-control">
+                                        	<input name="confirm_password" type="password" class="form-control" required>
                                     	</div>
                                 	</div>
                                 	<div  class="form-group">
@@ -153,7 +152,7 @@
                                         	<label class="control-label">User Role</label>
                                         </div>
                                         <div>
-                                        	<select name="role" class="form-control select" onchange="UserRolePermissions(this);" >
+                                        	<select name="role" class="form-control select" onchange="UserRolePermissions(this);" required>
 												<option value="">-- Select --</option>
 												<option value="Admin">Admin</option>
 												<option value="User">User</option>
@@ -266,7 +265,7 @@
 							<input type="submit" name="submit" id="submit" value="Submit">
 						</div>
 						<div>
-							<input type="button" value="Reset" id="reset" onclick="ResetFields();">
+							<input type="reset" value="Reset" id="reset">
 						</div>						
 					</div>	
 			</div>
@@ -278,6 +277,7 @@
 	<%@include file="../js/dropdown.js" %>
 	<%@include file="../js/showOptions.js" %>
 	<%@include file="../js/toggleSideNavBar.js" %>
+	<%@include file="../js/CurrentDate.js" %>	
 	<%@include file="../js/UserRolePermissions.js" %>
 </script>	
 </body>

@@ -28,7 +28,7 @@ body {
 
 .main-content {
     width: 100%;
-    height: 600px;
+    height: 550px;
     background: #F5F6F9;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -110,7 +110,7 @@ body {
     margin-top:5px;
     padding: 5px;
     border-radius: 2px;
-    width: 160px;
+    width: 170px;
     border:1px solid #e1e3ea;
     background-color: #fcfcfc;
     color: #5e6773;
@@ -119,8 +119,8 @@ body {
 }
 
 .select {
-    width: 170px;	
-	height: 30px;
+    width: 180px;	
+	height: 35px;
 }
 
 .address {
@@ -194,11 +194,6 @@ table tr {
     outline: 0;	
 }
 
-input:focus{
-    outline: none;
-    border:none;
-}
-
 #submit {
 	background-color: #00AAFF;
 	border: 1px solid #00AAFF;
@@ -207,7 +202,7 @@ input:focus{
 #reset {
 	background-color: #FFFFFF;
 	border: 1px solid #FFFFFF;	
-}
+} 
 
 @media (min-width: 280px) and (max-width: 480px) {	
 	.container{
@@ -285,7 +280,7 @@ input:focus{
 @media screen and ( min-height: 1024px ) {
 	.container{
 		display:flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: center;
 	}
 	
