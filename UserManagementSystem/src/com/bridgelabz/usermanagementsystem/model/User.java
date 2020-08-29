@@ -7,15 +7,14 @@ public class User {
 	public String dob;
 	public String gender;
 	public String country;
-	public int phoneNumber;
-	public int phoneExt;
+	public String phoneNumber;
+	public String alternateNumber;
 	public String email;
 	public String address;
 	public String userName;
 	public String password;
-	public String confirmPassword;
 	public String role;
-	
+	public String userImage;
 	public String getFirstName() {
 		return firstName;
 	}
@@ -52,17 +51,17 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	public int getPhoneExt() {
-		return phoneExt;
+	public String getAlternateNumber() {
+		return alternateNumber;
 	}
-	public void setPhoneExt(int phoneExt) {
-		this.phoneExt = phoneExt;
+	public void setAlternateNumber(String alternateNumber) {
+		this.alternateNumber = alternateNumber;
 	}
 	public String getEmail() {
 		return email;
@@ -88,16 +87,16 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
-	}
 	public String getRole() {
 		return role;
 	}
 	public void setRole(String role) {
 		this.role = role;
 	}
+	public String getUserImage() {
+		return userImage;
+	}
+	public void setUserImage(String userImage) {
+		this.userImage = userImage;
+	}	
 }

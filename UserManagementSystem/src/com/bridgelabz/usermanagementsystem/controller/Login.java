@@ -13,41 +13,40 @@ import javax.servlet.http.HttpSession;
 import java.sql.PreparedStatement;
 import com.bridgelabz.usermanagementsystem.config.*;
 
-@WebServlet(value="/login-process")
+@WebServlet(value = "/login-process")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String userName = request.getParameter("username");
-	    String password = request.getParameter("password");
-	    String destinationPath = "";
+		String password = request.getParameter("password");
+		String destinationPath = "";
 
-	    Connection connection = null;
-	    try {
-	    	connection = DBConnection.getConnection();
-	        PreparedStatement preparedStatement = connection.prepareStatement
-	        		("select * from user_info where user_name ='" + userName + "' and password='"+password+"'");
+		Connection connection = null;
+		try {
+			connection = DBConnection.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"select * from user_info where user_name ='" + userName + "' and password='" + password + "'");
 
-	        ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
 
-	        if (!resultSet.next()) {
-	        	request.setAttribute("message", "Enter registred user name and password.");
-	        	destinationPath = "login";
-	        } else{
-	        	destinationPath = "dashboard"; 
+			if (!resultSet.next()) {
+				request.setAttribute("message", "Enter registred user name and password.");
+				destinationPath = "login";
+			} else {
+				destinationPath = "dashboard";
 
-	            HttpSession httpSession=request.getSession();
-	            httpSession.setAttribute("username",userName);
-	            httpSession.setAttribute("password",password);
-	        }
-	        
-	        RequestDispatcher requestDispatcher = request.getRequestDispatcher(destinationPath);
-	        connection.close();	
-	        requestDispatcher.forward(request, response);
-	    }
-	    catch(Exception exception) {
-	            exception.printStackTrace();
-	    }
+				HttpSession httpSession = request.getSession();
+				httpSession.setAttribute("username", userName);
+				httpSession.setAttribute("password", password);
+			}
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(destinationPath);
+			connection.close();
+			requestDispatcher.forward(request, response);
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
 	}
 }
