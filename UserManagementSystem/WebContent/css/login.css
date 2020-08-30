@@ -1,199 +1,259 @@
 @charset "ISO-8859-1";
 
 body {
-    background-color: #F5F6F9;
-    font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    color: #5e6773;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;    
+	background-color: #F5F6F9;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+	color: #5e6773;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+	color: #00AAFF;
+}
+
+input {
+	width: 80%;
+	height: 34px;
+	outline: none;
+	border-radius: 5px;
+	padding: 6px 12px;
+	font-size: 14px;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-	align-items: space-between;
-	margin: 30px 100px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 80%;
+	display: flex;
+	justify-content: center;
 }
 
-.login-form {
-    width: 42%;
-    padding: 40px;
-    text-align: center;
-    background-color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: space-between;
+form {
+	width: 50%;
+	padding: 15px;
+	text-align: center;
+	background-color: #FFFFFF;
+	text-align: center;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+}
+
+.login-form div {
+	margin: 10px;
+}
+
+.mi-logo {
+	border-radius: 50%;
+	border: 1px solid #E5E5E5;
+	width: content-fit;
+}
+
+.login-text {
+	font-size: 18px;
 }
 
 #username-empty, #password-empty {
 	color: red;
 }
 
-.username:hover, .username  {
-	border: 1px solid #E1E3EA;
-}
-
-.password:hover, .password  {
+.username:hover, .username, .password:hover, .password {
 	border: 1px solid #E1E3EA;
 	outline: none;
-	border-radius:5px;
+	border-radius: 5px;
 }
 
-.username-null {
+.username-null, .password-null {
 	border: 1px solid #F92F47;
 	outline: none;
-	border-radius:5px; 
-	height:34px;
+	border-radius: 5px;
+	height: 34px;
 }
 
-.password-null {
-	border: 1px solid #F92F47; 
-}
-
-.username-not-null {
+.username-not-null, .password-not-null {
 	border: 1px solid #41B314;
-}
-
-.password-not-null {
-	border: 1px solid #41B314;
-}
-
-.login-text {
-    font-size: 18px;
-}
-
-.mi-logo {
-    border-radius: 50%;
-    border: 1px solid #E5E5E5;
-    width: content-fit;
-}
-
-input {
-    width: 80%;
-    height: 34px;
-    outline: none;
-	border-radius:5px;
-	padding: 6px 12px;
-	font-size: 14px; 
-}
-
-.submit-button {
-    width: 80%;
-    height: 50px;
-    background-color: #00AAFF;
-    color: #FFFFFF;
-    border:none;
-    font-size: 18px;
-}
-
-a {
-    text-decoration: none;
-    color: #00AAFF;
 }
 
 .remember-div {
-    display: flex;
-    justify-content: center;
-    column-gap: 5px;
-}
-
-.app-name {
-    width: 58%;
-    background-image: url("../resources/images/login-bg.jpg");
-    color: #FFFFFF;
-}
-
-.bg-color {
-	background-color: #6CA0BB;
-	opacity:.8;
 	display: flex;
-    align-items: center;
-    height:100%;
-}
-
-.app-text {
-    padding: 30px;
-    font-size: 26px;
-}
-
-.app-text p {
-    font-size: 18px;
+	justify-content: center;
+	column-gap: 5px;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 35px;
-    height: 22px;
-    margin: 5px;
+	position: relative;
+	display: inline-block;
+	width: 35px;
+	height: 22px;
+	margin: 5px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+	opacity: 0;
+	width: 0;
+	height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: -3px;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .1s;
-    transition: .1s;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: -3px;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .1s;
+	transition: .1s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 18px;
-    width: 18px;
-    left: 0;
-    bottom: 2px;
-    background-color: white;
-    -webkit-transition: .1s;
-    transition: .1s;
+	position: absolute;
+	content: "";
+	height: 18px;
+	width: 18px;
+	left: 0;
+	bottom: 2px;
+	background-color: white;
+	-webkit-transition: .1s;
+	transition: .1s;
 }
 
-input:checked + .slider {
-    background-color: #2196F3;
+input:checked+.slider {
+	background-color: #2196F3;
 }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+input:focus+.slider {
+	box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(18px);
-    -ms-transform: translateX(18px);
-    transform: translateX(18px);
+input:checked+.slider:before {
+	-webkit-transform: translateX(18px);
+	-ms-transform: translateX(18px);
+	transform: translateX(18px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 30px;
+	border-radius: 30px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+	border-radius: 50%;
 }
 
-@media (min-width: 280px) and (max-width: 480px) {
+.submit-button {
+	width: 80%;
+	height: 50px;
+	background-color: #00AAFF;
+	color: #FFFFFF;
+	border: none;
+	font-size: 18px;
+}
 
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+.forgotPassword {
+	font-size: 20px;
+}
+
+.app-name {
+	width: 58%;
+	background-image: url("../resources/images/login-bg.jpg");
+	color: #FFFFFF;
+}
+
+.bg-color {
+	background-color: #6CA0BB;
+	opacity: .8;
+	display: flex;
+	align-items: center;
+	height: 100%;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.app-text {
+	padding: 30px;
+	font-size: 26px;
+}
+
+.app-text p {
+	font-size: 18px;
+}
+
+@media ( min-width : 280px) and (max-width: 480px) {
+	form {
+		width: 100%;
+		border-radius: 10px;
 	}
-	
+	.login-form div {
+		margin: 15px;
+	}
+	.forgotPassword {
+		font-size: 17px;
+		margin-top: 10px;
+	}
+	.input-field {
+		font-size: 16px;
+	}
 	.app-name {
-		float: top;
-	}	
+		display: none;
+	}
+}
+
+@media ( min-width : 700px) and ( min-height: 1024px ) {
+	form {
+		width: 80%;
+		height: 80%;
+		border-radius: 25px;
+		margin-top: 15%;
+	}
+	.login-form div {
+		margin: 25px;
+	}
+	.login-text {
+		font-size: 30px;
+	}
+	.mi-logo {
+		width: 150px;
+		height: 150px;
+	}
+	input {
+		height: 45px;
+		border-radius: 5px;
+		padding: 10px 15px;
+		font-size: 20px;
+	}
+	.switch {
+		width: 50px;
+		height: 30px;
+	}
+	.slider {
+		left: 5px;
+		right: -2px;
+		bottom: 0;
+	}
+	.slider:before {
+		height: 25px;
+		width: 25px;
+	}
+	.remember-div {
+		font-size: 30px;
+	}
+	.submit-button {
+		font-size: 35px;
+		height: 75px
+	}
+	.forgotPassword {
+		font-size: 25px;
+		margin-top: 10px;
+	}
+	.app-name {
+		display: none;
+	}
 }

@@ -2,10 +2,10 @@
 
 html, body {
 	font-family: "Roboto", sans-serif;
-    font-size: 14px;
-    color: #5e6773;
-    margin: 0px;
-    padding: 0px;
+	font-size: 14px;
+	color: #5e6773;
+	margin: 0px;
+	padding: 0px;
 }
 
 a {
@@ -22,11 +22,11 @@ a {
 }
 
 .content-heading {
-    border-bottom: 1px solid #e3e3e3;
-    background-color: #ffffff;
-    width: 100%;
-    display: flex;
-	flex-direction: coloumn;    
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #ffffff;
+	width: 100%;
+	display: flex;
+	flex-direction: coloumn;
 	justify-content: space-between;
 	align-items: center;
 }
