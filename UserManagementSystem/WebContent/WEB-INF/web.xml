@@ -62,4 +62,13 @@
 		<servlet-name>webpage2</servlet-name>
 		<url-pattern>/webpage2</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>webpage3</servlet-name>
+		<jsp-file>/jsp/webPage3.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webpage3</servlet-name>
+		<url-pattern>/webpage3</url-pattern>
+	</servlet-mapping>	
 </web-app>

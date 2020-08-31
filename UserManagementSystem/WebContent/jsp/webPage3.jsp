@@ -12,7 +12,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/sideNavbar.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/webpage2.css">
+	href="${pageContext.request.contextPath}/css/webpage3.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
 <title>User Management</title>
@@ -25,10 +25,10 @@
 			<div class="main-content" id="main-content">
 				<div class="content-heading">
 					<div class="page-title">
-						<p>Webpage 2</p>
+						<p>Webpage 3</p>
 					</div>
 					<div class="home-link">
-						<a href="dashboard"><i class="ti-home"></i> Home</a> / Webpage 2
+						<a href="dashboard"><i class="ti-home"></i> Home</a> / Webpage 3
 					</div>
 				</div>
 				<div class="permissions-div">
