@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
 <link rel = "icon" type = "image/png" href = "${pageContext.request.contextPath}/resources/images/mi-logo.jpg"> 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/forgot-password.css">
 <title>User Management</title>
@@ -26,8 +27,8 @@
 </head>
 <body onload='document.form.email.focus()'>
 <div class="container">
-		${message}
-        <div>
+		<div>${message}</div>
+        <div class="logo-text">
             <img class="mi-logo" src="${pageContext.request.contextPath}/resources/images/mi-logo.jpg" alt="mi_logo" />
             <h3><span class="app-name">User Management</span></h3>
             <p class="recover-text">Recover Password</p>
@@ -35,16 +36,14 @@
         <div class="info">
             <p>Please enter your email address below to receive the password at your registered email.</p>
         </div>
-        <br/><br/>
         <div class="recover-form">
             <form method="post" name="form" action="RecoverPassword">
-                <input type="text" name="email" placeholder="Email"/><br/>
-                <span id="error-info"></span><br/><br/>
+                <input type="text" class="email-input" name="email" placeholder="Email"/>
+                <span id="error-info"></span><br><br>
                 <input class="submit-button" type="submit" value="RECOVER PASSWORD" onclick="return validateEmail()"/>
             </form>
         </div>
-        <br/>
-        <div>
+        <div class="know-password">
             <span>Know your password?</span>
             <span><a href="login">Login</a></span>
         </div>
