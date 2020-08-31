@@ -79,5 +79,14 @@
 	<servlet-mapping>
 		<servlet-name>blankpage</servlet-name>
 		<url-pattern>/blankpage</url-pattern>
-	</servlet-mapping>		
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>authentication</servlet-name>
+		<jsp-file>/jsp/authentication.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>authentication</servlet-name>
+		<url-pattern>/authentication</url-pattern>
+	</servlet-mapping>			
 </web-app>

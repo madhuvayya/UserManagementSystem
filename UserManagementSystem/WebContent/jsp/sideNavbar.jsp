@@ -47,7 +47,7 @@
 	</div>
 	<div id="settings" style="display: none;">
 		<p>
-			&nbsp;&nbsp;&nbsp;<a href="#" class="anchor"> Authentication </a>
+			&nbsp;&nbsp;&nbsp;<a href="authentication" class="anchor"> Authentication </a>
 		</p>
 		<p>
 			&nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Email SMTP </a>
