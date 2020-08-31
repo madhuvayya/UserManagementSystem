@@ -43,31 +43,30 @@
 					</div>
 					<div class="content-body">
 						<div class="form-group">
-							<label for="host" class="control-label">Host</label><br> <input
+							<label for="host" class="control-label">Host</label> <br><input
 								name="host" type="text" value="domainname.com" id="host"
 								class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="username" class="control-label">Username</label><br>
-							<input name="username" type="text"
-								value="youremail@domainname.com" id="username"
-								class="form-control username">
+							<label for="username" class="control-label">Username</label><br> <input
+								name="username" type="text" value="youremail@domainname.com"
+								id="username" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="password" class="control-label">Password</label><br>
-							<input name="password" type="text" value="yourpassword"
-								id="password" class="form-control password">
+							<label for="password" class="control-label">Password</label><br> <input
+								name="password" type="text" value="yourpassword" id="password"
+								class="form-control password">
 						</div>
-						<div class="form-group">
-							<label for="port" class="control-label">Port</label> <br> <input
-								name="port" type="text" value="21" id="port" tabindex="9"
-								class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="submit" name="submit" value="Save" id="submit"
-								class="submit">
-						</div>
+					<div class="form-group">
+						<label for="port" class="control-label">Port</label><br> <input
+							name="port" type="text" value="21" id="port" tabindex="9"
+							class="form-control">
 					</div>
+					<div class="form-group">
+						<input type="submit" name="submit" value="Save" id="submit"
+							class="submit">
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>

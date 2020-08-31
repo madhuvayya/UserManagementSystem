@@ -53,7 +53,7 @@
 			&nbsp;&nbsp;&nbsp; <a href="smtp" class="anchor"> Email SMTP </a>
 		</p>
 		<p>
-			&nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Database
+			&nbsp;&nbsp;&nbsp; <a href="dbconnection" class="anchor"> Database
 				Connection</a>
 		</p>
 	</div>

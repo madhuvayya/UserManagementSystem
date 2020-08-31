@@ -61,12 +61,6 @@ body {
 	color: #a0aeba;
 }
 
-.page-description {
-	margin: 0;
-    font-size: 14px;
-    font-weight: 300;	
-}
-
 .content {
 	display: flex;
 	flex-direction: column;
@@ -84,23 +78,18 @@ body {
 	padding: 10px;
 }
 
+.page-description {
+	margin: 0;
+    font-size: 14px;
+    font-weight: 300;	
+}
+
 .content-body {
 	padding: 20px;
 	width: 100%;
 	display: flex;	
 	flex-direction: column;
 	align-items: stretch; 
-}
-
-.note {
-	padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #31708f;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-    font-size: 14px;
 }
 
 .form-group {
@@ -112,7 +101,7 @@ body {
     border-color: #e1e3ea;
     background-color: #fcfcfc;
     color: #5e6773;
-    width: 25%;
+    width: 70%;
     height: 30px;		
 }
 
@@ -146,6 +135,6 @@ body {
 	}
 	
 	.form-control {
-		width: 70%; 
+		width: 80%; 
 	}	
 }	
