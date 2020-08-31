@@ -1,0 +1,145 @@
+@charset "ISO-8859-1";
+
+body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	margin: 0;
+	padding: 0;
+	background: #F5F6F9;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-family: "Roboto", sans-serif;
+	color: #5e6773;
+	overflow: hidden;
+}
+
+.main-container {
+	height: 100%;
+	width: 100%;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.main-content {
+	width: 100%;
+	height: 550px;
+	background: #F5F6F9;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.content-heading {
+	padding: 15px 20px;
+	border-bottom: 1px solid #e3e3e3;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.page-title {
+	font-size: 18px;
+	margin: 0px;
+	padding:0px;
+}
+
+.home-link a {
+	font-size: 14px;
+	color: #4FD1FF;
+	text-decoration: none;
+}
+
+.home-link a i {
+	font-size: 15px;
+	margin-right: 3px;
+	color: #a0aeba;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	border-radius: 5px;
+	text-align: left;
+	border: 1px solid #d1d6e6;
+	margin: 15px;
+	padding: 15px;
+}
+
+.content-title {
+	font-size: 18px;
+	color: #717d84;
+	padding: 10px;
+}
+
+.content-body {
+	padding: 20px;
+	width: 100%;
+	display: flex;	
+	flex-direction: column;
+	align-items: stretch; 
+}
+
+.note {
+	padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    font-size: 14px;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-control {
+	border-radius: 5px;
+    border-color: #e1e3ea;
+    background-color: #fcfcfc;
+    color: #5e6773;
+    width: 25%;
+    height: 30px;		
+}
+
+.submit {
+	cursor: pointer;
+	border-radius: 3px;
+    padding: 6px 22px;
+    background-color: #00AAFF;
+    border-color: #00a0f0;
+    color: #ffffff;
+    outline: none;	
+}
+
+@media ( min-width : 280px) and (max-width: 480px) {	
+	.container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.sidebar {
+		width: 100%;
+		height: auto; 
+	}
+	
+	.content {
+	    width: 80%;
+	    padding: 20px;
+		align-self: center;
+	}
+	
+	.form-control {
+		width: 70%; 
+	}	
+}	

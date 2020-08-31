@@ -50,7 +50,7 @@
 			&nbsp;&nbsp;&nbsp;<a href="authentication" class="anchor"> Authentication </a>
 		</p>
 		<p>
-			&nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Email SMTP </a>
+			&nbsp;&nbsp;&nbsp; <a href="smtp" class="anchor"> Email SMTP </a>
 		</p>
 		<p>
 			&nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Database

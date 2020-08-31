@@ -89,4 +89,13 @@
 		<servlet-name>authentication</servlet-name>
 		<url-pattern>/authentication</url-pattern>
 	</servlet-mapping>			
+	
+	<servlet>
+		<servlet-name>smtp</servlet-name>
+		<jsp-file>/jsp/smtp.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>smtp</servlet-name>
+		<url-pattern>/smtp</url-pattern>
+	</servlet-mapping>	
 </web-app>
