@@ -41,5 +41,13 @@
         <servlet-name>newuser</servlet-name>
         <url-pattern>/newuser</url-pattern>
     </servlet-mapping>
-    
+
+    <servlet>
+        <servlet-name>webpage1</servlet-name>
+        <jsp-file>/jsp/webPage1.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>webpage1</servlet-name>
+        <url-pattern>/webpage1</url-pattern>
+    </servlet-mapping>    
 </web-app>
