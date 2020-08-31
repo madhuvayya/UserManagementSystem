@@ -183,9 +183,11 @@ body {
 	.content {
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 	.panel {
-		width: 90%;
+		width: 85%;
 		margin:5px;
 		padding:5px;
 	}
