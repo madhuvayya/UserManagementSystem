@@ -70,5 +70,14 @@
 	<servlet-mapping>
 		<servlet-name>webpage3</servlet-name>
 		<url-pattern>/webpage3</url-pattern>
-	</servlet-mapping>	
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>blankpage</servlet-name>
+		<jsp-file>/jsp/blankPage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>blankpage</servlet-name>
+		<url-pattern>/blankpage</url-pattern>
+	</servlet-mapping>		
 </web-app>

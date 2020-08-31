@@ -21,7 +21,7 @@
 			&nbsp;&nbsp;&nbsp; <a href="webpage3" class="anchor"> Webpage 3 </a>
 		</p>
 		<p>
-			&nbsp;&nbsp;&nbsp; <a href="#" class="anchor"> Blank Page </a>
+			&nbsp;&nbsp;&nbsp; <a href="blankpage" class="anchor"> Blank Page </a>
 		</p>
 	</div>
 
