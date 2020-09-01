@@ -33,7 +33,7 @@
 				</div>
 				<form action="register" method="post" class="form">
 					<div class="form-container">
-						<p style="text-align:center;">${registerMessage}</p>
+						<p style="text-align: center;">${registerMessage}</p>
 						<div class="form-sub-container">
 							<div class="general panel">
 								<div class="panel-title">General</div>
@@ -104,8 +104,8 @@
 											<label class="control-label">Phone</label>
 										</div>
 										<div>
-											<input name="phoneNumber" type="text"
-												class="form-control" required><br />
+											<input name="phoneNumber" type="text" class="form-control"
+												required><br />
 										</div>
 									</div>
 									<div class="form-group">
@@ -122,8 +122,7 @@
 											<label class="control-label">Email</label>
 										</div>
 										<div>
-											<input name="email" type="text"
-												class="form-control" required>
+											<input name="email" type="text" class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -195,9 +194,9 @@
 										<div class="dropify-errors-container">
 											<ul></ul>
 										</div>
-										<input type="file" name="userImage" id="input-file-now" class="dropify"
-											data-show-loader="true" data-show-remove="true"
-											data-errors-position="inside"
+										<input type="file" name="userImage" id="input-file-now"
+											class="dropify" data-show-loader="true"
+											data-show-remove="true" data-errors-position="inside"
 											data-allowed-file-extensions="png jpeg jpg gif"
 											data-max-file-size="2M">
 										<button type="button" class="dropify-clear">Remove</button>
@@ -238,62 +237,68 @@
 									<tr>
 										<td>Dashboard</td>
 										<td><input name="dashboard_add" id="dashboard_add"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="dashboard_delete" id="dashboard_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="dashboard_modify" id="dashboard_modify"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="dashboard_read" id="dashboard_read"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 									</tr>
 									<tr>
 										<td>Settings</td>
 										<td><input name="settings_add" id="settings_add"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="settings_delete" id="settings_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="settings_modify" id="settings_modify"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="settings_read" id="settings_read"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 									</tr>
 									<tr>
 										<td>Users Information</td>
 										<td><input name="user_info_add" id="user_info_add"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="user_info_delete" id="user_info_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="user_info_modify" id="user_info_modify"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="user_info_read" id="user_info_read"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 									</tr>
 									<tr>
 										<td>Web Page 1</td>
-										<td><input name="w1_add" id="w1_add" type="checkbox"></td>
+										<td><input name="w1_add" id="w1_add" type="checkbox"
+											value="true"></td>
 										<td><input name="w1_delete" id="w1_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="w1_modify" id="w1_modify"
-											type="checkbox"></td>
-										<td><input name="w1_read" id="w1_read" type="checkbox"></td>
+											type="checkbox" value="true"></td>
+										<td><input name="w1_read" id="w1_read" type="checkbox"
+											value="true"></td>
 									</tr>
 									<tr>
 										<td>Web Page 2</td>
-										<td><input name="w2_add" id="w2_add" type="checkbox"></td>
+										<td><input name="w2_add" id="w2_add" type="checkbox"
+											value="true"></td>
 										<td><input name="w2_delete" id="w2_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="w2_modify" id="w2_modify"
-											type="checkbox"></td>
-										<td><input name="w2_read" id="w2_read" type="checkbox"></td>
+											type="checkbox" value="true"></td>
+										<td><input name="w2_read" id="w2_read" type="checkbox"
+											value="true"></td>
 									</tr>
 									<tr>
 										<td>Web Page 3</td>
-										<td><input name="w3_add" id="w3_add" type="checkbox"></td>
+										<td><input name="w3_add" id="w3_add" type="checkbox"
+											value="true"></td>
 										<td><input name="w3_delete" id="w3_delete"
-											type="checkbox"></td>
+											type="checkbox" value="true"></td>
 										<td><input name="w3_modify" id="w3_modify"
-											type="checkbox"></td>
-										<td><input name="w3_read" id="w3_read" type="checkbox"></td>
+											type="checkbox" value="true"></td>
+										<td><input name="w3_read" id="w3_read" type="checkbox"
+											value="true"></td>
 									</tr>
 								</table>
 							</div>

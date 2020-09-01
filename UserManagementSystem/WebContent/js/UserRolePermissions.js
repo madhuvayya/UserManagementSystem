@@ -35,7 +35,7 @@ function UserRolePermissions(event) {
 
 function onCheck(inputId) {
 	var checkBoxId = document.getElementById(inputId);
-	
+
 	switch(inputId) {
   		case "add":
     		checkboxes = addingCheckBoxes;
@@ -59,6 +59,8 @@ function onCheck(inputId) {
   	} else {
 		unCheck(checkboxes);
  	}
+
+	console.log(permissions);
 }
 
 function unCheck(checkboxes) {
