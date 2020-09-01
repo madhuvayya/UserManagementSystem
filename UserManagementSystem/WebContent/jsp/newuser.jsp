@@ -33,7 +33,7 @@
 				</div>
 				<form action="register" method="post" class="form">
 					<div class="form-container">
-						${registerMessage}
+						<p style="text-align:center;">${registerMessage}</p>
 						<div class="form-sub-container">
 							<div class="general panel">
 								<div class="panel-title">General</div>
@@ -71,7 +71,7 @@
 										<div>
 											<input id="dob" name="dob" type="date" id="dob"
 												placeholder="dd-mm-yyyy" max="2020-07-29"
-												onclick="currentDate();" class="form-control">
+												onclick="currentDate();" class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -114,7 +114,7 @@
 										</div>
 										<div>
 											<input name="alternateNumber" type="text"
-												class="form-control" required><br />
+												class="form-control"><br />
 										</div>
 									</div>
 									<div class="form-group">

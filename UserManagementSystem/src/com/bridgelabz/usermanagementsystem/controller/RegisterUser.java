@@ -6,9 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.bridgelabz.usermanagementsystem.dao.UserDao;
+import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
+import com.bridgelabz.usermanagementsystem.service.UserService;
 
 @WebServlet("/register")
 public class RegisterUser extends HttpServlet {
@@ -16,44 +18,64 @@ public class RegisterUser extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String firstName = request.getParameter("firstName");
-		String middleName = request.getParameter("middleName");
-		String lastName = request.getParameter("lastName");
-		String dob = request.getParameter("dob");
-		String gender = request.getParameter("gender");
-		String country = request.getParameter("country");
-		String phoneNumber = request.getParameter("phoneNumber");
-		String alternateNumber = request.getParameter("alternateNumber");
-		String email = request.getParameter("email");
-		String address = request.getParameter("address");
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String userRole = request.getParameter("role");
-		String userImage = request.getParameter("userImage");
-
+		HttpSession httpSession = request.getSession();
+		
 		User user = new User();
 
-		user.setFirstName(firstName);
-		user.setMiddleName(middleName);
-		user.setLastName(lastName);
-		user.setDob(dob);
-		user.setGender(gender);
-		user.setCountry(country);
-		user.setPhoneNumber(phoneNumber);
-		user.setAlternateNumber(alternateNumber);
-		user.setEmail(email);
-		user.setAddress(address);
-		user.setUserName(userName);
-		user.setPassword(password);
-		user.setRole(userRole);
-		user.setUserImage(userImage);
+		user.setFirstName(request.getParameter("firstName"));
+		user.setMiddleName(request.getParameter("middleName"));
+		user.setLastName(request.getParameter("lastName"));
+		user.setDob(request.getParameter("dob"));
+		user.setGender(request.getParameter("gender"));
+		user.setCountry(request.getParameter("country"));
+		user.setPhoneNumber(request.getParameter("phoneNumber"));
+		user.setAlternateNumber(request.getParameter("alternateNumber"));
+		user.setEmail(request.getParameter("email"));
+		user.setAddress(request.getParameter("address"));
+		user.setUserName(request.getParameter("userName"));
+		user.setPassword(request.getParameter("password"));
+		user.setRole(request.getParameter("role"));
+		user.setUserImage(request.getParameter("userImage"));
+		user.setCreatorUser((String) httpSession.getAttribute("username"));
 
-		UserDao userDao = new UserDao();
+		UserService userService = new UserService();
 
-		boolean userRegistered = userDao.registerUser(user);
+		boolean userRegistered = UserService.registerUser(user);
 
 		if (userRegistered) {
-			request.setAttribute("registerMessage", "User successfully registered.");
+			Permissions permissions = new Permissions();
+			System.out.println(request.getParameter("dashboard_add"));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("dashboard_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("dashboard_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("dashboard_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("dashboard_read")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("settings_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("settings_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("settings_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("settings_read")));			
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("user_info_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("user_info_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("user_info_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("user_info_read")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w1_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w1_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w1_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w1_read")));	
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w2_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w2_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w2_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w2_read")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w3_add")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w3_delete")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w3_modify")));
+			permissions.setDashboardAdd(Boolean.parseBoolean(request.getParameter("w3_read")));
+			
+			try {
+				userService.addUserPermissions(permissions,user.getUserName(),user.getCreatorUser());
+				request.setAttribute("registerMessage", "User successfully registered.");
+			} catch (ClassNotFoundException | IOException e) {
+				e.printStackTrace();
+			}
 		} else {
 			request.setAttribute("registerMessage", "Failed to register.");
 		}

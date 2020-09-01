@@ -1,4 +1,4 @@
-package com.bridgelabz.usermanagementsystem.util;
+package com.bridgelabz.usermanagementsystem.service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

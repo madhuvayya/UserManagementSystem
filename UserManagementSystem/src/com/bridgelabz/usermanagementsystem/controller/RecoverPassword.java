@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
-import com.bridgelabz.usermanagementsystem.util.Email;
+import com.bridgelabz.usermanagementsystem.service.Email;
 
 @WebServlet(value="/RecoverPassword")
 public class RecoverPassword extends HttpServlet {
@@ -44,7 +44,7 @@ public class RecoverPassword extends HttpServlet {
             	
         	    Email.sendEmail(email,"Password Recovery", emailBody);
         	    message = "Password sent your email.";
-            	destinationPath = "login.jsp";
+            	destinationPath = "login";
             }
             
             connection.close();

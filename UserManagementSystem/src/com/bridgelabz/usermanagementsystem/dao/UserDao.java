@@ -1,5 +1,6 @@
 package com.bridgelabz.usermanagementsystem.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,14 +11,14 @@ import com.bridgelabz.usermanagementsystem.model.User;
 
 public class UserDao {
 	
+    private static Connection connection = DBConnection.getConnection(); 
+	
 	public boolean checkUserAuthorization(User user) {
 		String userName = user.getUserName();
 		String password = user.getPassword();
 		
-		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
-			connection = DBConnection.getConnection();
 			preparedStatement = connection.prepareStatement(
 					"select * from user_info where user_name ='" + userName + "' and password='" + password + "'");
 
@@ -25,27 +26,16 @@ public class UserDao {
 			return resultSet.next();
 		} catch (Exception exception) {
 			exception.printStackTrace();
-		}finally {
-			if (connection != null)
-				try {
-					connection.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 		}
 		return false;		
 	}
 		
-	public boolean registerUser(User user) {
-		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,role) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	public boolean addUser(User user) {
+		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,role,creator_user) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
-		Connection connection = null;
 		try {
-			connection = DBConnection.getConnection();
-			PreparedStatement preparedStatement = null;
-
-			preparedStatement = connection.prepareStatement(registerQuery);
+			PreparedStatement preparedStatement = connection.prepareStatement(registerQuery);
 			preparedStatement.setString(1, user.getFirstName());
 			preparedStatement.setString(2, user.getMiddleName());
 			preparedStatement.setString(3, user.getLastName());
@@ -59,17 +49,50 @@ public class UserDao {
 			preparedStatement.setString(11, user.getUserName());
 			preparedStatement.setString(12, user.getPassword());
 			preparedStatement.setString(13, user.getRole());
-			return preparedStatement.executeUpdate() != 0;
+			preparedStatement.setString(14, user.getCreatorUser());
+						
+			if (preparedStatement.executeUpdate() == 1) {
+				
+			}			
 		} catch (Exception exception) {
 			exception.printStackTrace();
-		}finally {
-			if (connection != null)
-				try {
-					connection.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 		}
 		return false;
+	}
+
+	public Long getUserIdByUserName(String userName) {
+		System.out.println("getUserId");
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = connection.prepareStatement(
+					"select id from user_info where user_name ='" + userName + "'");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			System.out.println(resultSet.getString(1));
+			System.out.println(Long.valueOf(resultSet.getString(1)));
+			return Long.valueOf(resultSet.getString(1));
+		} catch (Exception e)  {
+			e.printStackTrace();
+		}
+		return null;		
+	}
+
+	public boolean addPermissions(Long userId, int pageId, boolean add, boolean delete,
+			boolean modify, boolean read, String creatorUser) throws ClassNotFoundException, IOException {
+		String addPermissionQuery = "insert into `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`, `creator_user`) values (?,?,?,?,?,?,?)";
+		System.out.println("dao");
+        try {
+        	PreparedStatement preparedStatement = connection.prepareStatement(addPermissionQuery);
+            preparedStatement.setString(1, String.valueOf(userId));
+            preparedStatement.setString(2, String.valueOf(pageId));
+            preparedStatement.setString(3, String.valueOf(add));
+            preparedStatement.setString(4, String.valueOf(delete));
+            preparedStatement.setString(5, String.valueOf(modify));
+            preparedStatement.setString(6, String.valueOf(read));
+            preparedStatement.setString(7, creatorUser);
+            return preparedStatement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;		
 	}
 }
