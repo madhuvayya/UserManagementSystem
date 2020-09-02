@@ -1,10 +1,12 @@
 package com.bridgelabz.usermanagementsystem.dao;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.http.Part;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
 import com.bridgelabz.usermanagementsystem.model.User;
@@ -30,9 +32,16 @@ public class UserDao {
 		return false;
 	}
 
-	public boolean addUser(User user) {
-		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,role,creator_user) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+	public boolean addUser(User user) throws IOException {
+		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,user_image,role,creator_user) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
+
+		InputStream inputStream = null;
+
+		Part filePart = user.getUserImage();
+		if (filePart != null) {
+			inputStream = filePart.getInputStream();
+		}
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(registerQuery);
@@ -48,8 +57,13 @@ public class UserDao {
 			preparedStatement.setString(10, user.getAddress());
 			preparedStatement.setString(11, user.getUserName());
 			preparedStatement.setString(12, user.getPassword());
-			preparedStatement.setString(13, user.getRole());
-			preparedStatement.setString(14, user.getCreatorUser());
+
+			if (inputStream != null) {
+				preparedStatement.setBlob(13, inputStream);
+			}
+
+			preparedStatement.setString(14, user.getRole());
+			preparedStatement.setString(15, user.getCreatorUser());
 
 			return preparedStatement.executeUpdate() == 1;
 		} catch (Exception exception) {
@@ -73,8 +87,9 @@ public class UserDao {
 	}
 
 	public boolean addPermissions(Long userId, int pageId, boolean add, boolean delete, boolean modify, boolean read,
-			String creatorUser) throws ClassNotFoundException, IOException {
-		String addPermissionQuery = "INSERT INTO permissions (user_id, page_id, add, delete, modify, read, creator_user) VALUES (?,?,?,?,?,?,?)";
+			String creatorUser) {
+		String addPermissionQuery = "insert into `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`," +
+									" `creator_user`) values (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(addPermissionQuery);
 			preparedStatement.setLong(1, userId);

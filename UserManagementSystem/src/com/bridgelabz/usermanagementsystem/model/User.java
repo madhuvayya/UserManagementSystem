@@ -1,5 +1,7 @@
 package com.bridgelabz.usermanagementsystem.model;
 
+import javax.servlet.http.Part;
+
 public class User {
 	public String firstName;
 	public String middleName;
@@ -14,7 +16,7 @@ public class User {
 	public String userName;
 	public String password;
 	public String role;
-	public String userImage;
+	public Part userImage;
 	public String creatorUser;
 
 	public String getFirstName() {
@@ -121,11 +123,11 @@ public class User {
 		this.role = role;
 	}
 
-	public String getUserImage() {
+	public Part getUserImage() {
 		return userImage;
 	}
 
-	public void setUserImage(String userImage) {
+	public void setUserImage(Part userImage) {
 		this.userImage = userImage;
 	}
 

@@ -8,7 +8,7 @@ import com.bridgelabz.usermanagementsystem.model.User;
 
 public class UserService {
 
-	public static boolean registerUser(User user) {
+	public static boolean registerUser(User user) throws IOException {
 		UserDao userDao = new UserDao();
 		return userDao.addUser(user);
 	}
@@ -16,7 +16,6 @@ public class UserService {
 	public void addUserPermissions(Permissions permissions, String userName, String creatorUser)
 			throws ClassNotFoundException, IOException {
 		UserDao userDao = new UserDao();
-		System.out.println("service");
 		Long userId = userDao.getUserIdByUserName(userName);
 
 		userDao.addPermissions(userId, 1, permissions.getDashboardAdd(), permissions.getDashboardDelete(),

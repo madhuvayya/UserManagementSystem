@@ -13,8 +13,9 @@
 	href="${pageContext.request.contextPath}/css/newuser.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/jQuery-Dropify/dist/css/dropify.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropify/dist/css/dropify.min.css">	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <title>User Management</title>
 </head>
 <body>
@@ -31,7 +32,8 @@
 						<a href="dashboard"><i class="ti-home"></i> Home</a> / New User
 					</div>
 				</div>
-				<form action="register" method="post" class="form">
+				<form action="register" method="post" enctype="multipart/form-data"
+					class="form">
 					<div class="form-container">
 						<p style="text-align: center;">${registerMessage}</p>
 						<div class="form-sub-container">
@@ -181,32 +183,19 @@
 								<div class="panel-title">Photo</div>
 								<div class="panel-body">
 									<label class="new-user-profile-label">Acceptable image
-										formats are jpg, jpeg, png &amp; gif.</label> <label
+										formats are jpg, jpeg, png amp; gif.</label> <label
 										class="new-user-profile-label">Maximum image size
 										allowed is 2MB.</label>
 									<div class="dropify-wrapper">
-										<div class="dropify-message">
-											<span class="file-icon"></span>
-											<p>Click here to choose any image</p>
-											<p class="dropify-error">Ooops, something wrong appended.</p>
-										</div>
-										<div class="dropify-loader" style="display: none;"></div>
-										<div class="dropify-errors-container">
-											<ul></ul>
-										</div>
-										<input type="file" name="userImage" id="input-file-now"
-											class="dropify" data-show-loader="true"
-											data-show-remove="true" data-errors-position="inside"
-											data-allowed-file-extensions="png jpeg jpg gif"
-											data-max-file-size="2M">
+										<input type="file" id="input-file-now" name="userImage" class="dropify">
 										<button type="button" class="dropify-clear">Remove</button>
-										<div class="dropify-preview" style="display: none;">
+										<div class="dropify-preview">
 											<span class="dropify-render"></span>
 											<div class="dropify-infos">
 												<div class="dropify-infos-inner">
 													<p class="dropify-filename">
 														<span class="file-icon"></span> <span
-															class="dropify-filename-inner">SCCL RECPT.pdf</span>
+															class="dropify-filename-inner"></span>
 													</p>
 													<p class="dropify-infos-message">Drag and drop or click
 														to replace</p>
@@ -316,8 +305,16 @@
 			</div>
 		</div>
 	</div>
-	<script>
-		
+	<script src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/css/dropify/dist/js/dropify.min.js"></script>
+	<script type="text/javascript">
+
+    $(document).ready(function() {
+       // Basic
+       $('.dropify').dropify();
+   });
+
+	
 	<%@include file="../js/dropdown.js" %>
 		
 	<%@include file="../js/showOptions.js" %>
