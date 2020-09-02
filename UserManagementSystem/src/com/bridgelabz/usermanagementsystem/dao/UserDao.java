@@ -15,7 +15,7 @@ public class UserDao {
 
 	private static Connection connection = DBConnection.getConnection();
 
-	public boolean checkUserAuthorization(User user) {
+	public long checkUserAuthorization(User user) {
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = connection
@@ -25,11 +25,13 @@ public class UserDao {
 			preparedStatement.setString(2, user.getPassword());
 
 			ResultSet resultSet = preparedStatement.executeQuery();
-			return resultSet.next();
+			if (resultSet.next()) {
+				return resultSet.getLong(1);
+			}
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
-		return false;
+		return 0;
 	}
 
 	public boolean addUser(User user) throws IOException {
@@ -88,8 +90,8 @@ public class UserDao {
 
 	public boolean addPermissions(Long userId, int pageId, boolean add, boolean delete, boolean modify, boolean read,
 			String creatorUser) {
-		String addPermissionQuery = "insert into `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`," +
-									" `creator_user`) values (?,?,?,?,?,?,?)";
+		String addPermissionQuery = "INSERT INTO `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`,"
+				+ " `creator_user`) VALUES (?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(addPermissionQuery);
 			preparedStatement.setLong(1, userId);
@@ -99,6 +101,18 @@ public class UserDao {
 			preparedStatement.setBoolean(5, modify);
 			preparedStatement.setBoolean(6, read);
 			preparedStatement.setString(7, creatorUser);
+			return preparedStatement.executeUpdate() == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean storeUserLoginTime(long userId) {
+		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(addLoginTime);
+			preparedStatement.setLong(1, userId);
 			return preparedStatement.executeUpdate() == 1;
 		} catch (SQLException e) {
 			e.printStackTrace();

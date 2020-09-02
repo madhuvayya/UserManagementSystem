@@ -41,8 +41,8 @@ public class RegisterUser extends HttpServlet {
 		user.setCreatorUser((String) httpSession.getAttribute("username"));
 
 		UserService userService = new UserService();
-		boolean userRegistered = UserService.registerUser(user);
-		
+		boolean userRegistered = userService.registerUser(user);
+
 		if (userRegistered) {
 			Permissions permissions = new Permissions();
 			permissions.setDashboardAdd(request.getParameter("dashboard_add") != null ? true : false);

@@ -8,14 +8,21 @@ import com.bridgelabz.usermanagementsystem.model.User;
 
 public class UserService {
 
-	public static boolean registerUser(User user) throws IOException {
-		UserDao userDao = new UserDao();
+	UserDao userDao = new UserDao();
+
+	public boolean isRegisteredUser(User user) {
+		long userId = userDao.checkUserAuthorization(user);
+		if (userId != 0)
+			return userDao.storeUserLoginTime(userId);
+		return false;
+	}
+
+	public boolean registerUser(User user) throws IOException {
 		return userDao.addUser(user);
 	}
 
 	public void addUserPermissions(Permissions permissions, String userName, String creatorUser)
 			throws ClassNotFoundException, IOException {
-		UserDao userDao = new UserDao();
 		Long userId = userDao.getUserIdByUserName(userName);
 
 		userDao.addPermissions(userId, 1, permissions.getDashboardAdd(), permissions.getDashboardDelete(),
@@ -36,5 +43,4 @@ public class UserService {
 		userDao.addPermissions(userId, 6, permissions.getWebPage3Add(), permissions.getWebPage3Delete(),
 				permissions.getWebPage3Modify(), permissions.getWebPage3Read(), creatorUser);
 	}
-
 }

@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.bridgelabz.usermanagementsystem.dao.UserDao;
+
 import com.bridgelabz.usermanagementsystem.model.User;
+import com.bridgelabz.usermanagementsystem.service.UserService;
 
 @WebServlet(value = "/login-process")
 public class Login extends HttpServlet {
@@ -26,15 +27,15 @@ public class Login extends HttpServlet {
 		user.setUserName(userName);
 		user.setPassword(password);
 
-		UserDao userDao = new UserDao();
-		boolean isAuthorizedUser = userDao.checkUserAuthorization(user);
-		
+		UserService userService = new UserService();
+		boolean isAuthorizedUser = userService.isRegisteredUser(user);
+
 		if (isAuthorizedUser) {
 			destinationPath = "dashboard";
-			
+
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", userName);
-			httpSession.setAttribute("password", password);			
+			httpSession.setAttribute("password", password);
 		} else {
 			request.setAttribute("message", "Enter registred user name and password.");
 			destinationPath = "login";
