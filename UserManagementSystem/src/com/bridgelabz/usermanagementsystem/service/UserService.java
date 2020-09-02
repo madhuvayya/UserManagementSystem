@@ -10,11 +10,14 @@ public class UserService {
 
 	UserDao userDao = new UserDao();
 
-	public boolean isRegisteredUser(User user) {
+	public String isRegisteredUser(User user) {
 		long userId = userDao.checkUserAuthorization(user);
-		if (userId != 0)
-			return userDao.storeUserLoginTime(userId);
-		return false;
+		if (userId != 0) {
+			String lastLogin = userDao.getUserLastLoginTime(userId);
+			userDao.storeUserLoginTime(userId);
+			return lastLogin;
+		}	
+		return null;
 	}
 
 	public boolean registerUser(User user) throws IOException {

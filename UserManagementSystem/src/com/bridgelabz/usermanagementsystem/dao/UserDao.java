@@ -33,6 +33,33 @@ public class UserDao {
 		}
 		return 0;
 	}
+	
+	public boolean storeUserLoginTime(long userId) {
+		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(addLoginTime);
+			preparedStatement.setLong(1, userId);
+			return preparedStatement.executeUpdate() == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public String getUserLastLoginTime(long userId) {
+		String getLastLogin = "SELECT MAX(login_timestamp) FROM user_login_history WHERE user_id = ?";
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(getLastLogin);
+			preparedStatement.setLong(1, userId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			return resultSet.getString(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return null;
+	}	
+	
 
 	public boolean addUser(User user) throws IOException {
 		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,user_image,role,creator_user) "
@@ -101,18 +128,6 @@ public class UserDao {
 			preparedStatement.setBoolean(5, modify);
 			preparedStatement.setBoolean(6, read);
 			preparedStatement.setString(7, creatorUser);
-			return preparedStatement.executeUpdate() == 1;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public boolean storeUserLoginTime(long userId) {
-		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(addLoginTime);
-			preparedStatement.setLong(1, userId);
 			return preparedStatement.executeUpdate() == 1;
 		} catch (SQLException e) {
 			e.printStackTrace();

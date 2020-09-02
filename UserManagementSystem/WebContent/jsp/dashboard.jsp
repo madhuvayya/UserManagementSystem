@@ -25,7 +25,8 @@
 		<div class="main-content">
 			<div class="content-heading">
 				<div class="page-title">
-					<h4>Welcome ${username}</h4>
+					<span>Welcome ${username}</span><br>
+					<span class="last-login"> You last logged in on: ${lastLoginTime}</span>
 				</div>
 				<div class="home-link">
 					<i class="ti-home"></i><a href="dashboard">Home</a> / Dashboard
