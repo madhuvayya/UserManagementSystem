@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
 import com.bridgelabz.usermanagementsystem.service.UserService;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @WebServlet("/register")
 @MultipartConfig(maxFileSize = 16177215)
@@ -41,7 +42,12 @@ public class RegisterUser extends HttpServlet {
 		user.setCreatorUser((String) httpSession.getAttribute("username"));
 
 		UserService userService = new UserService();
-		boolean userRegistered = userService.registerUser(user);
+		boolean userRegistered = false;
+		try {
+			userRegistered = userService.registerUser(user);
+		} catch (MySQLIntegrityConstraintViolationException | IOException e1) {
+			request.setAttribute("registerMessage", e1.getMessage());
+		}
 
 		if (userRegistered) {
 			Permissions permissions = new Permissions();
@@ -75,10 +81,9 @@ public class RegisterUser extends HttpServlet {
 			} catch (ClassNotFoundException | IOException e) {
 				e.printStackTrace();
 			}
-		} else {
-			request.setAttribute("registerMessage", "Failed to register.");
-		}
+		} 
 		request.getRequestDispatcher("newuser").forward(request, response);
+
 	}
 
 }

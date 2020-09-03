@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.http.Part;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
 import com.bridgelabz.usermanagementsystem.model.User;
@@ -61,7 +62,7 @@ public class UserDao {
 	}	
 	
 
-	public boolean addUser(User user) throws IOException {
+	public boolean addUser(User user) throws IOException, MySQLIntegrityConstraintViolationException {
 		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,user_image,role,creator_user) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
@@ -95,6 +96,8 @@ public class UserDao {
 			preparedStatement.setString(15, user.getCreatorUser());
 
 			return preparedStatement.executeUpdate() == 1;
+		}catch (SQLException ex) {
+			   throw new MySQLIntegrityConstraintViolationException(ex.getMessage());
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}

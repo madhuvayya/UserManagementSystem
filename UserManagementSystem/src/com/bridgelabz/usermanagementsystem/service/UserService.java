@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.bridgelabz.usermanagementsystem.dao.UserDao;
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
+import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 public class UserService {
 
@@ -20,7 +21,7 @@ public class UserService {
 		return null;
 	}
 
-	public boolean registerUser(User user) throws IOException {
+	public boolean registerUser(User user) throws IOException, MySQLIntegrityConstraintViolationException {
 		return userDao.addUser(user);
 	}
 
