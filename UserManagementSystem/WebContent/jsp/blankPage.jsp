@@ -26,7 +26,8 @@
 				<div class="content-heading">
 					<div class="page-title">
 						<p>Blank Page</p>
-						<span class="page-description">Create your new page based on this starter page.</span>
+						<span class="page-description">Create your new page based
+							on this starter page.</span>
 					</div>
 					<div class="home-link">
 						<a href="dashboard"><i class="ti-home"></i> Home</a> / Blank Page
@@ -34,9 +35,7 @@
 				</div>
 				<div class="content">
 					<div class="content-title">Page Heading</div>
-					<div class="content-body">
-							Page content goes here..
-                        </div>
+					<div class="content-body">Page content goes here..</div>
 				</div>
 			</div>
 		</div>

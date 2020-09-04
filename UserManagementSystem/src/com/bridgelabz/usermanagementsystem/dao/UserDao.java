@@ -1,12 +1,17 @@
 package com.bridgelabz.usermanagementsystem.dao;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.servlet.http.Part;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
@@ -34,7 +39,7 @@ public class UserDao {
 		}
 		return 0;
 	}
-	
+
 	public boolean storeUserLoginTime(long userId) {
 		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
 		try {
@@ -46,7 +51,7 @@ public class UserDao {
 		}
 		return false;
 	}
-	
+
 	public String getUserLastLoginTime(long userId) {
 		String getLastLogin = "SELECT MAX(login_timestamp) FROM user_login_history WHERE user_id = ?";
 		try {
@@ -57,21 +62,13 @@ public class UserDao {
 			return resultSet.getString(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}		
+		}
 		return null;
-	}	
-	
+	}
 
 	public boolean addUser(User user) throws IOException, MySQLIntegrityConstraintViolationException {
 		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,user_image,role,creator_user) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
-
-		InputStream inputStream = null;
-
-		Part filePart = user.getUserImage();
-		if (filePart != null) {
-			inputStream = filePart.getInputStream();
-		}
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(registerQuery);
@@ -87,17 +84,13 @@ public class UserDao {
 			preparedStatement.setString(10, user.getAddress());
 			preparedStatement.setString(11, user.getUserName());
 			preparedStatement.setString(12, user.getPassword());
-
-			if (inputStream != null) {
-				preparedStatement.setBlob(13, inputStream);
-			}
-
+			preparedStatement.setBlob(13, user.getUserImage());
 			preparedStatement.setString(14, user.getRole());
 			preparedStatement.setString(15, user.getCreatorUser());
 
 			return preparedStatement.executeUpdate() == 1;
-		}catch (SQLException ex) {
-			   throw new MySQLIntegrityConstraintViolationException(ex.getMessage());
+		} catch (SQLException ex) {
+			throw new MySQLIntegrityConstraintViolationException(ex.getMessage());
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
@@ -136,5 +129,46 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public List<User> getUsersList() throws IOException {
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = connection.prepareStatement(
+					"SELECT user_image,first_name,last_name,email,dob,status,role FROM ums.user_info;");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			List<User> usersList = new ArrayList<User>();
+			while (resultSet.next()) {
+				User user = new User();
+				
+//                Blob blob = resultSet.getBlob(1);
+//                InputStream inputStream = blob.getBinaryStream();
+//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//                byte[] buffer = new byte[4096];
+//                int bytesRead = -1;
+//
+//                while ((bytesRead = inputStream.read(buffer)) != -1) {
+//                    outputStream.write(buffer, 0, bytesRead);
+//                }
+//
+//                byte[] imageBytes = outputStream.toByteArray();
+//                String image = Base64.getEncoder().encodeToString(imageBytes);
+//                inputStream.close();
+//                outputStream.close();
+                
+                user.setUserImage(resultSet.getBlob(1));
+				user.setFirstName(resultSet.getString(2));
+				user.setLastName(resultSet.getString(3));
+				user.setEmail(resultSet.getString(4));
+				user.setDob(resultSet.getString(5));
+				user.setStatus(resultSet.getString(6));
+				user.setRole(resultSet.getString(7));
+				usersList.add(user);
+			}
+			return usersList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

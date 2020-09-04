@@ -4,8 +4,6 @@
 			class="title"> <a href="dashboard"> Dashboard </a>
 		</span> <span class="label label-success">UPDATED</span></a>
 	</div>
-
-
 	<div onclick="showOptions('adminOptions')">
 		<a href="#"> <i class="ti-files"></i> <span class="title">Webpages</span>
 			<i class="icon-submenu ti-angle-left"></i></a>
@@ -36,7 +34,7 @@
 			&nbsp;&nbsp;&nbsp;<a href="newuser"> New User </a>
 		</p>
 		<span>
-			&nbsp;&nbsp;&nbsp; <a href="#"> Users List </a>
+			&nbsp;&nbsp;&nbsp; <a href="UserList"> Users List</a>
 		</span>
 		<span class="label label-success">UPDATED</span>
 	</div>

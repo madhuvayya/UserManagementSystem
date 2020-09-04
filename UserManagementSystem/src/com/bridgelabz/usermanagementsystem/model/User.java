@@ -1,23 +1,24 @@
 package com.bridgelabz.usermanagementsystem.model;
 
-import javax.servlet.http.Part;
+import java.sql.Blob;
 
 public class User {
-	public String firstName;
-	public String middleName;
-	public String lastName;
-	public String dob;
-	public String gender;
-	public String country;
-	public String phoneNumber;
-	public String alternateNumber;
-	public String email;
-	public String address;
-	public String userName;
-	public String password;
-	public String role;
-	public Part userImage;
-	public String creatorUser;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private String dob;
+	private String gender;
+	private String country;
+	private String phoneNumber;
+	private String alternateNumber;
+	private String email;
+	private String address;
+	private String userName;
+	private String password;
+	private String role;
+	private String status;
+	private Blob userImage;
+	private String creatorUser;
 
 	public String getFirstName() {
 		return firstName;
@@ -123,11 +124,19 @@ public class User {
 		this.role = role;
 	}
 
-	public Part getUserImage() {
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Blob getUserImage() {
 		return userImage;
 	}
 
-	public void setUserImage(Part userImage) {
+	public void setUserImage(Blob userImage) {
 		this.userImage = userImage;
 	}
 
@@ -138,5 +147,4 @@ public class User {
 	public void setCreatorUser(String creatorUser) {
 		this.creatorUser = creatorUser;
 	}
-
 }

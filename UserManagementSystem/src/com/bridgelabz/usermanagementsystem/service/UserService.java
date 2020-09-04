@@ -1,6 +1,7 @@
 package com.bridgelabz.usermanagementsystem.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.bridgelabz.usermanagementsystem.dao.UserDao;
 import com.bridgelabz.usermanagementsystem.model.Permissions;
@@ -25,7 +26,7 @@ public class UserService {
 		return userDao.addUser(user);
 	}
 
-	public void addUserPermissions(Permissions permissions, String userName, String creatorUser)
+	public boolean addUserPermissions(Permissions permissions, String userName, String creatorUser)
 			throws ClassNotFoundException, IOException {
 		Long userId = userDao.getUserIdByUserName(userName);
 
@@ -44,7 +45,11 @@ public class UserService {
 		userDao.addPermissions(userId, 5, permissions.getWebPage2Add(), permissions.getWebPage2Delete(),
 				permissions.getWebPage2Modify(), permissions.getWebPage2Read(), creatorUser);
 
-		userDao.addPermissions(userId, 6, permissions.getWebPage3Add(), permissions.getWebPage3Delete(),
+		return userDao.addPermissions(userId, 6, permissions.getWebPage3Add(), permissions.getWebPage3Delete(),
 				permissions.getWebPage3Modify(), permissions.getWebPage3Read(), creatorUser);
+	}
+
+	public List<User> getUsers() throws IOException {
+		return userDao.getUsersList();
 	}
 }

@@ -1,6 +1,14 @@
 package com.bridgelabz.usermanagementsystem.controller;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -8,6 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
+
+import org.apache.commons.io.IOUtils;
 
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
@@ -38,18 +51,61 @@ public class RegisterUser extends HttpServlet {
 		user.setUserName(request.getParameter("userName"));
 		user.setPassword(request.getParameter("password"));
 		user.setRole(request.getParameter("role"));
-		user.setUserImage(request.getPart("userImage"));
 		user.setCreatorUser((String) httpSession.getAttribute("username"));
 
+//		InputStream inputStream = null;
+//		Part filePart = request.getPart("userImage");
+//		if (filePart != null) {
+//			inputStream = filePart.getInputStream();
+//		} else {
+//			inputStream = new FileInputStream("${pageContext.request.contextPath}/resources/images/person-icon.png");
+//		}
+//
+//		InputStreamReader isReader = new InputStreamReader(inputStream);
+//		// Creating a BufferedReader object
+//		BufferedReader reader = new BufferedReader(isReader);
+//		StringBuffer sb = new StringBuffer();
+//		String str;
+//		while ((str = reader.readLine()) != null) {
+//			sb.append(str);
+//		}
+//
+//		user.setUserImage(sb.toString());
+
+		Blob b = null;
+        String fileName = "";
+        String contentType = "";
+        try {
+            Part filePart = request.getPart("image");
+            InputStream fileContent = filePart.getInputStream();
+            byte[] bytes = IOUtils.toByteArray(fileContent);
+            b = new SerialBlob(bytes);
+            fileName = filePart.getSubmittedFileName();
+            contentType = filePart.getContentType();
+        } catch (IOException ex) {
+        	ex.printStackTrace();
+        } catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        try {
+			if (b != null && b.length() != 0) {
+			    user.setUserImage(b);
+			}
+		} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+ 
 		UserService userService = new UserService();
-		boolean userRegistered = false;
+		boolean isGeneralInformationStored = false;
 		try {
-			userRegistered = userService.registerUser(user);
+			isGeneralInformationStored = userService.registerUser(user);
 		} catch (MySQLIntegrityConstraintViolationException | IOException e1) {
 			request.setAttribute("registerMessage", e1.getMessage());
 		}
 
-		if (userRegistered) {
+		if (isGeneralInformationStored) {
 			Permissions permissions = new Permissions();
 			permissions.setDashboardAdd(request.getParameter("dashboard_add") != null ? true : false);
 			permissions.setDashboardDelete(request.getParameter("dashboard_delete") != null ? true : false);
@@ -75,13 +131,17 @@ public class RegisterUser extends HttpServlet {
 			permissions.setWebPage3Delete(request.getParameter("w3_delete") != null ? true : false);
 			permissions.setWebPage3Modify(request.getParameter("w3_modify") != null ? true : false);
 			permissions.setWebPage3Read(request.getParameter("w3_read") != null ? true : false);
+			boolean userRegistered = false;
 			try {
-				userService.addUserPermissions(permissions, user.getUserName(), user.getCreatorUser());
-				request.setAttribute("registerMessage", "User successfully registered.");
+				userRegistered = userService.addUserPermissions(permissions, user.getUserName(), user.getCreatorUser());
 			} catch (ClassNotFoundException | IOException e) {
 				e.printStackTrace();
 			}
-		} 
+			if (userRegistered) {
+				request.setAttribute("registerMessage", "User successfully registered.");
+			}
+		}
+
 		request.getRequestDispatcher("newuser").forward(request, response);
 
 	}
