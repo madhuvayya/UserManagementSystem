@@ -1,6 +1,6 @@
 package com.bridgelabz.usermanagementsystem.model;
 
-import java.sql.Blob;
+import java.io.InputStream;
 
 public class User {
 	private String firstName;
@@ -17,7 +17,8 @@ public class User {
 	private String password;
 	private String role;
 	private String status;
-	private Blob userImage;
+	private InputStream userUploadingImage;
+	private String userDiplayingImage;
 	private String creatorUser;
 
 	public String getFirstName() {
@@ -132,12 +133,20 @@ public class User {
 		this.status = status;
 	}
 
-	public Blob getUserImage() {
-		return userImage;
+	public InputStream getUserUploadingImage() {
+		return userUploadingImage;
 	}
 
-	public void setUserImage(Blob userImage) {
-		this.userImage = userImage;
+	public void setUserUploadingImage(InputStream userUploadingImage) {
+		this.userUploadingImage = userUploadingImage;
+	}	
+
+	public String getUserDiplayingImage() {
+		return userDiplayingImage;
+	}
+
+	public void setUserDiplayingImage(String userDiplayingImage) {
+		this.userDiplayingImage = userDiplayingImage;
 	}
 
 	public String getCreatorUser() {

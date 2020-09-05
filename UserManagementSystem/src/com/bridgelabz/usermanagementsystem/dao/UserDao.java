@@ -84,7 +84,7 @@ public class UserDao {
 			preparedStatement.setString(10, user.getAddress());
 			preparedStatement.setString(11, user.getUserName());
 			preparedStatement.setString(12, user.getPassword());
-			preparedStatement.setBlob(13, user.getUserImage());
+			preparedStatement.setBlob(13, user.getUserUploadingImage());
 			preparedStatement.setString(14, user.getRole());
 			preparedStatement.setString(15, user.getCreatorUser());
 
@@ -141,22 +141,22 @@ public class UserDao {
 			while (resultSet.next()) {
 				User user = new User();
 				
-//                Blob blob = resultSet.getBlob(1);
-//                InputStream inputStream = blob.getBinaryStream();
-//                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-//                byte[] buffer = new byte[4096];
-//                int bytesRead = -1;
-//
-//                while ((bytesRead = inputStream.read(buffer)) != -1) {
-//                    outputStream.write(buffer, 0, bytesRead);
-//                }
-//
-//                byte[] imageBytes = outputStream.toByteArray();
-//                String image = Base64.getEncoder().encodeToString(imageBytes);
-//                inputStream.close();
-//                outputStream.close();
+                Blob blob = resultSet.getBlob(1);
+                InputStream inputStream = blob.getBinaryStream();
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+
+                while ((bytesRead = inputStream.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, bytesRead);
+                }
+
+                byte[] imageBytes = outputStream.toByteArray();
+                String image = Base64.getEncoder().encodeToString(imageBytes);
+                inputStream.close();
+                outputStream.close();
                 
-                user.setUserImage(resultSet.getBlob(1));
+                user.setUserDiplayingImage(image);
 				user.setFirstName(resultSet.getString(2));
 				user.setLastName(resultSet.getString(3));
 				user.setEmail(resultSet.getString(4));

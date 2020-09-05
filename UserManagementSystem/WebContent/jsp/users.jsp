@@ -1,3 +1,4 @@
+<%@page import="java.io.DataOutputStream"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
 <body>
 	<%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
 	<%@page import="java.util.List"%>
-	<%@page import="java.util.Iterator"%>
+	<%@page import="java.util.Base64"%>
 	<div class="main-container">
 		<%@include file="header.jsp"%>
 		<div class="container">
@@ -76,7 +77,7 @@
 								%>
 								<tr>
 									<td><img
-										src="data:image/jpg;base64,<%=user.getUserImage()%> "
+										src="data:image/jpg;base64,<%=user.getUserDiplayingImage()%>"
 										style="width: 38px; height: 38px; margin-top: -10px; margin-bottom: -12px" />
 									</td>
 									<td><%=user.getFirstName() + " " + user.getLastName()%></td>
