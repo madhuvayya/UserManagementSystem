@@ -33,7 +33,7 @@
 					</div>
 				</div>
 				<form action="register" method="post" enctype="multipart/form-data"
-					class="form">
+					class="form" onsubmit = "return checkPassword(this)">
 					<div class="form-container">
 						<p style="text-align: center;">${registerMessage}</p>
 						<div class="form-sub-container">
@@ -46,6 +46,8 @@
 										</div>
 										<div>
 											<input name="firstName" type="text" class="form-control"
+												pattern="^[A-Z][a-z]{3,}$" 
+												title="Firstname should start with uppercase remaining letters should be in lowercase. e.g. John"
 												required>
 										</div>
 									</div>
@@ -54,7 +56,9 @@
 											<label class="control-label">Middle Name</label>
 										</div>
 										<div>
-											<input name="middleName" type="text" class="form-control">
+											<input name="middleName" type="text" class="form-control"
+												pattern="^[A-Z][a-z]{3,}$" 
+												title="Middle should start with uppercase remaining letters should be in lowercase." >
 										</div>
 									</div>
 									<div class="form-group">
@@ -63,6 +67,8 @@
 										</div>
 										<div>
 											<input name="lastName" type="text" class="form-control"
+												pattern="^[A-Z][a-z]{3,}$" 
+												title="LastName should start with uppercase remaining letters should be in lowercase."											
 												required>
 										</div>
 									</div>
@@ -106,8 +112,9 @@
 											<label class="control-label">Phone</label>
 										</div>
 										<div>
-											<input name="phoneNumber" type="text" class="form-control"
-												required><br />
+											<input name="phoneNumber" type="tel" class="form-control"
+												pattern="^\d{10}$" 
+												title="Phone number must be 10 digits" required><br />
 										</div>
 									</div>
 									<div class="form-group">
@@ -115,7 +122,8 @@
 											<label class="control-label">Alternate Number</label>
 										</div>
 										<div>
-											<input name="alternateNumber" type="text"
+											<input name="alternateNumber" type="tel" pattern="^\d{10}$"
+												title="Phone number must be 10 digits"
 												class="form-control"><br />
 										</div>
 									</div>
@@ -124,7 +132,7 @@
 											<label class="control-label">Email</label>
 										</div>
 										<div>
-											<input name="email" type="text" class="form-control" required>
+											<input name="email" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" required>
 										</div>
 									</div>
 									<div class="form-group">
@@ -164,6 +172,8 @@
 												class="form-control" required>
 										</div>
 									</div>
+									<br /> 
+									<span id='passwords-message'></span>
 									<div class="form-group">
 										<div>
 											<label class="control-label">User Role</label>
@@ -313,6 +323,18 @@
        // Basic
        $('.dropify').dropify();
    });
+    
+    function checkPassword(form) { 
+    	var password = form.password.value; 
+    	var confirmPassword = form.confirmPassword.value; 
+
+		if (password != confirmPassword) {
+			document.getElementById('passwords-message').innerHTML = "Password did not match: Please try again..."; 
+            return false; 
+        } else { 
+            return true; 
+        } 
+    } 
 
 	
 	<%@include file="../js/dropdown.js" %>

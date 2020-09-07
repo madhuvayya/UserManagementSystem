@@ -135,7 +135,7 @@ public class UserDao {
 		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = connection.prepareStatement(
-					"SELECT user_image,first_name,last_name,email,dob,status,role FROM ums.user_info;");
+					"SELECT user_image,first_name,last_name,email,dob,status,role,id FROM ums.user_info;");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			List<User> usersList = new ArrayList<User>();
 			while (resultSet.next()) {
@@ -163,6 +163,7 @@ public class UserDao {
 				user.setDob(resultSet.getString(5));
 				user.setStatus(resultSet.getString(6));
 				user.setRole(resultSet.getString(7));
+				user.setUserId(resultSet.getLong(8));
 				usersList.add(user);
 			}
 			return usersList;

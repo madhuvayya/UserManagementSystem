@@ -20,6 +20,10 @@
 	margin-right: 8px;
 }
 
+.onclick-div {
+	cursor: pointer;
+}
+
 .ti-angle-left {
 	float: right;
 } 

@@ -7,12 +7,14 @@ body {
 	margin: 0;
 	padding: 0;
 	background: #F5F6F9;
-	align-items: center;
-	justify-content: center;
 	font-size: 14px;
 	font-family: "Roboto", sans-serif;
-	color: #5e6773;
 	overflow: hidden;
+}
+
+button {
+	outline: none;
+	border: none;
 }
 
 .main-container {
@@ -20,7 +22,7 @@ body {
 	width: 100%;
 }
 
-.container {
+.sub-container {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -28,9 +30,8 @@ body {
 
 .main-content {
 	width: 100%;
-	height: 550px;
+	height: 515px;
 	background: #F5F6F9;
-	height: 550px;
 	background: #F5F6F9;
 	overflow-x: hidden;
 	overflow-y: scroll;	
@@ -72,9 +73,9 @@ body {
 }
 
 .content-title {
+	padding: 10px;
 	font-size: 18px;
 	color: #717d84;
-	padding: 10px;
 	background-color: #F8F9FA;
 }
 
@@ -90,49 +91,125 @@ body {
 }
 
 .content-body {
-	margin-top: 15px;
+	margin: 15px 0;
+	width: 100%;
 	display: flex;
-	width: 90%;
-	padding: 30px 20px;
 	flex-direction: column;
-	justify-content: space-between;
-	align-self: center;	
+	justify-content: center;
+	align-items: center;	
 }
 
-.select-serarch-row {
-	width: 100%;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-.form-control {
-	border-radius: 2px;
-	border-color: #e1e3ea;
-	background-color: #fcfcfc;
-	color: #5e6773;
-	display: block;
-	width: 100%;
-	padding: 6px 12px;
-	font-size: 14px;
-	color: #555;
-	border: 1px solid #ccc;
-}
-
-.table-div {
-	margin-top: 10px;
+#myTable_wrapper {
+	width: 95%;
 }
 
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  width: 90%;
 }
 
-td {
+th, td, thead , tbody{
   border: 1px solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 0px;
+}
+
+table.dataTable tbody th, table.dataTable tbody td {
+	padding:2px;
+}
+
+.table td, .table th {
+	vertical-align: middle;
+}
+
+.status-active , .status-inactive  {
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.status-active {
+	background-color: #EBF7E7;
+	color: #41B314;
+}
+
+.status-inactive {
+	background-color: #FFEAED;
+	color: #F9354C;	
+}
+
+#myTable_length label select{
+	width:100px;
+	height: 25px;
+	outline: none; 
+}
+
+#myTable_filter label input {
+	height: 30px;
+	border-radius: 3px;
+	outline: none;
+	border: 1px solid grey;
+}
+
+#myTable_info {
+	font-weight: 600;
+}
+
+#myTable_paginate {
+	margin-top: 5px;
+	margin-left: 10px;
+	float: left;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+	color: #ffffff !important;
+    font-family: Arial;
+    background-color: #337AB7;
+    font-weight: normal;
+    text-align: center;
+    display: inline-block;
+    padding: 2px 6px;
+    margin-right: 3px;
+    line-height: 150%;
+    border: 1px solid #337ab7;
+    border-radius: 3px;
+    font-size: 13px;	
+}
+
+/* The Modal (background) */
+.modal-bg {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-box {
+  background-color: #fefefe;
+  margin:auto;
+  padding: 30px;
+  width: fit-content;
+  border: 1px solid #888;
+  border-radius: 10px;
+}
+
+/* The Close Button */
+.modal-box {
+  color: #aaaaaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media ( min-width : 280px) and (max-width: 480px) {

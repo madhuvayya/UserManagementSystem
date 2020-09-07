@@ -28,7 +28,7 @@ public class UserList extends HttpServlet {
 		}
 		request.setAttribute("message", message);
 		request.setAttribute("userList", userList);
-		RequestDispatcher rd = request.getRequestDispatcher("users"); // want to send data
+		RequestDispatcher rd = request.getRequestDispatcher("users");
 		rd.forward(request, response);
 	}
 }
