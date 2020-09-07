@@ -55,6 +55,15 @@
 	</servlet-mapping>	
 
 	<servlet>
+		<servlet-name>update-user</servlet-name>
+		<jsp-file>/jsp/updateUser.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>update-user</servlet-name>
+		<url-pattern>/update-user</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>webpage1</servlet-name>
 		<jsp-file>/jsp/webPage1.jsp</jsp-file>
 	</servlet>
