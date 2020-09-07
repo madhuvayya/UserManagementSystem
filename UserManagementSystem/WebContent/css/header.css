@@ -1,7 +1,8 @@
-.header{
+.header-navbar{
 	display:flex;
 	flex-direction:coloumn;
 	justify-content:space-between;
+	align-items: center;
 	background-color: #1991D7;
 	color: #ffffff;
 	height: 50px;
@@ -14,7 +15,7 @@
 	margin: 0px 10px;
 }
 
-button {
+.app-name i {
 	font-size: 18px;
     padding: 0 20px;
     line-height: 1;

@@ -4,9 +4,9 @@
 			class="title"> <a href="dashboard"> Dashboard </a>
 		</span> <span class="label label-success">UPDATED</span></a>
 	</div>
-	<div onclick="showOptions('adminOptions')">
-		<a href="#"> <i class="ti-files"></i> <span class="title">Webpages</span>
-			<i class="icon-submenu ti-angle-left"></i></a>
+	<div onclick="showOptions('adminOptions')" class="onclick-div">
+		<i class="ti-files"></i> <span class="title">Webpages</span>
+			<i class="icon-submenu ti-angle-left"></i>
 	</div>
 	<div id="adminOptions" style="display: none;">
 		<p>
@@ -24,10 +24,9 @@
 		</p>
 	</div>
 
-	<div onclick="showOptions('userOptins')">
-		<a href="#"> <i class="ti-settings"></i> <span class="title">Users</span>
+	<div onclick="showOptions('userOptins')" class="onclick-div">
+		<i class="ti-settings"></i> <span class="title">Users</span>
 			<i class="icon-submenu ti-angle-left"></i>
-		</a>
 	</div>
 	<div id="userOptins" style="display: none;">
 		<p>
@@ -44,10 +43,9 @@
 		</a>
 	</div>
 
-	<div onclick="showOptions('settings')">
-		<a href="#"> <i class="ti-user"></i> <span class="title">Settings</span>
+	<div onclick="showOptions('settings')" class="onclick-div">
+		<i class="ti-user"></i> <span class="title">Settings</span>
 			<i class="icon-submenu ti-angle-left"></i>
-		</a>
 	</div>
 
 	<div id="settings" style="display: none;">
@@ -69,8 +67,6 @@
 		</a>
 	</div>
 	<div class="toggle">
-		<button type="button">
 			<i class="ti-arrows-horizontal"></i>
-		</button>
 	</div>
 </div>

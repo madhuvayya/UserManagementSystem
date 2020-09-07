@@ -20,6 +20,7 @@ public class User {
 	private InputStream userUploadingImage;
 	private String userDiplayingImage;
 	private String creatorUser;
+	private long userId;
 
 	public String getFirstName() {
 		return firstName;
@@ -156,4 +157,12 @@ public class User {
 	public void setCreatorUser(String creatorUser) {
 		this.creatorUser = creatorUser;
 	}
+
+	public long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}	
 }
