@@ -10,7 +10,7 @@ import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExceptio
 
 public class UserService {
 
-	UserDao userDao = new UserDao();
+	private static UserDao userDao = new UserDao();
 
 	public String isRegisteredUser(User user) {
 		long userId = userDao.checkUserAuthorization(user);

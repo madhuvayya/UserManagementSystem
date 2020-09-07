@@ -2,8 +2,6 @@ package com.bridgelabz.usermanagementsystem.controller;
 
 import java.io.IOException;
 import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +26,6 @@ public class UserList extends HttpServlet {
 		}
 		request.setAttribute("message", message);
 		request.setAttribute("userList", userList);
-		RequestDispatcher rd = request.getRequestDispatcher("users");
-		rd.forward(request, response);
+		request.getRequestDispatcher("users").forward(request, response);
 	}
 }

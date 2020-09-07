@@ -1,8 +1,6 @@
 package com.bridgelabz.usermanagementsystem.controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +24,6 @@ public class DeleteUser extends HttpServlet {
 			message = "User data is not deleted";
 		}
 		request.setAttribute("message", message);
-		RequestDispatcher rd = request.getRequestDispatcher("UserList");
-		rd.forward(request, response);
+		request.getRequestDispatcher("UserList").forward(request, response);
 	}
 }

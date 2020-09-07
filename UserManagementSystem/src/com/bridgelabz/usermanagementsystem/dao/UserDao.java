@@ -100,7 +100,8 @@ public class UserDao {
 	public Long getUserIdByUserName(String userName) {
 		try {
 			preparedStatement = connection
-					.prepareStatement("SELECT id FROM user_info WHERE user_name ='" + userName + "'");
+					.prepareStatement("SELECT id FROM user_info WHERE user_name = ? ");
+			preparedStatement.setString(1, userName);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			return Long.valueOf(resultSet.getString(1));
@@ -172,7 +173,7 @@ public class UserDao {
 	}
 
 	public boolean deleteUser(Long userId) {
-		String deleteUserQuery = "DELETE FROM ums.user_info WHERE id = ?";
+		String deleteUserQuery = "DELETE FROM user_info WHERE id = ?";
 		try {
 			preparedStatement = connection.prepareStatement(deleteUserQuery);
 			preparedStatement.setLong(1, userId);
