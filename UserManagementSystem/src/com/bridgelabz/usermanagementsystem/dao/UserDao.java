@@ -20,9 +20,9 @@ import com.bridgelabz.usermanagementsystem.model.User;
 public class UserDao {
 
 	private static Connection connection = DBConnection.getConnection();
+	private static PreparedStatement preparedStatement = null;
 
 	public long checkUserAuthorization(User user) {
-		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = connection
 					.prepareStatement("SELECT id FROM user_info WHERE user_name=? and password=?");
@@ -43,7 +43,7 @@ public class UserDao {
 	public boolean storeUserLoginTime(long userId) {
 		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(addLoginTime);
+			preparedStatement = connection.prepareStatement(addLoginTime);
 			preparedStatement.setLong(1, userId);
 			return preparedStatement.executeUpdate() == 1;
 		} catch (SQLException e) {
@@ -71,7 +71,7 @@ public class UserDao {
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(registerQuery);
+			preparedStatement = connection.prepareStatement(registerQuery);
 			preparedStatement.setString(1, user.getFirstName());
 			preparedStatement.setString(2, user.getMiddleName());
 			preparedStatement.setString(3, user.getLastName());
@@ -98,7 +98,6 @@ public class UserDao {
 	}
 
 	public Long getUserIdByUserName(String userName) {
-		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = connection
 					.prepareStatement("SELECT id FROM user_info WHERE user_name ='" + userName + "'");
@@ -116,7 +115,7 @@ public class UserDao {
 		String addPermissionQuery = "INSERT INTO `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`,"
 				+ " `creator_user`) VALUES (?,?,?,?,?,?,?)";
 		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(addPermissionQuery);
+			preparedStatement = connection.prepareStatement(addPermissionQuery);
 			preparedStatement.setLong(1, userId);
 			preparedStatement.setInt(2, pageId);
 			preparedStatement.setBoolean(3, add);
@@ -132,7 +131,6 @@ public class UserDao {
 	}
 
 	public List<User> getUsersList() throws IOException {
-		PreparedStatement preparedStatement = null;
 		try {
 			preparedStatement = connection.prepareStatement(
 					"SELECT user_image,first_name,last_name,email,dob,status,role,id FROM ums.user_info;");
@@ -171,5 +169,17 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public boolean deleteUser(Long userId) {
+		String deleteUserQuery = "DELETE FROM ums.user_info WHERE id = ?";
+		try {
+			preparedStatement = connection.prepareStatement(deleteUserQuery);
+			preparedStatement.setLong(1, userId);
+			return preparedStatement.executeUpdate() == 1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

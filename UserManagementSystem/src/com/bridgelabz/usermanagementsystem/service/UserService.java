@@ -52,4 +52,8 @@ public class UserService {
 	public List<User> getUsers() throws IOException {
 		return userDao.getUsersList();
 	}
+
+	public boolean deleteUser(Long userId) {
+		return userDao.deleteUser(userId);
+	}
 }

@@ -104,7 +104,7 @@
   													<div class="modal-box">
                                                             <h4>Are you sure?</h4>
                                                             <br>
-                                                            <a id="aDeleteUserModal" href="Delete?userId=<%=user.getUserId()%>" class="btn btn-success" data-user-id="1" data-dismiss="modal">Yes</a>
+                                                            <a id="aDeleteUserModal" href="DeleteUser?userId=<%=user.getUserId()%>" class="btn btn-success" data-user-id="1" data-dismiss="modal">Yes</a>
                                                             <input type="button" class="btn btn-danger close-modal" data-dismiss="modal" value="No">                                                            
   												</div>
 												</div>

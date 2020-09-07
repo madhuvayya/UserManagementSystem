@@ -205,13 +205,6 @@ table.dataTable tbody th, table.dataTable tbody td {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 @media ( min-width : 280px) and (max-width: 480px) {
 	.container {
 		display: flex;
