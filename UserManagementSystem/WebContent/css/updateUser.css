@@ -60,3 +60,23 @@ input:checked+.slider:before {
 .slider.round:before {
 	border-radius: 50%;
 }
+
+.photo .panel-title {
+    font-size: 25px;
+    padding: 0px;
+}
+
+#change-photo , #change-photo-dropify , .btn-default {
+	background-color: #1991D7;
+	outline: none;
+	border: 1px solid #1991D7;
+	border-radius: 2px;
+	color: #ffffff;
+	height: 25px;
+}
+
+@media ( min-width : 280px) and (max-width: 480px) {
+	#divPreviewPhoto{
+		text-align: center;
+	}	
+}	

@@ -9,20 +9,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/header.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/sideNavbar.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/newuser.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/updateUser.css">	
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/themify-icons.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/dropify/dist/css/dropify.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sideNavbar.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newuser.css">	
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/updateUser.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/dropify/dist/css/dropify.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js" integrity="sha512-lC8vSUSlXWqh7A/F+EUS3l77bdlj+rGMN4NB5XFAHnTR3jQtg4ibZccWpuSSIdPoPUlUxtnGktLyrWcDhG8RvA==" crossorigin="anonymous"></script>	
 <title>User Management</title>
 </head>
