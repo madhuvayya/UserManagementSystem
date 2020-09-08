@@ -49,7 +49,7 @@ public class RegisterUser extends HttpServlet {
 		if (filePart != null) {
 			inputStream = filePart.getInputStream();
 		} else {
-			inputStream = new FileInputStream("/UserManagementSystem/WebContent/resources/images/person-icon.png");
+			inputStream = new FileInputStream("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\images\\image.png");
 		}
 
 		user.setUserUploadingImage(inputStream);

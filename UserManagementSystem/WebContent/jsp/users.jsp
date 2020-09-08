@@ -69,8 +69,7 @@
 								<tbody>
 									<%
 										List<User> userList = (List<User>) request.getAttribute("userList");	
-									%>
-									<%  for (User user : userList) { %>
+										  for (User user : userList) { %>
 									<tr>
 										<td><img src="data:image/jpg;base64,<%=user.getUserDiplayingImage()%>" 
 										style="width: 30px; height: 30px;padding:0px"/>
@@ -91,7 +90,7 @@
 											style="font-weight: normal; font-size: large; color: #88BA40;"
 											class="ti-unlock text-success"></label></td>
 										<td style="color: #1991D7; text-align: center;">
-											<a id="edit-deails" style="cursor: pointer;"
+											<a id="edit-deails" href="UserDetails?userId=<%=user.getUserId()%>" style="cursor: pointer;"
 												title="Edit User Details"> 
 												<i class="ti-pencil-alt"></i>
 											</a> 

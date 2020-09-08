@@ -37,7 +37,7 @@
 	}
 </script>
 </head>
-<body onload='document.form.username.focus()'>
+<body>
 	<div class="container">
 		<form method="post" action="login-process" name="form">
 			<div class="login-form">
