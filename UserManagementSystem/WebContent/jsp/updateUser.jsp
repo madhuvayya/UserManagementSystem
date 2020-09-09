@@ -108,7 +108,6 @@
         									</select>
 										</div>
 									</div>
-									<div class="form-group">
 									<div class="form-group">	
 										<div> <label class="control-label">Phone</label> </div>
 										<div>
@@ -189,7 +188,6 @@
 										</label>
 										</span>
 									</div>
-								</div>
 							</div>
 						</div>
 						<div class="photo panel">

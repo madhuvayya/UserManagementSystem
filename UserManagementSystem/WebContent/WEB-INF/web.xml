@@ -125,4 +125,13 @@
 		<servlet-name>dbconnection</servlet-name>
 		<url-pattern>/dbconnection</url-pattern>
 	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>profile</servlet-name>
+		<jsp-file>/jsp/profile.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>profile</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
 </web-app>
