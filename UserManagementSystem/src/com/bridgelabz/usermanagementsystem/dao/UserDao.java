@@ -110,26 +110,6 @@ public class UserDao {
 		return null;
 	}
 
-	public boolean addPermissions(Long userId, int pageId, boolean add, boolean delete, boolean modify, boolean read,
-			String creatorUser) {
-		String addPermissionQuery = "INSERT INTO `permissions` (`user_id`, `page_id`, `add`, `delete`, `modify`, `read`,"
-				+ " `creator_user`) VALUES (?,?,?,?,?,?,?)";
-		try {
-			preparedStatement = connection.prepareStatement(addPermissionQuery);
-			preparedStatement.setLong(1, userId);
-			preparedStatement.setInt(2, pageId);
-			preparedStatement.setBoolean(3, add);
-			preparedStatement.setBoolean(4, delete);
-			preparedStatement.setBoolean(5, modify);
-			preparedStatement.setBoolean(6, read);
-			preparedStatement.setString(7, creatorUser);
-			return preparedStatement.executeUpdate() == 1;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
 	public List<User> getUsersList() throws IOException {
 		try {
 			preparedStatement = connection.prepareStatement(
@@ -235,27 +215,6 @@ public class UserDao {
 		return null;
 	}
 
-	public List<Boolean> getUserPermissions(Long userId, int pageId) {
-		String userPermissionsQuery = "SELECT * FROM permissions WHERE user_id = ? AND page_id = ?";
-		List<Boolean> permissionArray = new ArrayList<>();
-		try {
-			preparedStatement = connection.prepareStatement(userPermissionsQuery);
-			preparedStatement.setLong(1, userId);
-			preparedStatement.setInt(2, pageId);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				permissionArray.add(resultSet.getBoolean(4));
-				permissionArray.add(resultSet.getBoolean(5));
-				permissionArray.add(resultSet.getBoolean(6));
-				permissionArray.add(resultSet.getBoolean(7));
-			}
-			return permissionArray;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public boolean updateUserGeneralDetails(long userId, User user) throws MySQLIntegrityConstraintViolationException {
 		String updateQuery = "UPDATE user_info SET `first_name` = ?, `middle_name` = ?, `last_name` = ?,`dob` = ?, `gender` = ?, `email` = ?, "
 				+ "`country` = ?,`phone_number` = ?, `alternate_number` = ?, `address` = ?, `user_name` = ?, `password` = ?, `user_image` = ?, `role` = ?, `status` = ?,`creator_user` = ? WHERE `id` = ?";
@@ -288,24 +247,20 @@ public class UserDao {
 		return false;
 	}
 
-	public boolean updatePermissions(Long userId, int pageId, boolean add, boolean delete, boolean modify, boolean read,
-			String creatorUser) {
-		String updatePermissionQuery = " UPDATE `ums`.`permissions` SET `add` = ?, `delete` = ?, `modify` = ?, `read` = ?, "
-				+ "`creator_user` = ? WHERE `user_id` = ? AND `page_id` = ? ";
-
+	public List<String> getUserLoginHistory(long userId) {
+		String updatePermissionQuery = "SELECT login_timestamp FROM ums.user_login_history WHERE user_id = ?";		
+		List<String> loginHistory = new  ArrayList<String>(); 
 		try {
 			preparedStatement = connection.prepareStatement(updatePermissionQuery);
-			preparedStatement.setBoolean(1, add);
-			preparedStatement.setBoolean(2, delete);
-			preparedStatement.setBoolean(3, modify);
-			preparedStatement.setBoolean(4, read);
-			preparedStatement.setString(5, creatorUser);
-			preparedStatement.setLong(6, userId);
-			preparedStatement.setInt(7, pageId);
-			return preparedStatement.executeUpdate() == 1;
+			preparedStatement.setLong(1, userId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				loginHistory.add(resultSet.getString(1));
+			}
+			return loginHistory;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false;
+		return null;
 	}
 }

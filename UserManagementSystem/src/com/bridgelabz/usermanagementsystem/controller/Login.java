@@ -28,15 +28,14 @@ public class Login extends HttpServlet {
 		user.setPassword(password);
 
 		UserService userService = new UserService();
-		String isAuthorizedUser = userService.isRegisteredUser(user);
+		long userId = userService.isRegisteredUser(user);
 
-		if (isAuthorizedUser != null) {
-			destinationPath = "dashboard";
+		if (userId != 0) {
+			destinationPath = "UserRoleController";
 
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", userName);
-			httpSession.setAttribute("password", password);
-			request.setAttribute("lastLoginTime", isAuthorizedUser );
+			httpSession.setAttribute("userId", userId);
 		} else {
 			request.setAttribute("message", "Enter registred user name and password.");
 			destinationPath = "login";

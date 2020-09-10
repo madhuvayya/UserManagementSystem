@@ -1,3 +1,6 @@
+<%@page import="com.bridgelabz.usermanagementsystem.model.Permissions"%>
+<%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -21,6 +24,11 @@
 <title>User Management</title>
 </head>
 <body>
+	<%
+		List<String> userHistory = (List<String>) request.getAttribute("userHistory");
+		Permissions permissions = (Permissions) request.getAttribute("permissions");
+		User userGeneralDetails = (User) request.getAttribute("user");
+	%>
 	<div class="dashboard-page-body">
 		<%@include file="header.jsp"%>
 		<div class="sidenav-content">
@@ -29,7 +37,7 @@
 				<div class="content-heading">
 					<div class="page-title">
 						<span>Welcome ${username}</span><br> <span class="last-login">
-							You last logged in on: ${lastLoginTime}</span>
+							You last logged in on:<%=userHistory.get(userHistory.size() - 1)%></span>
 					</div>
 					<div class="home-link">
 						<i class="ti-home"></i><a href="dashboard">Home</a> / Dashboard
@@ -38,7 +46,7 @@
 				<div class="content">
 					<div class="counter-divs">
 						<div class="user-count-display-div">
-							<a href="">
+							<a href="UserList">
 								<div class="count-div">
 									<div class="icon-bg total-user-bg-color">
 										<i class="ti-user"></i>
@@ -93,7 +101,7 @@
 								<div class="graph">graph</div>
 								<div class="percentage-divs">
 									<div>
-										<div>Top locations</div>
+										<div class="graphs-right-titles">Top locations</div>
 										<table>
 											<tbody>
 												<tr>
@@ -116,61 +124,63 @@
 										<div><a href="">See All Locations</a></div>
 									</div>
 									<div>
-										Gender
+										<div class="graphs-right-titles">Gender</div>
+										<table>
+											<tr>
+												<td>Male</td>
+												<td>32%</td>
+											</tr>
+											<tr>
+												<td>
+												<progress id="male-percentage" value="32" max="100"></progress>
+												</td>
+											</tr>
+												<tr>
+												<td>Female</td>
+												<td>32%</td>
+											</tr>
+											<tr>
+												<td>
+												<progress id="female-percentage" value="50" max="100"></progress>
+												</td>
+											</tr>
+										</table>
+									</div>
+									<div>
+										<div class="graphs-right-titles">Age Group</div>
 										<table>
 											<tbody>
 												<tr>
-													<td>
-														<ul class="list-unstyled task-list no-margin">
-															<li class="no-padding no-margin">
-																<p style="color: #5e6773; font-size: 13px;"
-																	class="no-margin">
-																	<label id="lblGender">Male</label> 
-																	<label id="lblPercentage" class="label-percent">68.9%</label>
-																</p>
-																<div
-																	class="progress progress-xs progress-transparent custom-color-lightseagreen no-margin">
-																	<div id="divPercentageBar"
-																		class="progress-bar progress-bar-danger"
-																		role="progressbar" aria-valuemin="0"
-																		aria-valuemax="100" style="width: 68.9%">
-																		<span class="sr-only"> <label
-																			id="lblPercentageBar">68.9%</label>
-																		</span>
-																	</div>
-																</div>
-															</li>
-														</ul>
-													</td>
+												<td style="width:10%;">18-22</td>
+												<td style="width:90%;"><progress id="age" value="50" max="100"></progress></td>
 												</tr>
 												<tr>
-													<td>
-														<ul class="list-unstyled task-list no-margin">
-															<li class="no-padding no-margin">
-																<p style="color: #5e6773; font-size: 13px;"
-																	class="no-margin">
-																	<label id="lblGender">Female</label> 
-																	<label id="lblPercentage" class="label-percent">31.1%</label>
-																</p>
-																<div
-																	class="progress progress-xs progress-transparent custom-color-lightseagreen no-margin">
-																	<div id="divPercentageBar"
-																		class="progress-bar progress-bar-danger"
-																		role="progressbar" aria-valuemin="0"
-																		aria-valuemax="100" style="width: 31.1%">
-																		<span class="sr-only"> <label
-																			id="lblPercentageBar">31.1%</label>
-																		</span>
-																	</div>
-																</div>
-															</li>
-														</ul>
-													</td>
+												<td>23-27</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
 												</tr>
-											</tbody>
+												<tr>
+												<td>28-37</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
+												</tr>
+												<tr>
+												<td>33-37</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
+												</tr>
+												<tr>
+												<td>38-42</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
+												</tr>
+												<tr>
+												<td>over 42</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
+												</tr>
+												<tr>
+												<td>under 18</td>
+												<td><progress id="age" value="50" max="100"></progress></td>
+												</tr>
+											</tbody>																				
 										</table>
 									</div>
-									<div>Age Group</div>
 								</div>
 							</div>
 						</div>
@@ -181,7 +191,27 @@
 									<a href="UserList">Load More</a>
 								</div>
 							</div>
-							<div class="body">body</div>
+							<div class="body user-list-body">
+								<table>
+									<%
+										List<User> userList = (List<User>) request.getAttribute("userList");	
+										  for (User user : userList) { %>
+									<tr>
+										<td>
+											<div class="user-list">
+												<div><img src="data:image/jpg;base64,<%=user.getUserDiplayingImage()%>" 
+										style="width: 30px; height: 30px;padding:0px;margin:50%"/></div>	
+												<div>
+													<a id="edit-deails" href="UserDetails?userId=<%=user.getUserId()%>" style="cursor: pointer;"
+												title="Edit User Details"></a>
+													<span></span>
+												</div>
+											</div>
+										</td>
+									<tr>
+									<% } %>	
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>

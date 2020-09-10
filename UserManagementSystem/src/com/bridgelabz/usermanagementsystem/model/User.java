@@ -21,6 +21,7 @@ public class User {
 	private String userDiplayingImage;
 	private String creatorUser;
 	private long userId;
+	private String creatorStamp;
 
 	public String getFirstName() {
 		return firstName;
@@ -164,5 +165,13 @@ public class User {
 
 	public void setUserId(long userId) {
 		this.userId = userId;
-	}	
+	}
+
+	public String getCreatorStamp() {
+		return creatorStamp;
+	}
+
+	public void setCreatorStamp(String creatorStamp) {
+		this.creatorStamp = creatorStamp;
+	}
 }

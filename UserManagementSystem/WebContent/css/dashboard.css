@@ -156,7 +156,9 @@ a {
     max-width: 100%;
     margin-bottom: 5px;
     font-weight: 700; 
-    background-color: #F8F9FA;   	
+    background-color: #F8F9FA;
+    display: flex;
+    justify-content: space-between;   	
 }
 
 .body {
@@ -184,6 +186,30 @@ a {
 	border-right: 1px solid #eaeff2;		
 }
 
+.graphs-right-titles {
+	margin: 0 0 15px 0;
+    font-size: 15px;
+    font-weight: 600;	
+}
+
+td {
+	font-size: 14px;	
+}
+
+#age {
+  border: none;
+  background: crimson;
+  width:90%;
+}
+
+#age::-webkit-progress-value {
+  background: orange;
+}
+
+#age::-webkit-progress-bar {
+  background: white;
+}
+
 .percentage-divs {
 	width:33%;
 	padding: 15px;	
@@ -195,3 +221,16 @@ a {
 .percentage-divs div {
 	margin-bottom:5px;
 }
+
+.user-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-bottom: 1px solid #e9eef2;
+    padding: 25px;		
+}
+
+.user-list-body {
+	overflow-y: scroll;
+}
+
