@@ -1,5 +1,7 @@
+<%@page import="com.sun.org.apache.bcel.internal.generic.INEG"%>
 <%@page import="com.bridgelabz.usermanagementsystem.model.Permissions"%>
 <%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
+<%@page import="com.bridgelabz.usermanagementsystem.model.Country"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -9,8 +11,8 @@
 <meta charset="ISO-8859-1">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath}/resources/images/mi-logo.jpg">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap-4.5.2-dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/header.css">
 <link rel="stylesheet"
@@ -25,9 +27,16 @@
 </head>
 <body>
 	<%
-		List<String> userHistory = (List<String>) request.getAttribute("userHistory");
-		Permissions permissions = (Permissions) request.getAttribute("permissions");
-		User userGeneralDetails = (User) request.getAttribute("user");
+		List<String> userHistory = (List<String>) session.getAttribute("userHistory");
+		Permissions permissions = (Permissions) session.getAttribute("permissions");
+		User userGeneralDetails = (User) session.getAttribute("user");
+		List<User> userList = (List<User>) session.getAttribute("userList");
+		List<Integer> usersCounter = (List<Integer>)  session.getAttribute("usersCounter");
+		List<Country> numberOfUsersByCountry = (List<Country>) session.getAttribute("numberOfUsersByCountry");
+		List<Double> usersPercentegeListBasedOnGender = (List<Double>) session.getAttribute("usersPercentegeListBasedOnGender");
+		List<Integer> numberOfUsersByAgeGroup = (List<Integer>)  session.getAttribute("numberOfUsersByAgeGroup");
+		List<String> registeredMonths = (List<String>) session.getAttribute("registeredMonths");
+		List<Integer> registeredUsersByMonths = (List<Integer>) session.getAttribute("registeredUsersByMonths");
 	%>
 	<div class="dashboard-page-body">
 		<%@include file="header.jsp"%>
@@ -52,7 +61,7 @@
 										<i class="ti-user"></i>
 									</div>
 									<div>
-										<b class="title">TOTAL</b> <br> <span class="value">164</span>
+										<b class="title">TOTAL</b> <br> <span class="value"><%=usersCounter.get(0)%></span>
 									</div>
 								</div>
 							</a>
@@ -64,7 +73,7 @@
 										<i class="ti-check"></i>
 									</div>
 									<div>
-										<b class="title">ACTIVE</b> <br> <span class="value">163</span>
+										<b class="title">ACTIVE</b> <br> <span class="value"><%=usersCounter.get(1)%></span>
 									</div>
 								</div>
 							</a>
@@ -76,7 +85,7 @@
 										<i class="ti-na"></i>
 									</div>
 									<div>
-										<b class="title">INACTIVE</b> <br> <span class="value">1</span>
+										<b class="title">INACTIVE</b> <br> <span class="value"><%=usersCounter.get(2)%></span>
 									</div>
 								</div>
 							</a>
@@ -98,27 +107,28 @@
 						<div class="all-time-registrations">
 							<div class="header-title">All Time Registration History</div>
 							<div class="body">
-								<div class="graph">graph</div>
+								<div class="graph">
+										<div>
+											<button class="graph-button">All Time</button>
+											<button class="graph-button">2020</button>
+											<button class="graph-button">September</button>																						
+										</div>
+										<div class="graph-div">	
+									      <canvas id="registrations-graph"></canvas>
+									    </div> 
+								</div>
 								<div class="percentage-divs">
 									<div>
 										<div class="graphs-right-titles">Top locations</div>
 										<table>
 											<tbody>
+												<%  for(int i = 0; i <= 2;i++ ) { %>
 												<tr>
-													<td style="width:10%;">1</td>
-													<td style="width:80%;">madhu</td>
-													<td style="width:10%;">26</td>
+													<td style="width:10%;"><%= i+1 %></td>
+													<td style="width:80%;"><%=numberOfUsersByCountry.get(i).getCountryName()%></td>
+													<td style="width:10%;"><%=numberOfUsersByCountry.get(i).getNumberOfUsers()%></td>
 												</tr>
-												<tr>
-													<td>2</td>
-													<td></td>
-													<td></td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td></td>
-													<td></td>
-												</tr>
+												<% } %>
 											</tbody>
 										</table>
 										<div><a href="">See All Locations</a></div>
@@ -127,59 +137,30 @@
 										<div class="graphs-right-titles">Gender</div>
 										<table>
 											<tr>
-												<td>Male</td>
-												<td>32%</td>
+												<td style="width:80%;">Male</td>
+												<td style="width:10%;"><%=usersPercentegeListBasedOnGender.get(0)%></td>
 											</tr>
 											<tr>
 												<td>
-												<progress id="male-percentage" value="32" max="100"></progress>
+												<progress id="male-percentage" value="<%=usersPercentegeListBasedOnGender.get(0)%>" max="100"></progress>
 												</td>
 											</tr>
 												<tr>
-												<td>Female</td>
-												<td>32%</td>
+												<td style="width:80%;">Female</td>
+												<td style="width:10%;"><%=usersPercentegeListBasedOnGender.get(1)%></td>
 											</tr>
 											<tr>
 												<td>
-												<progress id="female-percentage" value="50" max="100"></progress>
+												<progress id="female-percentage" value="<%=usersPercentegeListBasedOnGender.get(1)%>" max="100"></progress>
 												</td>
 											</tr>
 										</table>
 									</div>
 									<div>
 										<div class="graphs-right-titles">Age Group</div>
-										<table>
-											<tbody>
-												<tr>
-												<td style="width:10%;">18-22</td>
-												<td style="width:90%;"><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>23-27</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>28-37</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>33-37</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>38-42</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>over 42</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-												<tr>
-												<td>under 18</td>
-												<td><progress id="age" value="50" max="100"></progress></td>
-												</tr>
-											</tbody>																				
-										</table>
+										<div>	
+											<canvas id="registered-users-horizantal-bar"></canvas>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -188,23 +169,21 @@
 							<div class="header-title">
 								<div>Latest Registration</div>
 								<div>
-									<a href="UserList">Load More</a>
+									<a id="load-more-anchor" href="UserList">Load More</a>
 								</div>
 							</div>
 							<div class="body user-list-body">
 								<table>
-									<%
-										List<User> userList = (List<User>) request.getAttribute("userList");	
-										  for (User user : userList) { %>
+									<%  for(int i = userList.size()-1; i >= userList.size() - 6;i-- ) { %>
 									<tr>
 										<td>
 											<div class="user-list">
-												<div><img src="data:image/jpg;base64,<%=user.getUserDiplayingImage()%>" 
-										style="width: 30px; height: 30px;padding:0px;margin:50%"/></div>	
+												<div><img class="user-image" src="data:image/jpg;base64,<%=userList.get(i).getUserDiplayingImage()%>"/>      				
+												</div>	
 												<div>
-													<a id="edit-deails" href="UserDetails?userId=<%=user.getUserId()%>" style="cursor: pointer;"
-												title="Edit User Details"></a>
-													<span></span>
+													<a id="edit-deails" href="UserDetails?userId=<%=userList.get(i).getUserId()%>"
+												title="Edit User Details"><%= userList.get(i).getFirstName() +" "+ userList.get(i).getLastName()%></a><br>
+													<span class="registered-time"><%=userList.get(i).getCreatorStamp()%></span>
 												</div>
 											</div>
 										</td>
@@ -218,8 +197,16 @@
 			</div>
 		</div>
 	</div>
+	<script src="${pageContext.request.contextPath}/js/chartScripts.js"></script>
 	<script>
-		
+    if('${registeredUsersByMonths}' !== '') {
+    	getUserRegistrationGraph('${registeredMonths}',${registeredUsersByMonths});
+    }
+
+    if('${numberOfUsersByAgeGroup}' !== '') {
+    	getUsersAgeGroupHorizantalBar(${numberOfUsersByAgeGroup});
+    }
+    
 	<%@include file="../js/dropdown.js" %>
 		
 	<%@include file="../js/showOptions.js" %>

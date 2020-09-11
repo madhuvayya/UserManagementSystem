@@ -1,3 +1,4 @@
+<%@page import="com.bridgelabz.usermanagementsystem.model.Permissions"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -18,6 +19,9 @@
 <title>User Management</title>
 </head>
 <body>
+	<%
+		Permissions permissions = (Permissions) session.getAttribute("permissions");
+	%>
 	<div class="main-container">
 		<%@include file="header.jsp"%>
 		<div class="container">
@@ -40,7 +44,10 @@
                                         <span class="inputLabel">Add Permission</span>
                                     </td>
                                     <td>
-                                        <input name="add-permission" type="checkbox" id="add-permission" class="js-switch" disabled="disabled" data-size="small" checked="checked" data-switchery="true" readonly="" style="display: none;"><span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;"><small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
+                                        <input name="add-permission" type="checkbox" id="add-permission" class="js-switch" disabled="disabled" data-size="small" <%if (permissions.getWebPage1Add()) {%>
+										checked="checked" <% } %> data-switchery="true" readonly="" style="display: none;">
+										<span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;">
+										<small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -48,7 +55,10 @@
                                         <span class="inputLabel">Delete Permission</span>
                                     </td>
                                     <td>
-                                        <input name="delete-permission" type="checkbox" id="delete-permission" class="js-switch" disabled="disabled" data-size="small" checked="checked" data-switchery="true" readonly="" style="display: none;"><span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;"><small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
+                                        <input name="delete-permission" type="checkbox" id="delete-permission" class="js-switch" disabled="disabled" data-size="small" <%if (permissions.getWebPage1Delete()) {%>
+										checked="checked" <% } %> data-switchery="true" readonly="" style="display: none;">
+										<span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;">
+										<small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -56,7 +66,10 @@
                                         <span class="inputLabel">Modify Permission</span>
                                     </td>
                                     <td>
-                                        <input name="modify-permission" type="checkbox" id="modify-permission" class="js-switch" disabled="disabled" data-size="small" checked="checked" data-switchery="true" readonly="" style="display: none;"><span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;"><small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
+                                        <input name="modify-permission" type="checkbox" id="modify-permission" class="js-switch" disabled="disabled" data-size="small" <%if (permissions.getWebPage1Modify()) {%>
+										checked="checked" <% } %> data-switchery="true" readonly="" style="display: none;">
+										<span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;">
+										<small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -64,7 +77,10 @@
                                         <span class="inputLabel">Read Permission</span>
                                     </td>
                                     <td>
-                                        <input name="read-permission" type="checkbox" id="read-permission" class="js-switch" disabled="disabled" data-size="small" checked="checked" data-switchery="true" readonly="" style="display: none;"><span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;"><small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
+                                        <input name="read-permission" type="checkbox" id="read-permission" class="js-switch" disabled="disabled" data-size="small" <%if (permissions.getWebPage1Read()) {%>
+										checked="checked" <% } %> data-switchery="true" readonly="" style="display: none;">
+										<span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;">
+										<small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
                                     </td>
                                 </tr>
                             </tbody></table>

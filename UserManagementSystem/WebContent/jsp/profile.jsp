@@ -38,8 +38,8 @@
 					<div class="profile-left">
 						<div class="profile-left-image-bg">
 							<div class="profile-img">
-								<img src="${pageContext.request.contextPath}/resources/images/image.png" alt="profile-img">
-								<h3 class="name"></h3>
+								<div "image-div"><img src="data:image/jpg;base64,${user.getUserDiplayingImage()}" alt="profile-img"></div>
+								<div><h3 class="name">${user.getFirstName()} ${user.getLastName()}</h3></div>
 							</div>
 						</div>
 						<div class="basic-info">
@@ -65,49 +65,49 @@
 						<div class="general-information">
 							<table>
 								<tr>
-									<td>First Name</td>
-									<td></td>
+									<td style="width:90%">First Name</td>
+									<td>${user.getFirstName()}</td>
 								</tr>
 								<tr>
-									<td>Middle Name</td>
-									<td></td>
+									<td style="width:90%">Middle Name</td>
+									<td>${user.getMiddleName()}</td>
 								</tr>
 								<tr>
-									<td>Last Name</td>
-									<td></td>
+									<td style="width:90%">Last Name</td>
+									<td>${user.getLastName()}</td>
 								</tr>
 								<tr>
-									<td>Date of Birth</td>
-									<td></td>
+									<td style="width:90%">Date of Birth</td>
+									<td>${user.getDob()}</td>
 								</tr>
 								<tr>
 									<td>Gender</td>
-									<td></td>
+									<td>${user.getGender()}</td>
 								</tr>
 								<tr>
-									<td>Country</td>
-									<td></td>
+									<td style="width:90%">Country</td>
+									<td>${user.getCountry()}</td>
 								</tr>
 								<tr>
 									<td>Phone</td>
-									<td></td>
+									<td>${user.getPhoneNumber()}</td>
 								</tr>
 								<tr>
-									<td>Phone + Ext</td>
-									<td></td>
+									<td style="width:90%">Phone + Ext</td>
+									<td>${user.getAlternateNumber()}</td>
 								</tr>
 								<tr>
-									<td>Address</td>
-									<td></td>
+									<td style="width:90%">Address</td>
+									<td>${user.getAddress()}</td>
 								</tr>																																																								
 							</table>																																																								
 						</div>	
 						<div class="login-history" style="display:none;">
 							<div><i class="ti-time"></i>
 							Login history is displayed prior to the last login</div>
-							<div>
-							<c:forEach items="${countrylist}" var="country">
-								<div><i class="ti-angle-right"></i></div><div></div>
+							<div class="login-history-list">
+							<c:forEach items="${userHistory}" var="loginTime">
+								<div><i class="ti-angle-right"></i>${loginTime}</div>
 							</c:forEach>
 							</div>
 						</div>

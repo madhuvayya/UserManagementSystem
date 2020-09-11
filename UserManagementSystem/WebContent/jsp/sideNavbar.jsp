@@ -1,8 +1,8 @@
 <div id="sidebar" class="sidebar">
-	<div>
-		<a href="#" id="dashboard"> <i class="ti-dashboard"></i> <span
-			class="title"> <a href="dashboard"> Dashboard </a>
-		</span> <span class="label label-success">UPDATED</span></a>
+	<div id="dashboard">
+		<i class="ti-dashboard"></i> 
+		<span class="title"> <a href="UserRoleController"> Dashboard </a>
+		</span> <span class="label label-success">UPDATED</span>
 	</div>
 	<div onclick="showOptions('adminOptions')" class="onclick-div">
 		<i class="ti-files"></i> <span class="title">Webpages</span>
@@ -39,7 +39,7 @@
 	</div>
 	
 	<div>
-		<a href="#"> <i class="ti-id-badge"></i> <span class="title">Profile</span>
+		<a href="profile"> <i class="ti-id-badge"></i> <span class="title">Profile</span>
 		</a>
 	</div>
 

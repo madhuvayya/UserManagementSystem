@@ -114,8 +114,15 @@ a {
 }
 
 .profile-img {
+	color: #ffffff;
 	display: flex;
+	flex-direction: colmn;
 	justify-content: center;
+	align-items: center;
+}
+
+.image-div {
+	align-self: center;
 }
 
 .profile-img img {
@@ -184,8 +191,24 @@ a {
 	padding: 25px 15px;
 }
 
+.login-history-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 15px;
+}
 
+.login-history-list i {
+	margin-right: 10px;
+}
 
+.login-history-list div {
+	padding: 5px;
+}
+
+tr {
+	padding: 10px;
+}
 
 @media ( min-width : 280px) and (max-width: 480px) {
 	.container {

@@ -4,7 +4,7 @@
 	</div>
 	<div class="logged-info" onclick="dropdown('dropdown-list')">
 		<div class="dropdown">
-			<img src="" alt="image" class="dropbtn" /> ${username}
+			<span class="dropbtn"><img src="" alt="image"/> ${username}</span>
 			<div id="dropdown-list" class="dropdown-content">
    				<span class="profile"><a href=""><i class='ti-user'></i>&nbsp Profile</a></span>
     			<span class="logout"><a href="logout"><i class='ti-power-off'></i>&nbsp Logout</a></span>

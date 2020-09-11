@@ -10,11 +10,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
+import com.bridgelabz.usermanagementsystem.model.Country;
 import com.bridgelabz.usermanagementsystem.model.User;
 
 public class UserDao {
@@ -113,7 +116,7 @@ public class UserDao {
 	public List<User> getUsersList() throws IOException {
 		try {
 			preparedStatement = connection.prepareStatement(
-					"SELECT user_image,first_name,last_name,email,dob,status,role,id FROM ums.user_info;");
+					"SELECT user_image,first_name,last_name,email,dob,status,role,id,DATE_FORMAT(creator_stamp, \"%b %e %Y %r\") FROM ums.user_info;");
 			ResultSet resultSet = preparedStatement.executeQuery();
 			List<User> usersList = new ArrayList<User>();
 			while (resultSet.next()) {
@@ -142,6 +145,7 @@ public class UserDao {
 				user.setStatus(resultSet.getString(6));
 				user.setRole(resultSet.getString(7));
 				user.setUserId(resultSet.getLong(8));
+				user.setCreatorStamp(resultSet.getString(9));
 				usersList.add(user);
 			}
 			return usersList;
@@ -248,8 +252,8 @@ public class UserDao {
 	}
 
 	public List<String> getUserLoginHistory(long userId) {
-		String updatePermissionQuery = "SELECT login_timestamp FROM ums.user_login_history WHERE user_id = ?";		
-		List<String> loginHistory = new  ArrayList<String>(); 
+		String updatePermissionQuery = "SELECT DATE_FORMAT(login_timestamp, \"%b %e %Y %r\") FROM ums.user_login_history WHERE user_id = ?";
+		List<String> loginHistory = new ArrayList<String>();
 		try {
 			preparedStatement = connection.prepareStatement(updatePermissionQuery);
 			preparedStatement.setLong(1, userId);
@@ -258,6 +262,134 @@ public class UserDao {
 				loginHistory.add(resultSet.getString(1));
 			}
 			return loginHistory;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Integer> getUsersCount() {
+		String totalUsersQuery = "SELECT count(*) FROM ums.user_info;";
+		String numberOfActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'active'; ";
+		String numberOfInActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'inactive'; ";
+		List<Integer> usersCounter = new ArrayList<Integer>();
+		ResultSet resultSet = null;
+		try {
+			preparedStatement = connection.prepareStatement(totalUsersQuery);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				usersCounter.add(Integer.parseInt(resultSet.getString(1)));
+				resultSet = null;
+			}
+			preparedStatement = connection.prepareStatement(numberOfActiveUsersQuery);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				usersCounter.add(Integer.parseInt(resultSet.getString(1)));
+				resultSet = null;
+			}
+			preparedStatement = connection.prepareStatement(numberOfInActiveUsersQuery);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				usersCounter.add(Integer.parseInt(resultSet.getString(1)));
+				resultSet = null;
+			}
+			return usersCounter;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public List<Country> numberOfUsersByCountry() {
+		String numberOfUsersByCountryQuery = "select count(*), country from ums.user_info group by country order by count(*) desc;";
+		List<Country> numberOfUsersByCountryList = new ArrayList<Country>();
+		try {
+			preparedStatement = connection.prepareStatement(numberOfUsersByCountryQuery);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				Country country = new Country();
+				country.setNumberOfUsers(resultSet.getInt(1));
+				country.setCountryName(resultSet.getString(2));
+				numberOfUsersByCountryList.add(country);
+			}
+			return numberOfUsersByCountryList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Double getNumberOfUsersBasedOnGender(String gender) {
+		String percentageOfUsersBasedOnGenderQuery = " select 100 * count(*) / (select count(*) from ums.user_info) from ums.user_info where gender = ?;";
+		try {
+			preparedStatement = connection.prepareStatement(percentageOfUsersBasedOnGenderQuery);
+			preparedStatement.setString(1, gender);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				return resultSet.getDouble(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public Integer getNumberOfUsersBasedOnAgeGroup(int... age) {
+		if (age.length == 2) {
+			String numberOfUsersByGroup = "Select count(*) from ums.user_info where year(now())-year(dob) between ? and ?;";
+			try {
+				preparedStatement = connection.prepareStatement(numberOfUsersByGroup);
+				preparedStatement.setInt(1, age[0]);
+				preparedStatement.setInt(2, age[1]);
+
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					return resultSet.getInt(1);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (age[0] == 42) {
+			String numberOfUsersByGreaterAge = "Select count(*) from ums.user_info where year(now())-year(dob) > ? ;";
+			try {
+				preparedStatement = connection.prepareStatement(numberOfUsersByGreaterAge);
+				preparedStatement.setInt(1, age[0]);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					return resultSet.getInt(1);
+				}				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		if (age[0] == 18) {
+			String numberOfUsersByGreaterAge = "Select count(*) from ums.user_info where year(now())-year(dob) < ? ;";
+			try {
+				preparedStatement = connection.prepareStatement(numberOfUsersByGreaterAge);
+				preparedStatement.setInt(1, age[0]);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					return resultSet.getInt(1);
+				}				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+
+	public Map<Integer, String> getNumberOfUsersBasedOnBasedRegistrations() {
+		String numberOfUsersBasedOnBasedRegistrations = "SELECT count(*) as users , date_format(creator_stamp,\"%b %Y\") as monthYear "
+				+ "FROM user_info GROUP BY date_format(creator_stamp,\"%m %Y\");";
+		Map<Integer, String> numberOfRegistrationsByMonth = new HashMap<Integer, String>();
+		try {
+			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnBasedRegistrations);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				numberOfRegistrationsByMonth.put(resultSet.getInt(1), resultSet.getString(2));
+			}
+			return numberOfRegistrationsByMonth;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
