@@ -378,15 +378,15 @@
 				return true;
 			}
 		}
-	<%@include file="../js/dropdown.js" %>
+	<%@include file="../scripts/dropdown.js" %>
 		
-	<%@include file="../js/showOptions.js" %>
+	<%@include file="../scripts/showOptions.js" %>
 		
-	<%@include file="../js/toggleSideNavBar.js" %>
+	<%@include file="../scripts/toggleSideNavBar.js" %>
 		
-	<%@include file="../js/CurrentDate.js" %>
+	<%@include file="../scripts/CurrentDate.js" %>
 		
-	<%@include file="../js/UserRolePermissions.js" %>
+	<%@include file="../scripts/UserRolePermissions.js" %>
 		
 	</script>
 </body>

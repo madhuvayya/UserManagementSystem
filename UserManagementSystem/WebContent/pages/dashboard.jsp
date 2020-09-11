@@ -197,7 +197,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="${pageContext.request.contextPath}/js/chartScripts.js"></script>
+	<script src="${pageContext.request.contextPath}/scripts/chartScripts.js"></script>
 	<script>
     if('${registeredUsersByMonths}' !== '') {
     	getUserRegistrationGraph('${registeredMonths}',${registeredUsersByMonths});
@@ -207,13 +207,13 @@
     	getUsersAgeGroupHorizantalBar(${numberOfUsersByAgeGroup});
     }
     
-	<%@include file="../js/dropdown.js" %>
+	<%@include file="../scripts/dropdown.js" %>
 		
-	<%@include file="../js/showOptions.js" %>
+	<%@include file="../scripts/showOptions.js" %>
 		
-	<%@include file="../js/toggleSideNavBar.js" %>
+	<%@include file="../scripts/toggleSideNavBar.js" %>
 		
-	<%@include file="../js/UserRolePermissions.js" %>
+	<%@include file="../scripts/UserRolePermissions.js" %>
 		
 	</script>
 </body>
