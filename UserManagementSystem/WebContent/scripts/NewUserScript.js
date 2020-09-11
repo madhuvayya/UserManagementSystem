@@ -1,3 +1,20 @@
+currentDate = () => {
+	var currentDate = new Date();
+	var date = currentDate.getDate();
+	var month = currentDate.getMonth() + 1; //January is 0!
+	var year = currentDate.getFullYear();
+
+	if (date < 10) {
+		date = '0' + date;
+	}
+	if (month < 10) {
+		month = '0' + month;
+	}
+
+	var today = year + '-' + month + '-' + date;
+	document.getElementById("dob").setAttribute("max", today);
+}
+
 var addingCheckBoxes = ["dashboard_add", "user_info_add", "settings_add","w1_add","w2_add","w3_add"];
 var deleteCheckBoxes = ["dashboard_delete", "user_info_delete", "settings_delete","w1_delete","w2_delete","w3_delete"];
 var modifyCheckBoxes = ["dashboard_modify", "user_info_modify", "settings_modify","w1_modify","w2_modify","w3_modify"];
