@@ -117,8 +117,8 @@
 				</div>
 			</div>
 		</div>
-	<script type="text/javascript">
-	
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>		
+	<script type="text/javascript">	
 	$(function(){
 			$('.aDelete').on('click', function(){
 				var panelId = $(this).attr('data-modelid');
@@ -130,18 +130,9 @@
 			})	
 	})
 	
-	
 	$(document).ready(function() {
 		$('#myTable').DataTable();
 	});
-	
-	
-	<%@include file="../scripts/dropdown.js" %>
-		
-	<%@include file="../scripts/showOptions.js" %>
-		
-	<%@include file="../scripts/toggleSideNavBar.js" %>
-		
 	</script>
 </body>
 </html>

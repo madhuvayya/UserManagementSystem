@@ -198,23 +198,15 @@
 		</div>
 	</div>
 	<script src="${pageContext.request.contextPath}/scripts/chartScripts.js"></script>
-	<script>
+		<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
+	<script type="text/javascript">
     if('${registeredUsersByMonths}' !== '') {
     	getUserRegistrationGraph('${registeredMonths}',${registeredUsersByMonths});
     }
 
     if('${numberOfUsersByAgeGroup}' !== '') {
     	getUsersAgeGroupHorizantalBar(${numberOfUsersByAgeGroup});
-    }
-    
-	<%@include file="../scripts/dropdown.js" %>
-		
-	<%@include file="../scripts/showOptions.js" %>
-		
-	<%@include file="../scripts/toggleSideNavBar.js" %>
-		
-	<%@include file="../scripts/UserRolePermissions.js" %>
-		
+    }		
 	</script>
 </body>
 </html>

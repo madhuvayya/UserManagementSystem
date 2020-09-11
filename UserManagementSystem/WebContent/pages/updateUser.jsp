@@ -352,6 +352,8 @@
 	</div>
 	<script src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/css/dropify/dist/js/dropify.min.js"></script>
+	<script src ="${pageContext.request.contextPath}/scripts/NewUserScript.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>	
 	<script type="text/javascript">
 		
 		$(document).ready(function() {
@@ -377,17 +379,7 @@
 			} else {
 				return true;
 			}
-		}
-	<%@include file="../scripts/dropdown.js" %>
-		
-	<%@include file="../scripts/showOptions.js" %>
-		
-	<%@include file="../scripts/toggleSideNavBar.js" %>
-		
-	<%@include file="../scripts/CurrentDate.js" %>
-		
-	<%@include file="../scripts/UserRolePermissions.js" %>
-		
+		}		
 	</script>
 </body>
 </html>

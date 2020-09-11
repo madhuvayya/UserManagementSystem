@@ -116,6 +116,7 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>	
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('.general-information-span').on('click', function(){
@@ -132,13 +133,6 @@
 			$('.general-information-span').removeClass('general-information-span-active');
 		})	
 	})
-		
-	<%@include file="../scripts/dropdown.js" %>
-		
-	<%@include file="../scripts/showOptions.js" %>
-		
-	<%@include file="../scripts/toggleSideNavBar.js" %>
-		
 	</script>
 </body>
 </html>
