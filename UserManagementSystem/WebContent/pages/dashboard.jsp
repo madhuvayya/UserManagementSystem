@@ -3,12 +3,15 @@
 <%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
 <%@page import="com.bridgelabz.usermanagementsystem.model.Country"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Formatter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/png"
 	href="${pageContext.request.contextPath}/resources/images/mi-logo.jpg">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
@@ -110,8 +113,8 @@
 								<div class="graph">
 										<div>
 											<button class="graph-button">All Time</button>
-											<button class="graph-button">2020</button>
-											<button class="graph-button">September</button>																						
+											<button class="graph-button"><%=Calendar.getInstance().get(Calendar.YEAR)%></button>
+											<button class="graph-button"><%=new Formatter().format("%tB", Calendar.getInstance())%></button>																						
 										</div>
 										<div class="graph-div">	
 									      <canvas id="registrations-graph"></canvas>
@@ -133,7 +136,7 @@
 										</table>
 										<div><a href="">See All Locations</a></div>
 									</div>
-									<div>
+									<div class="gender-div">
 										<div class="graphs-right-titles">Gender</div>
 										<table>
 											<tr>
@@ -142,7 +145,7 @@
 											</tr>
 											<tr>
 												<td>
-												<progress id="male-percentage" value="<%=usersPercentegeListBasedOnGender.get(0)%>" max="100"></progress>
+												<progress id="age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(0)%>" max="100"></progress>
 												</td>
 											</tr>
 												<tr>
@@ -151,14 +154,14 @@
 											</tr>
 											<tr>
 												<td>
-												<progress id="female-percentage" value="<%=usersPercentegeListBasedOnGender.get(1)%>" max="100"></progress>
+												<progress id="age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(1)%>" max="100"></progress>
 												</td>
 											</tr>
 										</table>
 									</div>
 									<div>
 										<div class="graphs-right-titles">Age Group</div>
-										<div>	
+										<div style="margin-bottom: -30px">	
 											<canvas id="registered-users-horizantal-bar"></canvas>
 										</div>
 									</div>

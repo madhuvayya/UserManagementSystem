@@ -30,7 +30,7 @@ a {
 
 .main-content {
 	width: 100%;
-	height: 550px;
+	height: 500px;
 	overflow-y: scroll;	
 }
 
@@ -165,14 +165,14 @@ a {
 }
 
 .body {
- 	padding-bottom: 15px;	
-	display: flex;
+ 	padding-bottom: 15px;
 	width: 100%;
 	height: 100%;
+	display: flex;	
 	flex-wrap: wrap;
-	justify-content: space-between;
-	padding-left: 20px;
-    padding-right: 20px;
+	justify-content: space-between;	
+	padding-left: 10px;
+    padding-right: 10px;
 	background-color: #ffffff;    	
 }
 
@@ -188,8 +188,9 @@ a {
 .graph {
 	display: flex;
 	flex-direction: column;
-	width:66%;
-	padding: 15px;
+	width:60%;
+	height: 100%;
+	padding: 10px;
 	border-right: 1px solid #eaeff2;		
 }
 
@@ -224,16 +225,18 @@ td {
   height: 10px;
 }
 
-#age::-webkit-progress-value {
-  background: #F9C97B;
+.gender-div {
+	width: 90%;
 }
 
-#age::-webkit-progress-bar {
-  background: white;
+#age-progress-bar {
+	display: inline-block;
+    vertical-align: baseline;
+    width: 150%;
 }
 
 .percentage-divs {
-	width:33%;
+	width: 38%;
 	padding: 10px;	
 	display: flex;
 	flex-direction: column;
@@ -308,4 +311,47 @@ td {
   background: #F0F2F4; 
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+	.sidenav-content {
+    	flex-direction: column;
+	} 
+	.sidebar {
+		width: 100%;
+		height: 100%;
+	}
+	.user-count-display-div {
+		width: 100%;
+	}
+	.count-div {
+		width: 100%;
+	}
+	.registrations-divs {
+		flex-direction: column;
+	}
+	
+	.all-time-registrations {
+		width:100%;
+	}
 
+	.all-time-registrations .body {
+		flex-wrap: nowrap;
+	    flex-direction: column;
+	    margin: 15px;
+	}
+	
+	.graph {
+		width:100%;
+	}
+	
+	.percentage-divs {
+		width:100%;
+	}
+	
+	#age-progress-bar {
+		width: 100%;
+	}
+	
+	.latest-registrations {
+		width: 100%;
+	}
+}
