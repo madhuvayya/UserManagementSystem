@@ -11,22 +11,15 @@
 	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap-4.5.2-dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<link rel="icon" type="image/png"
-	href="${pageContext.request.contextPath}/resources/images/mi-logo.png">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/header.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/sideNavbar.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/users.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/images/mi-logo.png">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/sideNavbar.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/users.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/themify-icons.css">
 <title>User Management</title>
 </head>
 <body>

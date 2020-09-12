@@ -201,7 +201,7 @@
 		</div>
 	</div>
 	<script src="${pageContext.request.contextPath}/scripts/chartScripts.js"></script>
-		<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
 	<script type="text/javascript">
     if('${registeredUsersByMonths}' !== '') {
     	getUserRegistrationGraph('${registeredMonths}',${registeredUsersByMonths});

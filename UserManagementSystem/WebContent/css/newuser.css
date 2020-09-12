@@ -28,7 +28,7 @@ body {
 
 .main-content {
 	width: 100%;
-	height: 550px;
+	height: 95vh;
 	background: #F5F6F9;
 	overflow-x: hidden;
 	overflow-y: scroll;
