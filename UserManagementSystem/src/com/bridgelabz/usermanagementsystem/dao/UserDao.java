@@ -395,4 +395,40 @@ public class UserDao {
 		}
 		return null;
 	}
+
+	public boolean updateFailedAttempts(String userName) {
+		String failedLoginUpdateQuery = "UPDATE ums.user_info SET failed_login_attempts = failed_login_attempts + 1 WHERE user_name = ?;";
+		try {
+			preparedStatement = connection.prepareStatement(failedLoginUpdateQuery);
+			preparedStatement.setString(1, userName);
+			return preparedStatement.executeUpdate() == 1;				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;		
+	}
+
+	public boolean updateStatus(String userName) {
+		String updateUserStatusQuery = "UPDATE ums.user_info SET status = 'inactive' WHERE user_name = ? AND failed_login_attempts = 3;";
+		try {
+			preparedStatement = connection.prepareStatement(updateUserStatusQuery);
+			preparedStatement.setString(1, userName);
+			return preparedStatement.executeUpdate() == 1;				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;				
+	}
+
+	public boolean removeInactiveStatus(long userId) {
+		String removeInactiveStatusQuery = "UPDATE ums.user_info SET status = 'active',failed_login_attempts = 0 WHERE id = ?";
+		try {
+			preparedStatement = connection.prepareStatement(removeInactiveStatusQuery);
+			preparedStatement.setLong(1, userId);
+			return preparedStatement.executeUpdate() == 1;				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

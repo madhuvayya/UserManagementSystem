@@ -169,4 +169,13 @@ public class UserService {
 	public Map<Integer, String> getNumberOfUsersBasedOnBasedRegistrations() {
 		return userDao.getNumberOfUsersBasedOnBasedRegistrations();
 	}
+
+	public void updateFailedAttempts(String userName) {
+		if(userDao.updateFailedAttempts(userName))
+			userDao.updateStatus(userName);
+	}
+
+	public boolean removeInactiveStatus(long userId) {
+		return userDao.removeInactiveStatus(userId);		
+	}
 }

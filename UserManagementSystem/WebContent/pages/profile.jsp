@@ -38,7 +38,7 @@
 					<div class="profile-left">
 						<div class="profile-left-image-bg">
 							<div class="profile-img">
-								<div "image-div"><img src="data:image/jpg;base64,${user.getUserDiplayingImage()}" alt="profile-img"></div>
+								<div class="image-div"><img src="data:image/jpg;base64,${user.getUserDiplayingImage()}" alt="profile-img"></div>
 								<div><h3 class="name">${user.getFirstName()} ${user.getLastName()}</h3></div>
 							</div>
 						</div>

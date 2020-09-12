@@ -33,10 +33,12 @@ public class Login extends HttpServlet {
 		if (userId != 0) {
 			destinationPath = "UserRoleController";
 
+			userService.removeInactiveStatus(userId);
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", userName);
 			httpSession.setAttribute("userId", userId);
 		} else {
+			userService.updateFailedAttempts(userName);
 			request.setAttribute("message", "Enter registred user name and password.");
 			destinationPath = "login";
 		}
