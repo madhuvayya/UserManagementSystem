@@ -10,14 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bridgelabz.usermanagementsystem.service.UserService;
+
 @WebServlet("/logout")
 public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();  
+		HttpSession session=request.getSession();
+		Long userId = (Long) session.getAttribute("userId");
 		
+		UserService userService = new UserService();
+		userService.setLogoutTime(userId);
 		session.invalidate();
         
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("login");

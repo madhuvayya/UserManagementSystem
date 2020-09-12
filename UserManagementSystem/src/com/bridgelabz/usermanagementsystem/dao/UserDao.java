@@ -44,7 +44,7 @@ public class UserDao {
 	}
 
 	public boolean storeUserLoginTime(long userId) {
-		String addLoginTime = "INSERT INTO `user_login_history` (`user_id`) VALUES (?)";
+		String addLoginTime = "INSERT INTO `user_log_history` (`user_id`) VALUES (?)";
 		try {
 			preparedStatement = connection.prepareStatement(addLoginTime);
 			preparedStatement.setLong(1, userId);
@@ -56,7 +56,7 @@ public class UserDao {
 	}
 
 	public String getUserLastLoginTime(long userId) {
-		String getLastLogin = "SELECT MAX(login_timestamp) FROM user_login_history WHERE user_id = ?";
+		String getLastLogin = "SELECT MAX(login_timestamp) FROM user_log_history WHERE user_id = ?";
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(getLastLogin);
 			preparedStatement.setLong(1, userId);
@@ -252,7 +252,7 @@ public class UserDao {
 	}
 
 	public List<String> getUserLoginHistory(long userId) {
-		String updatePermissionQuery = "SELECT DATE_FORMAT(login_timestamp, \"%b %e %Y %r\") FROM ums.user_login_history WHERE user_id = ?";
+		String updatePermissionQuery = "SELECT DATE_FORMAT(login_timestamp, \"%b %e %Y %r\") FROM ums.user_log_history WHERE user_id = ?";
 		List<String> loginHistory = new ArrayList<String>();
 		try {
 			preparedStatement = connection.prepareStatement(updatePermissionQuery);
@@ -429,6 +429,18 @@ public class UserDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return false;
+	}
+
+	public boolean setUserLogoutTime(Long userId) {
+		String setLogoutTimeQuery = "UPDATE `ums`.`user_log_history` SET `logout_timestamp` = now() WHERE `user_id` = ? AND logout_timestamp is null;";
+		try {
+			preparedStatement = connection.prepareStatement(setLogoutTimeQuery);
+			preparedStatement.setLong(1, userId);
+			return preparedStatement.executeUpdate() == 1;				
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
 		return false;
 	}
 }

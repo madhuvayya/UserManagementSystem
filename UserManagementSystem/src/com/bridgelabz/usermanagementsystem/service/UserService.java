@@ -178,4 +178,8 @@ public class UserService {
 	public boolean removeInactiveStatus(long userId) {
 		return userDao.removeInactiveStatus(userId);		
 	}
+
+	public boolean setLogoutTime(Long userId) {
+		return userDao.setUserLogoutTime(userId);
+	}
 }
