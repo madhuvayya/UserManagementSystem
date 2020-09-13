@@ -134,7 +134,7 @@
 												<% } %>
 											</tbody>
 										</table>
-										<div><a href="">See All Locations</a></div>
+										<div><a href="top-locations">See All Locations</a></div>
 									</div>
 									<div class="gender-div">
 										<div class="graphs-right-titles">Gender</div>

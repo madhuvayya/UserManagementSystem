@@ -440,7 +440,7 @@ public class UserDao {
 	}
 
 	public boolean setUserLogoutTime(Long userId) {
-		String setLogoutTimeQuery = "UPDATE `ums`.`user_log_history` SET `logout_timestamp` = now() WHERE `user_id` = ? AND logout_timestamp is null;";
+		String setLogoutTimeQuery = "UPDATE `ums`.`user_log_history` SET `logout_timestamp` = now() WHERE `user_id` = ? AND logout_timestamp is null";
 		try {
 			preparedStatement = connection.prepareStatement(setLogoutTimeQuery);
 			preparedStatement.setLong(1, userId);

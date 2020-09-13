@@ -134,4 +134,13 @@
 		<servlet-name>profile</servlet-name>
 		<url-pattern>/profile</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>top-locations</servlet-name>
+		<jsp-file>/pages/top-locations.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>top-locations</servlet-name>
+		<url-pattern>/top-locations</url-pattern>
+	</servlet-mapping>
 </web-app>
