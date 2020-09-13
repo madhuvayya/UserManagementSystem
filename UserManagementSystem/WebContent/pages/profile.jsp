@@ -28,7 +28,7 @@
 				<div class="content-heading">
 					<div class="page-title">
 						Profile<br> <span class="page-description">You last
-							logged in on: on this starter page.</span>
+							logged in on: ${userHistory.get(userHistory.size() - 1)}</span>
 					</div>
 					<div class="home-link">
 						<a href="dashboard"><i class="ti-home"></i> Home</a> / Profile

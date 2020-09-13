@@ -269,9 +269,10 @@ public class UserDao {
 	}
 
 	public List<Integer> getUsersCount() {
-		String totalUsersQuery = "SELECT count(*) FROM ums.user_info;";
-		String numberOfActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'active'; ";
-		String numberOfInActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'inactive'; ";
+		String totalUsersQuery = "SELECT count(*) FROM ums.user_info";
+		String numberOfActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'active'";
+		String numberOfInActiveUsersQuery = "SELECT count(*) FROM ums.user_info WHERE status = 'inactive'";
+		String numberOfUsersOnline = "SELECT count(*) FROM ums.user_log_history WHERE logout_timestamp is NULL";
 		List<Integer> usersCounter = new ArrayList<Integer>();
 		ResultSet resultSet = null;
 		try {
@@ -288,6 +289,12 @@ public class UserDao {
 				resultSet = null;
 			}
 			preparedStatement = connection.prepareStatement(numberOfInActiveUsersQuery);
+			resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+				usersCounter.add(Integer.parseInt(resultSet.getString(1)));
+				resultSet = null;
+			}
+			preparedStatement = connection.prepareStatement(numberOfUsersOnline);
 			resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				usersCounter.add(Integer.parseInt(resultSet.getString(1)));

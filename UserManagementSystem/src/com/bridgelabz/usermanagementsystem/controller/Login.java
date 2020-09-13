@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
 			throws IOException, ServletException {
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
-		String destinationPath = "";
+		String destinationPage = "";
 
 		User user = new User();
 		user.setUserName(userName);
@@ -31,17 +31,18 @@ public class Login extends HttpServlet {
 		long userId = userService.isRegisteredUser(user);
 
 		if (userId != 0) {
-			destinationPath = "UserRoleController";
+			destinationPage = "UserRoleController";
 
 			userService.removeInactiveStatus(userId);
+			userService.setLoginTime(userId);
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", userName);
 			httpSession.setAttribute("userId", userId);
 		} else {
 			userService.updateFailedAttempts(userName);
 			request.setAttribute("message", "Enter registred user name and password.");
-			destinationPath = "login";
+			destinationPage = "login";
 		}
-		request.getRequestDispatcher(destinationPath).forward(request, response);
+		request.getRequestDispatcher(destinationPage).forward(request, response);
 	}
 }

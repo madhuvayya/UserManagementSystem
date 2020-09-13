@@ -49,7 +49,7 @@
 				<div class="content-heading">
 					<div class="page-title">
 						<span>Welcome ${username}</span><br> <span class="last-login">
-							You last logged in on:<%=userHistory.get(userHistory.size() - 1)%></span>
+							You last logged in on:${userHistory.get(userHistory.size() - 1)}</span>
 					</div>
 					<div class="home-link">
 						<i class="ti-home"></i><a href="dashboard">Home</a> / Dashboard
@@ -64,7 +64,7 @@
 										<i class="ti-user"></i>
 									</div>
 									<div>
-										<b class="title">TOTAL</b> <br> <span class="value"><%=usersCounter.get(0)%></span>
+										<b class="title">TOTAL</b> <br> <span class="value">${usersCounter.get(0)}</span>
 									</div>
 								</div>
 							</a>
@@ -76,7 +76,7 @@
 										<i class="ti-check"></i>
 									</div>
 									<div>
-										<b class="title">ACTIVE</b> <br> <span class="value"><%=usersCounter.get(1)%></span>
+										<b class="title">ACTIVE</b> <br> <span class="value">${usersCounter.get(1)}</span>
 									</div>
 								</div>
 							</a>
@@ -88,7 +88,7 @@
 										<i class="ti-na"></i>
 									</div>
 									<div>
-										<b class="title">INACTIVE</b> <br> <span class="value"><%=usersCounter.get(2)%></span>
+										<b class="title">INACTIVE</b> <br> <span class="value">${usersCounter.get(2)}</span>
 									</div>
 								</div>
 							</a>
@@ -100,7 +100,7 @@
 										<i class="ti-eye"></i>
 									</div>
 									<div>
-										<b class="title">ONLINE</b> <br> <span class="value">2</span>
+										<b class="title">ONLINE</b> <br> <span class="value">${usersCounter.get(3)}</span>
 									</div>
 								</div>
 							</a>

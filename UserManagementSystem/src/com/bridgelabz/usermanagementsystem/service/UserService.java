@@ -20,7 +20,6 @@ public class UserService {
 	public long isRegisteredUser(User user) {
 		long userId = userDao.checkUserAuthorization(user);
 		if (userId != 0) {
-			userDao.storeUserLoginTime(userId);
 			return userId;
 		}
 		return 0;
@@ -181,5 +180,10 @@ public class UserService {
 
 	public boolean setLogoutTime(Long userId) {
 		return userDao.setUserLogoutTime(userId);
+	}
+
+	public void setLoginTime(long userId) {
+		userDao.setUserLogoutTime(userId);
+		userDao.storeUserLoginTime(userId);
 	}
 }
