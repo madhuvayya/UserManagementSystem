@@ -43,7 +43,7 @@
 		</a>
 	</div>
 
-	<div onclick="showOptions('settings')" class="onclick-div">
+	<div id="settings-options" onclick="showOptions('settings')" class="onclick-div">
 		<i class="ti-user"></i> <span class="title">Settings</span>
 			<i class="icon-submenu ti-angle-left"></i>
 	</div>

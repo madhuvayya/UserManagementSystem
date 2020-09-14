@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/dropify/dist/css/dropify.min.css">
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>
 <title>User Management</title>
 </head>
 <body>
@@ -603,6 +603,12 @@
 	<script src ="${pageContext.request.contextPath}/scripts/NewUserScript.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>		
 	<script type="text/javascript">
+	$(document).ready(function() {
+		if(${user.getRole() == 'User'}) {
+            $('#dashboard').hide();
+            $('#settings-options').hide();
+		}
+	});
 		$(document).ready(function() {
 			// Basic
 			$('.dropify').dropify();

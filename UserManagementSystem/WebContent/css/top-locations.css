@@ -44,9 +44,11 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	color: #a0aeba;
 }
 
 .page-title {
+	color: #5e6773; 
 	font-size: 18px;
 }
 
@@ -60,14 +62,6 @@ button {
 	font-size: 15px;
 	margin-right: 3px;
 	color: #a0aeba;
-}
-
-.content, .content-body {
-	padding-top: 30px;
-    padding-bottom: 30px;
-    position: relative;
-    padding-left: 20px;
-    padding-right: 20px;    
 }
 
 .content {
@@ -88,6 +82,10 @@ button {
 }
 
 .content-body {
+	padding-left: 20px;
+    padding-right: 20px;
+	padding-top: 30px;
+    padding-bottom: 30px;
 	margin: 15px 0;
 	width: 100%;
 	display: flex;

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -15,9 +16,13 @@
 	href="${pageContext.request.contextPath}/css/blankpage.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<script src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>	
 <title>User Management</title>
 </head>
 <body>
+	<%
+		User user = (User) session.getAttribute("user");
+	%>
 	<div class="main-container">
 		<%@include file="header.jsp"%>
 		<div class="container">
@@ -41,5 +46,13 @@
 		</div>
 	</div>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		if(${user.getRole() == 'User'}) {
+            $('#dashboard').hide();
+            $('#settings-options').hide();
+		}
+	});
+	</script>
 </body>
 </html>

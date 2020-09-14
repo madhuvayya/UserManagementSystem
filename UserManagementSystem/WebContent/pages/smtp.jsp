@@ -72,5 +72,13 @@
 		</div>
 	</div>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		if(${user.getRole() == 'User'}) {
+            $('#dashboard').hide();
+            $('#settings-options').hide();
+		}
+	});
+	</script>	
 </body>
 </html>

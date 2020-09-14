@@ -133,6 +133,13 @@
 			$('.general-information-span').removeClass('general-information-span-active');
 		})	
 	})
+	
+	$(document).ready(function() {
+		if(${user.getRole() == 'User'}) {
+            $('#dashboard').hide();
+            $('#settings-options').hide();
+		}
+	});
 	</script>
 </body>
 </html>

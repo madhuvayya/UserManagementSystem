@@ -1,3 +1,4 @@
+<%@page import="com.bridgelabz.usermanagementsystem.model.User"%>
 <%@page import="com.bridgelabz.usermanagementsystem.model.Permissions"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -16,10 +17,12 @@
 	href="${pageContext.request.contextPath}/css/webpage1.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<script src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>	
 <title>User Management</title>
 </head>
 <body>
 	<%
+		User user = (User) session.getAttribute("user");
 		Permissions permissions = (Permissions) session.getAttribute("permissions");
 	%>
 	<div class="main-container">
@@ -77,7 +80,7 @@
                                         <span class="inputLabel">Read Permission</span>
                                     </td>
                                     <td>
-                                        <input name="read-permission" type="checkbox" id="read-permission" class="js-switch" disabled="disabled" data-size="small" <%if (permissions.getWebPage1Read()) {%>
+                                        <input name="read-permission" type="checkbox" id="read-permission" class="js-switch" disabled="disabled" data-size="small" <% if (permissions.getWebPage1Read()) {%>
 										checked="checked" <% } %> data-switchery="true" readonly="" style="display: none;">
 										<span class="switchery switchery-small" style="background-color: rgb(100, 189, 99); border-color: rgb(100, 189, 99); box-shadow: rgb(100, 189, 99) 0px 0px 0px 11px inset; transition: border 0.4s ease 0s, box-shadow 0.4s ease 0s, background-color 1.2s ease 0s; opacity: 0.5;">
 										<small style="left: 13px; background-color: rgb(255, 255, 255); transition: background-color 0.4s ease 0s, left 0.2s ease 0s;"></small></span>
@@ -90,5 +93,13 @@
 		</div>
 	</div>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		if(${user.getRole() == 'User'}) {
+            $('#dashboard').hide();
+            $('#settings-options').hide();
+		}
+	});
+	</script>
 </body>
 </html>
