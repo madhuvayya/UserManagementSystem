@@ -97,7 +97,7 @@ a {
 
 .profile-left {
 	padding-left: 0;
-    width: 40%;
+    width: 50%;
     background-color: #fcfcfc;
 	display: flex;
 	flex-direction: column;
@@ -123,6 +123,7 @@ a {
 
 .image-div {
 	align-self: center;
+	text-align: center;
 }
 
 .profile-img img {
@@ -197,6 +198,8 @@ a {
 	flex-direction: column;
 	justify-content: space-between;
 	padding: 15px;
+	height: 200px;
+	overflow-y: scroll; 
 }
 
 .login-history-list i {
@@ -211,7 +214,12 @@ tr {
 	padding: 10px;
 }
 
-@media ( min-width : 280px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 480px) {
+	.main-content {
+		height: 95vh;
+		overflow-y: scroll;
+	}
+	
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -222,4 +230,14 @@ tr {
 		width: 100%;
 		height: auto; 
 	}	
+	
+	.content-body {
+		width: 90%;
+		flex-direction: column;
+	}
+	
+	.profile-left, .profile-right {
+		width: 100%;
+		margin-bottom:10px;
+	}  
 }	

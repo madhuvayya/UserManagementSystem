@@ -24,8 +24,6 @@
 	href="${pageContext.request.contextPath}/css/dashboard.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>User Management</title>
 </head>
 <body>

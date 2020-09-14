@@ -71,6 +71,12 @@
   text-decoration: none;
 }
 
+.dropbtn img {
+	width: 24px;
+    margin-right: 2px;
+    border: 1px solid #fff;
+}
+
 .dropdown a:hover {
 	background-color: #ddd;
 }
