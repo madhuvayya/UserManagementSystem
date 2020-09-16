@@ -28,6 +28,12 @@
 </head>
 <body>
 	<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    if (session.getAttribute("username") == null) {
+        response.sendRedirect("login");
+    } 
+    %>
+	<%
 		List<String> userHistory = (List<String>) session.getAttribute("userHistory");
 		Permissions permissions = (Permissions) session.getAttribute("permissions");
 		User userGeneralDetails = (User) session.getAttribute("user");
@@ -36,8 +42,6 @@
 		List<Country> numberOfUsersByCountry = (List<Country>) session.getAttribute("numberOfUsersByCountry");
 		List<Double> usersPercentegeListBasedOnGender = (List<Double>) session.getAttribute("usersPercentegeListBasedOnGender");
 		List<Integer> numberOfUsersByAgeGroup = (List<Integer>)  session.getAttribute("numberOfUsersByAgeGroup");
-		List<String> registeredMonths = (List<String>) session.getAttribute("registeredMonths");
-		List<Integer> registeredUsersByMonths = (List<Integer>) session.getAttribute("registeredUsersByMonths");
 	%>
 	<div class="dashboard-page-body">
 		<%@include file="header.jsp"%>
@@ -110,9 +114,9 @@
 							<div class="body">
 								<div class="graph">
 										<div>
-											<button class="graph-button">All Time</button>
-											<button class="graph-button"><%=Calendar.getInstance().get(Calendar.YEAR)%></button>
-											<button class="graph-button"><%=new Formatter().format("%tB", Calendar.getInstance())%></button>																						
+											<button class="graph-button" onclick="loadGraphDataForAllRegistrations()">All Time</button>
+											<button class="graph-button" onclick="loadGraphDataForCurrentYear()"><%=Calendar.getInstance().get(Calendar.YEAR)%></button>
+											<button class="graph-button" onclick="loadGraphDataForCurrentMonth()"><%=new Formatter().format("%tB", Calendar.getInstance())%></button>																						
 										</div>
 										<div class="graph-div">	
 									      <canvas id="registrations-graph"></canvas>
@@ -207,7 +211,19 @@
 
     if('${numberOfUsersByAgeGroup}' !== '') {
     	getUsersAgeGroupHorizantalBar(${numberOfUsersByAgeGroup});
-    }		
+    }
+    
+    function loadGraphDataForAllRegistrations() {
+    	getUserRegistrationGraph('${registeredMonths}',${registeredUsersByMonths})
+    }
+    
+    function loadGraphDataForCurrentYear() {
+    	getUserRegistrationGraph('${registeredByCurrentYearMonths}',${registeredUsersByCurrentYearMonths})
+    }
+    
+    function loadGraphDataForCurrentMonth() {
+    	getUserRegistrationGraph('${registeredByCurrentMonthDates}',${registeredUsersByCurrentMonth})
+    }
 	</script>
 </body>
 </html>

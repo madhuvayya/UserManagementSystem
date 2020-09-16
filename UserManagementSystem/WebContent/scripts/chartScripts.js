@@ -63,6 +63,9 @@ function getUserRegistrationGraph(registedUsersLabel,numberOfUsersRegisteredValu
                     },
                     gridLines: {
                         display: false
+                    },
+					ticks: {
+                        beginAtZero: true
                     }
                 }],
                 yAxes: [{

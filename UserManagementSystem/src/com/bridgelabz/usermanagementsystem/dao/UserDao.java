@@ -386,12 +386,12 @@ public class UserDao {
 		return 0;
 	}
 
-	public Map<Integer, String> getNumberOfUsersBasedOnBasedRegistrations() {
-		String numberOfUsersBasedOnBasedRegistrations = "SELECT count(*) as users , date_format(creator_stamp,\"%b %Y\") as monthYear "
-				+ "FROM user_info GROUP BY date_format(creator_stamp,\"%m %Y\");";
+	public Map<Integer, String> getNumberOfUsersByAllTimeRegistrations() {
+		String numberOfUsersBasedOnRegistrations = "SELECT count(*) as users , date_format(creator_stamp,\"%b %Y\") as monthYear "
+				+ "FROM user_info GROUP BY date_format(creator_stamp,\"%b %Y\")";
 		Map<Integer, String> numberOfRegistrationsByMonth = new HashMap<Integer, String>();
 		try {
-			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnBasedRegistrations);
+			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnRegistrations);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				numberOfRegistrationsByMonth.put(resultSet.getInt(1), resultSet.getString(2));
@@ -449,5 +449,56 @@ public class UserDao {
 			e.printStackTrace();
 		}		
 		return false;
+	}
+
+	public Map<Integer, String> getNumberOfUsersBasedOnCurrentYearRegistrations() {
+		String numberOfUsersBasedOnCurrentYearRegistrations = "SELECT count(*) as users , date_format(creator_stamp,\"%b\") as month FROM user_info \r\n" + 
+				"WHERE YEAR(creator_stamp) = YEAR(now()) GROUP BY date_format(creator_stamp,\"%b\");";
+		Map<Integer, String> numberOfRegistrationsByMonth = new HashMap<Integer, String>();
+		try {
+			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnCurrentYearRegistrations);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				numberOfRegistrationsByMonth.put(resultSet.getInt(1), resultSet.getString(2));
+			}
+			return numberOfRegistrationsByMonth;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return numberOfRegistrationsByMonth;
+	}
+
+	public Map<Integer, String> getNumberOfUsersBasedOnCurrentMonthRegistrations() {
+		String numberOfUsersBasedOnCurrentMonthRegistrations = "SELECT count(*) as users , date_format(creator_stamp,\"%e\") as day \r\n" + 
+				"FROM user_info WHERE YEAR(creator_stamp) = YEAR(now()) \r\n" + 
+				"AND MONTH(creator_stamp) = MONTH(now()) GROUP BY date_format(creator_stamp,\"%e\");";
+		Map<Integer, String> numberOfRegistrationsByDates = new HashMap<Integer, String>();
+		try {
+			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnCurrentMonthRegistrations);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				numberOfRegistrationsByDates.put(resultSet.getInt(1), resultSet.getString(2));
+			}
+			return numberOfRegistrationsByDates;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return numberOfRegistrationsByDates;
+	}
+
+	public List<String> getCountryData() {
+		String numberOfUsersBasedOnCurrentMonthRegistrations = "SELECT country_name FROM ums.country";
+		List<String> countriesList = new ArrayList<String>();
+		try {
+			preparedStatement = connection.prepareStatement(numberOfUsersBasedOnCurrentMonthRegistrations);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				countriesList.add(resultSet.getString(1));
+			}
+			return countriesList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}		
+		return null;
 	}
 }

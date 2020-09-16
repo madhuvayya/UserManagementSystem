@@ -1,10 +1,8 @@
 package com.bridgelabz.usermanagementsystem.controller;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,25 +23,11 @@ public class UserDetails extends HttpServlet {
 
 		UserService userService = new UserService();
 		Long userId = Long.parseLong(request.getParameter("userId"));
-		ArrayList<String> countrylist = new ArrayList<String>();
-		BufferedReader bufferedReader = null;
-
-		try {
-			File f = new File(
-					"C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\countries.txt");
-			bufferedReader = new BufferedReader(new FileReader(f));
-
-			String readLine = "";
-			while ((readLine = bufferedReader.readLine()) != null) {
-				countrylist.add(readLine);
-			}
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		List<String> countrylist = new ArrayList<String>();
 
 		User user = userService.getUserGeneralDetails(userId);
 		Permissions permissions = userService.getUserPermissions(userId);
+		countrylist = userService.getCountryData();
 		request.setAttribute("user", user);
 		request.setAttribute("countrylist", countrylist);
 		request.setAttribute("permissions", permissions);

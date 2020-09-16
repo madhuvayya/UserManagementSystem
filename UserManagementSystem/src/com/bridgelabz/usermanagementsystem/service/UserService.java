@@ -165,8 +165,8 @@ public class UserService {
 		return numberOfUsersBasedOnAgeGroup;
 	}
 
-	public Map<Integer, String> getNumberOfUsersBasedOnBasedRegistrations() {
-		return userDao.getNumberOfUsersBasedOnBasedRegistrations();
+	public Map<Integer, String> getNumberOfUsersByALLTimeRegistrations() {
+		return userDao.getNumberOfUsersByAllTimeRegistrations();
 	}
 
 	public void updateFailedAttempts(String userName) {
@@ -185,5 +185,17 @@ public class UserService {
 	public void setLoginTime(long userId) {
 		userDao.setUserLogoutTime(userId);
 		userDao.storeUserLoginTime(userId);
+	}
+
+	public Map<Integer, String> getNumberOfUsersBasedOnCurrentYearRegistrations() {
+		return userDao.getNumberOfUsersBasedOnCurrentYearRegistrations();
+	}
+
+	public Map<Integer, String> getNumberOfUsersBasedOnCurrentMonthRegistrations() {
+		return userDao.getNumberOfUsersBasedOnCurrentMonthRegistrations();
+	}
+
+	public List<String> getCountryData() {
+		return userDao.getCountryData();
 	}
 }

@@ -232,7 +232,7 @@ td {
 #age-progress-bar {
 	display: inline-block;
     vertical-align: baseline;
-    width: 150%;
+    width: 100%;
 }
 
 .percentage-divs {

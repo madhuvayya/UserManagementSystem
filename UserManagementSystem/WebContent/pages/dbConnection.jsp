@@ -21,6 +21,11 @@
 </head>
 <body>
 	<%
+    if (session.getAttribute("username") == null) {
+        response.sendRedirect("login");
+    } 
+    %>
+	<%
 		User user = (User) session.getAttribute("user"); 
 	%>
 	<div class="main-container">

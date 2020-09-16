@@ -41,15 +41,25 @@ public class UserRoleController extends HttpServlet {
 			List<Country> numberOfUsersByCountry = userService.getNumberOfUsersBasedOnCountry();
 			List<Double> usersPercentegeListBasedOnGender = userService.getNumberOfUsersBasedOnGender();
 			List<Integer> numberOfUsersByAgeGroup = userService.getNumberOfUsersBasedOnAgeGroup();
-			Map<Integer, String> numberOfUsersByRegistrations = userService.getNumberOfUsersBasedOnBasedRegistrations();
-			List<String> registeredMonths = new ArrayList<String>(numberOfUsersByRegistrations.values());
-			List<Integer> registeredUsersByMonths = new ArrayList<Integer>(numberOfUsersByRegistrations.keySet());
+			Map<Integer, String> numberOfUsersByALLTimeRegistrations = userService.getNumberOfUsersByALLTimeRegistrations();
+			Map<Integer, String> numberOfUsersByCurretYearRegistrations = userService.getNumberOfUsersBasedOnCurrentYearRegistrations();
+			Map<Integer, String> numberOfUsersByCurretMonthRegistrations = userService.getNumberOfUsersBasedOnCurrentMonthRegistrations();			
+			List<String> registeredMonths = new ArrayList<String>(numberOfUsersByALLTimeRegistrations.values());
+			List<Integer> registeredUsersByMonths = new ArrayList<Integer>(numberOfUsersByALLTimeRegistrations.keySet());
+			List<String> registeredByCurrentYearMonths = new ArrayList<String>(numberOfUsersByCurretYearRegistrations.values());
+			List<Integer> registeredUsersByCurrentYearMonths = new ArrayList<Integer>(numberOfUsersByCurretYearRegistrations.keySet());			
+			List<String> registeredByCurrentMonthDates = new ArrayList<String>(numberOfUsersByCurretMonthRegistrations.values());
+			List<Integer> registeredUsersByCurrentMonth = new ArrayList<Integer>(numberOfUsersByCurretMonthRegistrations.keySet());			
 			httpSession.setAttribute("usersCounter", usersCounter);
 			httpSession.setAttribute("numberOfUsersByCountry", numberOfUsersByCountry);
 			httpSession.setAttribute("usersPercentegeListBasedOnGender", usersPercentegeListBasedOnGender);
 			httpSession.setAttribute("numberOfUsersByAgeGroup", numberOfUsersByAgeGroup);
 			httpSession.setAttribute("registeredMonths", registeredMonths);
 			httpSession.setAttribute("registeredUsersByMonths", registeredUsersByMonths);
+			httpSession.setAttribute("registeredByCurrentYearMonths", registeredByCurrentYearMonths);
+			httpSession.setAttribute("registeredUsersByCurrentYearMonths", registeredUsersByCurrentYearMonths);
+			httpSession.setAttribute("registeredByCurrentMonthDates", registeredByCurrentMonthDates);
+			httpSession.setAttribute("registeredUsersByCurrentMonth", registeredUsersByCurrentMonth);			
 			request.getRequestDispatcher("dashboard").forward(request, response);
 		}
 	}

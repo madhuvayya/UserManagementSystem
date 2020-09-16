@@ -21,6 +21,11 @@
 </head>
 <body>
 	<%
+    if (session.getAttribute("username") == null) {
+        response.sendRedirect("login");
+    } 
+    %>
+	<%
 		User user = (User) request.getAttribute("user");
 		Permissions permissions = (Permissions) request.getAttribute("permissions");
 	%>
@@ -40,7 +45,7 @@
 				<form action="UpdateUserDetails?userId=<%=user.getUserId()%>" method="post" enctype="multipart/form-data"
 					class="form" onsubmit="return checkPassword(this)">				
 					<div class="form-container">
-						<p style="text-align: center;">${message}</p>
+						<p id="message" style="text-align:center;">${message}</p>
 						<div class="form-sub-container">
 							<div class="general panel">
 								<div class="panel-title">General</div>
@@ -162,7 +167,6 @@
 												required>
 										</div>
 									</div>
-									<br /> <span id='passwords-message'></span>
 									<div class="form-group">
 										<div> <label class="control-label">User Role</label> </div>
 										<div>
@@ -196,7 +200,7 @@
                             <div id="cphBody_updatePnlPhoto">	
                                             <div id="divPreviewPhoto" class="text-center">
                                                 <div style="border: 2px solid #e6e6e6; padding: 10px 10px;">
-                                                    <img src="" id="cphBody_imgPreviewPhoto" alt="" class="img-responsive" style="height:180px; width:170px">
+                                                    <img src="data:image/jpg;base64,<%=user.getUserDiplayingImage()%>" id="cphBody_imgPreviewPhoto" alt="" class="img-responsive" style="height:180px; width:170px">
                                                 </div>
                                                 <br>
                                                 <input type="button" id="change-photo" class="btn btn-default btn-sm" value="Change Photo" onclick="UploadPhoto();">             
@@ -204,16 +208,29 @@
                                             <div id="divUploadPhoto" style="display: none;">
                                                 <label class="control-label">Acceptable image formats are jpg, jpeg, png &amp; gif.</label><br>
                                                 <label class="control-label">Maximum image size allowed is 2MB.</label>
-                                                <div class="dropify-wrapper"><div class="dropify-message"><span class="file-icon"></span> <p>Click here to choose any image</p><p class="dropify-error">Ooops, something wrong appended.</p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" name="ctl00$cphBody$fileUploadUserPhoto" id="cphBody_fileUploadUserPhoto" class="dropify-fr" data-allowed-file-extensions="png jpeg jpg gif" data-max-file-size="2M" data-show-loader="true" data-show-remove="true" data-errors-position="inside"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p><p class="dropify-infos-message">Click remove to remove this image</p></div></div></div></div>
-                                                <div id="divUploadPhotoButtons" class="text-center">
-                                                    <br>
-                                                    <input type="button" id="change-photo-dropify" name="ctl00$cphBody$btnChangePhoto" value="Change Photo" id="cphBody_btnChangePhoto" class="btn btn-default btn-sm">
-                                                    <input id="btnPreviewPhoto" type="button" class="btn btn-default btn-sm" value="Preview Photo" onclick="PreviewPhoto();">
-                                                </div>
-                                            </div>                             
+                                                <div class="dropify-wrapper"><div class="dropify-message">
+										<input type="file" id="input-file-now" name="userImage"
+											class="dropify">
+										<button type="button" class="dropify-clear">Remove</button>
+										<div class="dropify-preview">
+											<span class="dropify-render"></span>
+											<div class="dropify-infos">
+												<div class="dropify-infos-inner">
+													<p class="dropify-filename">
+														<span class="file-icon"></span> <span
+															class="dropify-filename-inner"></span>
+													</p>
+													<p class="dropify-infos-message">Drag and drop or click
+														to replace</p>
+												</div>
+											</div>
+										</div>
+                                    </div>                             
 								</div>
-                        </div>
+							</div>
+							</div>	
 						</div>
+					</div>
 					</div>
 					<div class="permissions panel">
 						<div class="panel-title">Permissions</div>
@@ -371,6 +388,7 @@
             $('#divPreviewPhoto').hide();
             $('#divUploadPhoto').show();
         }
+		
         function PreviewPhoto() {
             $('#divPreviewPhoto').show();
             $('#divUploadPhoto').hide();
@@ -381,7 +399,7 @@
 			var confirmPassword = form.confirmPassword.value;
 
 			if (password != confirmPassword) {
-				document.getElementById('passwords-message').innerHTML = "Password did not match: Please try again...";
+				document.getElementById('message').innerHTML = "Password did not match: Please try again...";
 				return false;
 			} else {
 				return true;

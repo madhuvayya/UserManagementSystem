@@ -22,6 +22,11 @@
 <title>User Management</title>
 </head>
 <body>
+	<%
+    if (session.getAttribute("username") == null) {
+        response.sendRedirect("login");
+    } 
+    %>
 	<div class="main-container">
 		<%@include file="header.jsp"%>
 		<div class="sub-container">
