@@ -148,8 +148,8 @@ public class UserService {
 
 	public List<Double> getNumberOfUsersBasedOnGender() {
 		List<Double> percentegeOfUsersBasedOnGender = new ArrayList<Double>();
-		percentegeOfUsersBasedOnGender.add(userDao.getNumberOfUsersBasedOnGender("male"));
-		percentegeOfUsersBasedOnGender.add(userDao.getNumberOfUsersBasedOnGender("female"));
+		percentegeOfUsersBasedOnGender.add(userDao.getUsersPercentageBasedOnGender("male"));
+		percentegeOfUsersBasedOnGender.add(userDao.getUsersPercentageBasedOnGender("female"));
 		return percentegeOfUsersBasedOnGender;
 	}
 

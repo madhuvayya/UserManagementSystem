@@ -326,7 +326,7 @@ public class UserDao {
 		return null;
 	}
 
-	public Double getNumberOfUsersBasedOnGender(String gender) {
+	public Double getUsersPercentageBasedOnGender(String gender) {
 		String percentageOfUsersBasedOnGenderQuery = " select 100 * count(*) / (select count(*) from ums.user_info) from ums.user_info where gender = ?;";
 		try {
 			preparedStatement = connection.prepareStatement(percentageOfUsersBasedOnGenderQuery);
@@ -494,7 +494,6 @@ public class UserDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				countriesList.add(resultSet.getString(1));
-				System.out.println(resultSet.getString(1));
 			}
 			return countriesList;
 		} catch (SQLException e) {

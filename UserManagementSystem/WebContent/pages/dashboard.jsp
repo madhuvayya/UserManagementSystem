@@ -24,6 +24,8 @@
 	href="${pageContext.request.contextPath}/css/dashboard.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/themify-icons.css">
+<script
+	src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>	
 <title>User Management</title>
 </head>
 <body>
@@ -143,20 +145,20 @@
 										<table>
 											<tr>
 												<td style="width:80%;">Male</td>
-												<td style="width:10%;"><%=usersPercentegeListBasedOnGender.get(0)%></td>
+												<td id="male-age-percentage" style="width:10%;"></td>
 											</tr>
 											<tr>
 												<td>
-												<progress id="age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(0)%>" max="100"></progress>
+												<progress id="age-progress-bar" class="male-age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(0)%>" max="100"></progress>
 												</td>
 											</tr>
 												<tr>
 												<td style="width:80%;">Female</td>
-												<td style="width:10%;"><%=usersPercentegeListBasedOnGender.get(1)%></td>
+												<td id="female-age-percentage" style="width:10%;"></td>
 											</tr>
 											<tr>
 												<td>
-												<progress id="age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(1)%>" max="100"></progress>
+												<progress id="age-progress-bar" class="female-age-progress-bar" value="<%=usersPercentegeListBasedOnGender.get(1)%>" max="100"></progress>
 												</td>
 											</tr>
 										</table>
@@ -224,6 +226,17 @@
     function loadGraphDataForCurrentMonth() {
     	getUserRegistrationGraph('${registeredByCurrentMonthDates}',${registeredUsersByCurrentMonth})
     }
+	$(document).ready(function(){
+		    $.get("GetUsersPercentageBasedOnGender", function(data, status){
+		    	let percentage = JSON.parse(data);
+		      	console.log(percentage[0]);
+		      	$('#male-age-percentage').text(percentage[0]);
+		      	$('#female-age-percentage').text(percentage[1]);
+		      	$('.male-age-progress-bar').val(percentage[0]);
+		      	$('.female-age-progress-bar').val(percentage[1]);	      	
+		  });		    
+	});
+    
 	</script>
 </body>
 </html>

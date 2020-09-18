@@ -328,18 +328,7 @@
 		src="${pageContext.request.contextPath}/scripts/NewUserScript.js"></script>
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
-	<script type="text/javascript">
-	$(document).change(function() {
-		for (i = 0; i < 10; i++)
-		{ 
-		     $('#mySelect').append($('<option>',
-		     {
-		        value: i,
-		        text : "Option "+i 
-		    }));
-		}
-	});	
-	
+	<script type="text/javascript">	
 	$(document).ready(function() {
 		if(${user.getRole() == 'User'}) {
             $('#dashboard').hide();
