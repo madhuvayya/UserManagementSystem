@@ -494,6 +494,7 @@ public class UserDao {
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				countriesList.add(resultSet.getString(1));
+				System.out.println(resultSet.getString(1));
 			}
 			return countriesList;
 		} catch (SQLException e) {

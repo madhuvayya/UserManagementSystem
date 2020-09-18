@@ -21,10 +21,10 @@
 </head>
 <body>
 	<%
-    if (session.getAttribute("username") == null) {
-        response.sendRedirect("login");
-    } 
-    %>
+		if (session.getAttribute("username") == null) {
+		response.sendRedirect("login");
+	}
+	%>
 	<div class="main-container">
 		<%@include file="header.jsp"%>
 		<div class="container">
@@ -105,7 +105,8 @@
 											<label class="control-label">Country</label>
 										</div>
 										<div>
-											<select name="country" class="form-control select" required>
+											<select name="country" class="form-control select"
+												id="country-select" required>
 												<option value="">-- Select --</option>
 											</select>
 										</div>
@@ -323,8 +324,10 @@
 		src="${pageContext.request.contextPath}/css/jquery/jquery.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/css/dropify/dist/js/dropify.min.js"></script>
-	<script src ="${pageContext.request.contextPath}/scripts/NewUserScript.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>		
+	<script
+		src="${pageContext.request.contextPath}/scripts/NewUserScript.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/scripts/CommonScript.js"></script>
 	<script type="text/javascript">
 	$(document).change(function() {
 		for (i = 0; i < 10; i++)
@@ -344,9 +347,19 @@
 		}
 	});
 		$(document).ready(function() {
-			// Basic
 			$('.dropify').dropify();
 		});
+	$(document).ready(function(){
+			  $("#country-select").click(function(){
+			    $.get("GetCountryData", function(countryList, status){
+			      $.each(JSON.parse(countryList), function(country,countryName) {
+			    	  $("#country-select").append(
+			    			  $('<option></option>').val(countryName).html(countryName)
+			    	    );
+			    });
+			  });
+			  });		    
+	});	
 
 		function checkPassword(form) {
 			var password = form.password.value;
