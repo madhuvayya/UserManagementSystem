@@ -4,6 +4,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
 	id="WebApp_ID" version="4.0">
 	<display-name>UserManagementSystem</display-name>
+	
+	<context-param>
+        <param-name>log4j-config-location</param-name>
+        <param-value>/resources/log4j.properties</param-value>
+    </context-param>
 
 	<welcome-file-list>
 		<welcome-file>/pages/login.jsp</welcome-file>

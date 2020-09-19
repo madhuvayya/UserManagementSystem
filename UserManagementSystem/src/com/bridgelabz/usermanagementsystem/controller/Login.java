@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bridgelabz.usermanagementsystem.model.User;
 import com.bridgelabz.usermanagementsystem.service.UserService;
 
 @WebServlet(value = "/login-process")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getLogger(Login.class);
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -31,6 +34,7 @@ public class Login extends HttpServlet {
 		long userId = userService.isRegisteredUser(user);
 
 		if (userId != 0) {
+			logger.info("Valid user");
 			destinationPage = "UserRoleController";
 
 			userService.removeInactiveStatus(userId);
@@ -38,10 +42,12 @@ public class Login extends HttpServlet {
 			HttpSession httpSession = request.getSession();
 			httpSession.setAttribute("username", userName);
 			httpSession.setAttribute("userId", userId);
+			logger.info("Session object is created and attrubutes are set.");
 		} else {
 			userService.updateFailedAttempts(userName);
 			request.setAttribute("message", "Enter registred user name and password.");
 			destinationPage = "login";
+			logger.info("Invalid user");
 		}
 		request.getRequestDispatcher(destinationPage).forward(request, response);
 	}
