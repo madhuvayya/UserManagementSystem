@@ -8,13 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 import com.bridgelabz.usermanagementsystem.config.DBConnection;
 import com.bridgelabz.usermanagementsystem.model.Country;
@@ -69,7 +68,7 @@ public class UserDao {
 		return null;
 	}
 
-	public boolean addUser(User user) throws IOException, MySQLIntegrityConstraintViolationException {
+	public boolean addUser(User user) throws IOException, SQLIntegrityConstraintViolationException {
 		String registerQuery = "INSERT INTO user_info (first_name,middle_name,last_name,dob,gender, email, country,phone_number,alternate_number,address,user_name,password,user_image,role,creator_user) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 
@@ -93,7 +92,7 @@ public class UserDao {
 
 			return preparedStatement.executeUpdate() == 1;
 		} catch (SQLException ex) {
-			throw new MySQLIntegrityConstraintViolationException(ex.getMessage());
+			ex.printStackTrace();
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
@@ -219,7 +218,7 @@ public class UserDao {
 		return null;
 	}
 
-	public boolean updateUserGeneralDetails(long userId, User user) throws MySQLIntegrityConstraintViolationException {
+	public boolean updateUserGeneralDetails(long userId, User user) {
 		String updateQuery = "UPDATE user_info SET `first_name` = ?, `middle_name` = ?, `last_name` = ?,`dob` = ?, `gender` = ?, `email` = ?, "
 				+ "`country` = ?,`phone_number` = ?, `alternate_number` = ?, `address` = ?, `user_name` = ?, `password` = ?, `user_image` = ?, `role` = ?, `status` = ?,`creator_user` = ? WHERE `id` = ?";
 		try {
@@ -244,7 +243,7 @@ public class UserDao {
 
 			return preparedStatement.executeUpdate() == 1;
 		} catch (SQLException ex) {
-			throw new MySQLIntegrityConstraintViolationException(ex.getMessage());
+			ex.printStackTrace();
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}

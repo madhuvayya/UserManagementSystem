@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 
 import com.bridgelabz.usermanagementsystem.service.UserService;
@@ -24,7 +25,7 @@ public class Logout extends HttpServlet {
 		UserService userService = new UserService();
 		userService.setLogoutTime(userId);
 		session.invalidate();
-        
+
         request.setAttribute("message", "You successfully logged out.");
         response.sendRedirect("login");
         logger.info("User Successfully logout");

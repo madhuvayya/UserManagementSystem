@@ -3,6 +3,7 @@ package com.bridgelabz.usermanagementsystem.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,15 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
 import com.bridgelabz.usermanagementsystem.service.UserService;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 @WebServlet("/register")
 @MultipartConfig(maxFileSize = 16177215)
 public class RegisterUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getLogger(RegisterUser.class);
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -56,13 +59,16 @@ public class RegisterUser extends HttpServlet {
 		
 		UserService userService = new UserService();
 		boolean isGeneralInformationStored = false;
-		try {
-			isGeneralInformationStored = userService.registerUser(user);
-		} catch (MySQLIntegrityConstraintViolationException | IOException e1) {
-			request.setAttribute("registerMessage", e1.getMessage());
-		}
-
+			try {
+				isGeneralInformationStored = userService.registerUser(user);				
+			} catch (SQLIntegrityConstraintViolationException | IOException e1) {
+				request.setAttribute("registerMessage", e1.getMessage());
+				logger.info("User "+ request.getParameter("firstName") +" failed to store general information because of "+ e1.getMessage() );
+			} 
+			
+			
 		if (isGeneralInformationStored) {
+			logger.info("User "+ request.getParameter("firstName") +" general information successfully stored in the database.");
 			Permissions permissions = new Permissions();
 			permissions.setDashboardAdd(request.getParameter("dashboard_add") != null ? true : false);
 			permissions.setDashboardDelete(request.getParameter("dashboard_delete") != null ? true : false);
@@ -91,11 +97,14 @@ public class RegisterUser extends HttpServlet {
 			boolean userRegistered = false;
 			try {
 				userRegistered = userService.addUserPermissions(permissions, user.getUserName(), user.getCreatorUser());
-			} catch (ClassNotFoundException | IOException e) {
+				logger.info("User "+ request.getParameter("firstName") + " permissions are successfully stored in database.");
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
+				logger.error("User "+ request.getParameter("firstName") + " permissions are failed to store in database.");
 			}
 			if (userRegistered) {
 				request.setAttribute("registerMessage", "User successfully registered.");
+				logger.info("User "+ request.getParameter("firstName") + " information is completely stored in database");
 			}
 		}
 

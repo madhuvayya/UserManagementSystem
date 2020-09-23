@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import org.apache.log4j.Logger;
+
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
 import com.bridgelabz.usermanagementsystem.service.UserService;
@@ -21,6 +23,7 @@ import com.bridgelabz.usermanagementsystem.service.UserService;
 @MultipartConfig(maxFileSize = 16177215)
 public class UpdateUserDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getLogger(UpdateUserDetails.class);
        
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession httpSession = request.getSession();
@@ -29,7 +32,7 @@ public class UpdateUserDetails extends HttpServlet {
 		UserService userService = new UserService();
 		String updateMessage = "";
 		
-		long userId = Long.parseLong(request.getParameter("userId"));
+		long userId = (long) httpSession.getAttribute("userId");
 
 		user.setFirstName(request.getParameter("firstName"));
 		user.setMiddleName(request.getParameter("middleName"));
@@ -82,12 +85,14 @@ public class UpdateUserDetails extends HttpServlet {
 		permissions.setWebPage3Modify(request.getParameter("w3_modify") != null ? true : false);
 		permissions.setWebPage3Read(request.getParameter("w3_read") != null ? true : false);
 		
-		userService.updateUserDetails(userId , user, permissions);
-		if(userId != 0) {
+		boolean isDataUpdated = userService.updateUserDetails(userId , user, permissions);
+		if(isDataUpdated) {
 			updateMessage = " User deatils updated Successfully updated";
+			logger.info("User with user id"+ userId +" data are updated successfully.");
+		} else {
+			logger.error("User with user id"+ userId +" data is not updated.");
 		}
 		
-		request.setAttribute("userId", userId);
 		request.setAttribute("message", updateMessage);
 		response.sendRedirect("UserDetails?userId="+userId);
 	}

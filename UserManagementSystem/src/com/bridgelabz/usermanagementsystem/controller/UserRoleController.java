@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.bridgelabz.usermanagementsystem.model.Country;
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
@@ -20,6 +22,7 @@ import com.bridgelabz.usermanagementsystem.service.UserService;
 @WebServlet("/UserRoleController")
 public class UserRoleController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger logger = Logger.getLogger(UserRoleController.class);
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -61,6 +64,7 @@ public class UserRoleController extends HttpServlet {
 			httpSession.setAttribute("registeredByCurrentMonthDates", registeredByCurrentMonthDates);
 			httpSession.setAttribute("registeredUsersByCurrentMonth", registeredUsersByCurrentMonth);			
 			request.getRequestDispatcher("dashboard").forward(request, response);
+			logger.info("Data send to the dashboard page");
 		}
 	}
 }

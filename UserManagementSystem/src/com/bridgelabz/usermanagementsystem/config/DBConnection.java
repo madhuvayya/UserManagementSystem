@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 public class DBConnection {
 
 	private static Connection connection = null;
-	private static Logger logger = Logger.getLogger(DBConnection.class); 
+	private static Logger logger = Logger.getLogger(DBConnection.class);
 
 	static {
 		FileReader fileReader = null;
@@ -29,7 +29,7 @@ public class DBConnection {
 		Properties properties = new Properties();
 		try {
 			properties.load(fileReader);
-			logger.info("database properties are loaded successfully into properties object");
+			logger.info("Database properties are successfully loaded into properties object");
 		} catch (IOException ioException) {
 			ioException.printStackTrace();
 		}
@@ -42,13 +42,13 @@ public class DBConnection {
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(url, username, password);
-			logger.info("Database connection successfully established.");
+			logger.info("Database connection established.");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			logger.info("Data base driver class not found.");
+			logger.info("Failed to connect to database beacuse driver class not found.");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			logger.info("Data base connection not established beacuse of invalid database credentials.");
+			logger.info("Failed to connect to database beacuse of invalid database credentials.");
 		}
 	}
 

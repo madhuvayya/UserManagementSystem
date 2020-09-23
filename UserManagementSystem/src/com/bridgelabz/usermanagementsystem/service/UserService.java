@@ -1,6 +1,7 @@
 package com.bridgelabz.usermanagementsystem.service;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +11,6 @@ import com.bridgelabz.usermanagementsystem.dao.UserDao;
 import com.bridgelabz.usermanagementsystem.model.Country;
 import com.bridgelabz.usermanagementsystem.model.Permissions;
 import com.bridgelabz.usermanagementsystem.model.User;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 
 public class UserService {
 
@@ -25,7 +25,7 @@ public class UserService {
 		return 0;
 	}
 
-	public boolean registerUser(User user) throws IOException, MySQLIntegrityConstraintViolationException {
+	public boolean registerUser(User user) throws IOException, SQLIntegrityConstraintViolationException {
 		return userDao.addUser(user);
 	}
 
@@ -107,7 +107,6 @@ public class UserService {
 	}
 
 	public boolean updateUserDetails(Long userId, User user, Permissions permissions) {
-		try {
 			userDao.updateUserGeneralDetails(userId, user);
 			permissionsDao.updatePermissions(userId, 1, permissions.getDashboardAdd(), permissions.getDashboardDelete(),
 					permissions.getDashboardModify(), permissions.getDashboardRead(), user.getCreatorUser());
@@ -128,10 +127,6 @@ public class UserService {
 			return permissionsDao.updatePermissions(userId, 6, permissions.getWebPage3Add(),
 					permissions.getWebPage3Delete(), permissions.getWebPage3Modify(), permissions.getWebPage3Read(),
 					user.getCreatorUser());
-		} catch (MySQLIntegrityConstraintViolationException e) {
-			e.printStackTrace();
-		}
-		return false;
 	}
 
 	public List<String> getUserLoginHistory(long userId) {

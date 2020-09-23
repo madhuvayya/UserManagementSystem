@@ -5,9 +5,9 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>UserManagementSystem</display-name>
 	
-	<context-param>
+ 	<context-param>
         <param-name>log4j-config-location</param-name>
-        <param-value>/resources/log4j.properties</param-value>
+        <param-value>\resources\log4j.properties</param-value>
     </context-param>
 
 	<welcome-file-list>
