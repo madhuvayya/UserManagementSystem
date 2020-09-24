@@ -1,8 +1,5 @@
 package com.bridgelabz.usermanagementsystem.config;
 
-import java.io.File;
-
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
@@ -14,12 +11,7 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
-    	
-        ServletContext context = event.getServletContext();
-        String log4jConfigFile = context.getInitParameter("log4j-config-location");
-//        String fullPath = context.getRealPath("/") + File.separator + log4jConfigFile;
-         
-        PropertyConfigurator.configure("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\log4j.properties");   
+        PropertyConfigurator.configure(getClass().getResource("/resources/log4j.properties"));
     }
 	
     @Override

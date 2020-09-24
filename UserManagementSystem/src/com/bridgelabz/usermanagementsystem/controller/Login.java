@@ -33,8 +33,9 @@ public class Login extends HttpServlet {
 		UserService userService = new UserService();
 		long userId = userService.isRegisteredUser(user);
 
+		logger.info("User " + userName + " is trying to login.");
 		if (userId != 0) {
-			logger.info("Valid user");
+			logger.info(userName + " Valid user");
 			destinationPage = "UserRoleController";
 
 			userService.removeInactiveStatus(userId);
@@ -47,7 +48,7 @@ public class Login extends HttpServlet {
 			userService.updateFailedAttempts(userName);
 			request.setAttribute("message", "Enter registred user name and password.");
 			destinationPage = "login";
-			logger.info("Invalid user");
+			logger.info(userName + "Invalid user / entered invalid user name or password");
 		}
 		request.getRequestDispatcher(destinationPage).forward(request, response);
 	}

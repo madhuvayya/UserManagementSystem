@@ -55,7 +55,7 @@ public class UpdateUserDetails extends HttpServlet {
 		if (filePart != null) {
 			inputStream = filePart.getInputStream();
 		} else {
-			inputStream = new FileInputStream("C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\images\\image.png");
+			inputStream = new FileInputStream(getClass().getResource("/resources/image.png").toString());
 		}
 
 		user.setUserUploadingImage(inputStream);

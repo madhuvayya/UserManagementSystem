@@ -1,8 +1,7 @@
 package com.bridgelabz.usermanagementsystem.config;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
@@ -16,19 +15,11 @@ public class DBConnection {
 	private static Logger logger = Logger.getLogger(DBConnection.class);
 
 	static {
-		FileReader fileReader = null;
-		try {
-			fileReader = new FileReader(
-					"C:\\Users\\USER\\git\\UserManagementSystem\\UserManagementSystem\\WebContent\\resources\\db.properties");
-			logger.info("db.properties file is successfully read using file reader");
-		} catch (FileNotFoundException fileNotFoundException) {
-			fileNotFoundException.printStackTrace();
-			logger.info("db.properties file is not found");
-		}
-		
+		InputStream propertiesInputStream = DBConnection.class.getClassLoader().getResourceAsStream("/resources/db.properties");
+		logger.info("db.properties file is successfully read using file reader");
 		Properties properties = new Properties();
 		try {
-			properties.load(fileReader);
+			properties.load(propertiesInputStream);
 			logger.info("Database properties are successfully loaded into properties object");
 		} catch (IOException ioException) {
 			ioException.printStackTrace();
